@@ -1662,6 +1662,114 @@ Die vertikale Expansion vertieft den Service pro Leistungsart – vom reinen Ant
 #pagebreak()
 
 // ============================================================================
+// B2B EXPANSION
+// ============================================================================
+
+== B2B Expansion: Corporate Employee Benefits
+
+Neben dem B2C-Modell eröffnet sich eine zusätzliche Wachstumschance: *Unternehmen, die Bambini als Employee Benefit für werdende Eltern anbieten.* Das ARAG-Modell zeigt bereits, dass Partner bereit sind, unsere Lösung in ihre Benefits-Pakete zu integrieren.
+
+=== Marktpotenzial
+
+In Deutschland gibt es rund *260.000 Unternehmen mit 50+ Mitarbeitern* #footnote[deutschland.de: German SMEs – Facts and Figures, 2024. 11,3% der 2,6M Unternehmen haben 50+ FTE.] – der Kernmarkt für HR-Software. Bei konservativer Penetration von 15% ergibt sich ein adressierbarer Markt von ~38.700 Unternehmen mit einem geschätzten jährlichen Umsatzpotenzial von *155–580 Mio. €*. #footnote[Market Research Future: Germany Human Capital Management Software Market, 2024. HCM-Software-Markt: €1,375B (2024), 7,8% CAGR bis 2035.]
+
+=== Value Proposition & ROI
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 12pt,
+
+  box(fill: light-bg, inset: 14pt, radius: 6pt, width: 100%)[
+    #text(weight: "bold", fill: primary)[Für HR-Abteilungen]
+    #v(4pt)
+    #text(size: 9pt)[
+      - Admin-Aufwand: *-5–8 Std. pro Fall* #footnote[Abgeleitet aus Beratungskosten (TKare: €99–209, Einfach Elterngeld: €549) bei €60/Std. HR-Vollkosten.]
+      - Compliance-Sicherheit
+      - Moderne Employee Benefit
+    ]
+  ],
+
+  box(fill: light-bg, inset: 14pt, radius: 6pt, width: 100%)[
+    #text(weight: "bold", fill: success)[Für CFO/Geschäftsführung]
+    #v(4pt)
+    #text(size: 9pt)[
+      - *+20% längere Mitarbeiterbindung* #footnote[Cocoon: Paid Leave Benchmarks 2025. Unternehmen mit Parental Leave Support haben 20% längere median tenure.]
+      - Payback: *12–18 Monate*
+      - Recruiting-Differentiator #footnote[Roland Berger Employee Benefits Study 2024: 89% der HR-Leiter priorisieren Retention; 32% planen 2025 Family/Care Benefits.]
+    ]
+  ],
+)
+
+=== Preismodell & Beispielrechnung
+
+Empfohlenes *Hybrid-Modell*: 3–5 € pro Mitarbeiter/Jahr (PEPY) + 25–35 € pro aktivem Nutzungsfall.
+
+#box(fill: primary.lighten(95%), inset: 12pt, radius: 6pt, width: 100%)[
+  *Beispiel: Unternehmen mit 200 Mitarbeitern*
+  - Basis: 200 × 4 € = *800 €/Jahr*
+  - Plus: 12 Fälle × 25 € = *300 €*
+  - *Gesamt: 1.100 €/Jahr* (vs. 12 × 549 € = 6.588 € bei externer Beratung #footnote[Einfach Elterngeld Premium: €549 pro Familie, 2025.])
+]
+
+=== Zielgruppen & Partner-Strategie
+
+#table(
+  columns: (2fr, 1fr, 2fr),
+  fill: (x, y) => if y == 0 { info } else if calc.odd(y) { light-bg } else { white },
+  stroke: 0.5pt + surface,
+  inset: 10pt,
+
+  table.cell(fill: info)[#text(fill: white, weight: "bold", size: 9pt)[SEGMENT]],
+  table.cell(fill: info)[#text(fill: white, weight: "bold", size: 9pt)[VOLUMEN]],
+  table.cell(fill: info)[#text(fill: white, weight: "bold", size: 9pt)[STRATEGIE]],
+
+  [Tech-Unternehmen (50–500 FTE)],
+  [~5.000],
+  [LinkedIn Outreach, Personio Integration #footnote[Personio ist Marktführer für HR-Software im deutschen SME-Segment (50–500 FTE). People Managing People: Personio Pricing 2025.]],
+
+  [Consulting (Big 4, McKinsey, BCG)],
+  [Premium],
+  [Direct Sales, höherer PEPY],
+
+  [Versicherungen (ARAG-Expansion)],
+  [Allianz, ERGO],
+  [Partnerschaft: Bundle mit Family Insurance],
+)
+
+=== Finanzielle Projektion: Hybrid-Modell (Jahr 1)
+
+#highlight-box(color: success)[
+  #grid(
+    columns: (2fr, 1fr),
+    column-gutter: 15pt,
+    [
+      *B2C:* 1.000 Kunden × 49,99 € \
+      *B2B:* 15 Unternehmen × Ø 2.500 € \
+      #v(4pt)
+      #text(weight: "bold", size: 11pt)[Jahr 1 Total (Hybrid)]
+    ],
+    [
+      50.000 € \
+      37.500 € \
+      #v(4pt)
+      #text(weight: "bold", size: 11pt, fill: success)[87.500 €]
+    ],
+  )
+  #v(6pt)
+  #text(size: 8pt, fill: muted)[
+    Vorteil: Ähnlicher Umsatz wie B2C-only (86.000 €), aber mit *vorhersehbareren Recurring Revenues* und geringerer Kanalabhängigkeit.
+  ]
+]
+
+=== Warum jetzt?
+
+- *Mai 2025:* Digitale Elternzeit-Beantragung wird gesetzlich möglich #footnote[Sugrobov Rechtsanwälte: "Neue Ära des Arbeitsrechts – Digitale Antragstellung für Elternzeit ab Mai 2025".]
+- *45% der Arbeitnehmer* suchen aktiv neue Jobs – Benefits werden entscheidend #footnote[Gallup Workplace Study Germany 2024: 45% actively seeking or open to new opportunities.]
+- *80–90% Markt unserviert* – kein dominanter Player im Parental Leave Admin-Segment #footnote[Synthese aus Wettbewerbsanalyse: MyCollective (2–3%), Voiio (5–8%), Back Technologies (unter 1%), BenefitatWork (3–5%). Market Research Future 2024.]
+
+#pagebreak()
+
+// ============================================================================
 // RISIKEN
 // ============================================================================
 
