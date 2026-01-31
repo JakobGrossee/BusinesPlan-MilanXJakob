@@ -3,7 +3,7 @@
 
 #set document(
   title: "Bambini toller plan Business Plan 2026",
-  author: "Bambini GmbH (i.Gr.)",
+  author: "Bambini GmbsssH (i.Gr.)",
 )
 
 // ─── Color Palette ───────────────────────────────────────────────────────────
@@ -31,8 +31,7 @@
       #grid(
         columns: (1fr, 1fr),
         align: (left, right),
-        [BAMBINI BUSINESS PLAN],
-        [FEBRUAR 2026]
+        [BAMBINI BUSINESS PLAN], [FEBRUAR 2026],
       )
       #v(-3pt)
       #line(length: 100%, stroke: (
@@ -57,10 +56,10 @@
             inset: (x: 8pt, y: 3pt),
             radius: 10pt,
           )[#text(fill: white, weight: "bold")[#counter(page).display()]]
-        ]
+        ],
       )
     ]
-  }
+  },
 )
 
 // ─── Typography ──────────────────────────────────────────────────────────────
@@ -68,12 +67,12 @@
   font: "Inter",
   size: 10.5pt,
   fill: dark,
-  lang: "de"
+  lang: "de",
 )
 
 #set par(
   justify: true,
-  leading: 0.75em
+  leading: 0.75em,
 )
 
 #set heading(numbering: "1.1")
@@ -115,10 +114,12 @@
   block(
     width: 100%,
     fill: color.lighten(93%),
-    stroke: (left: (
-      paint: gradient.linear(color, color.lighten(40%), dir: ttb),
-      thickness: 4pt,
-    )),
+    stroke: (
+      left: (
+        paint: gradient.linear(color, color.lighten(40%), dir: ttb),
+        thickness: 4pt,
+      ),
+    ),
     inset: 18pt,
     radius: (right: 6pt),
   )[
@@ -156,7 +157,7 @@
     columns: (1fr, auto),
     align: (left + horizon, right + horizon),
     [#text(fill: muted)[#label] #box(width: 1fr, repeat[#text(fill: rgb("#E2E8F0"))[.]])],
-    text(weight: "bold", fill: dark)[#value]
+    text(weight: "bold", fill: dark)[#value],
   )
   v(6pt)
 }
@@ -262,8 +263,7 @@
     #grid(
       columns: (auto, auto, auto),
       column-gutter: 15pt,
-      badge("Februar 2026", color: primary),
-      badge("GmbH i.Gr.", color: info),
+      badge("Februar 2026", color: primary), badge("GmbH i.Gr.", color: info),
     )
   ]
 
@@ -333,6 +333,7 @@ Das deutsche System der Familienleistungen ist ein Bürokratie-Dschungel:
     #text(size: 20pt, weight: "bold", fill: danger)[500+] \
     #text(size: 9pt, fill: muted)[Seiten Anträge und Leitfäden]
   ],
+
   box(fill: danger.lighten(92%), inset: 12pt, radius: 6pt, width: 100%)[
     #text(size: 20pt, weight: "bold", fill: danger)[~8.000 €] \
     #text(size: 9pt, fill: muted)[möglicher Verlust pro Familie]
@@ -439,7 +440,7 @@ Bambini macht Schluss mit dem Antrag-Chaos:
       #v(-2pt)
       Nichtinanspruchnahme durch Komplexität \
       #text(size: 8pt, fill: muted)[(Quelle: BMFSFJ 2021)]
-    ]
+    ],
   )
 ]
 
@@ -451,22 +452,30 @@ Deutschland hat eines der großzügigsten Systeme für Familienleistungen weltwe
   columns: (1fr,),
   row-gutter: 10pt,
   ..for (num, desc) in (
-    ("130+", "Verschiedene zuständige Stellen – Je nach Bundesland, Kommune und Leistungsart unterschiedliche Ansprechpartner"),
-    ("500+", "Seiten Anträge & Leitfäden – Unverständliche Behördensprache, keine einheitliche Struktur"),
-    ("~8.000 €", "Möglicher Verlust pro Familie – Durch falsche Berechnung, verpasste Fristen, unbekannte Zusatzleistungen"),
-  ) {(
-    grid(
-      columns: (auto, 1fr),
-      column-gutter: 12pt,
-      align: (center + horizon, left + horizon),
-      box(
-        fill: gradient.linear(primary, primary-light),
-        inset: (x: 10pt, y: 8pt),
-        radius: 6pt,
-      )[#text(fill: white, weight: "bold", size: 11pt)[#num]],
-      text(size: 10pt)[*#desc*],
+    (
+      "130+",
+      "Verschiedene zuständige Stellen – Je nach Bundesland, Kommune und Leistungsart unterschiedliche Ansprechpartner",
     ),
-  )}
+    ("500+", "Seiten Anträge & Leitfäden – Unverständliche Behördensprache, keine einheitliche Struktur"),
+    (
+      "~8.000 €",
+      "Möglicher Verlust pro Familie – Durch falsche Berechnung, verpasste Fristen, unbekannte Zusatzleistungen",
+    ),
+  ) {
+    (
+      grid(
+        columns: (auto, 1fr),
+        column-gutter: 12pt,
+        align: (center + horizon, left + horizon),
+        box(
+          fill: gradient.linear(primary, primary-light),
+          inset: (x: 10pt, y: 8pt),
+          radius: 6pt,
+        )[#text(fill: white, weight: "bold", size: 11pt)[#num]],
+        text(size: 10pt)[*#desc*],
+      ),
+    )
+  }
 )
 
 == Zitate aus der Praxis
@@ -630,15 +639,27 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
   table.cell(fill: primary.lighten(88%))[*Elterngeldbuddy*],
   table.cell(fill: primary.lighten(88%))[*Staat*],
 
-  [Unterstützte Leistungen], [*5+* (Elterngeld, Elternzeit, Kindergeld, etc.)], [1 (Elterngeld)], [1 (Elterngeld)], [Viele, komplex],
+  [Unterstützte Leistungen],
+  [*5+* (Elterngeld, Elternzeit, Kindergeld, etc.)],
+  [1 (Elterngeld)],
+  [1 (Elterngeld)],
+  [Viele, komplex],
 
   [Vollständig Digital], [*Ja* (direkter Versand)], [Nein (selbst drucken)], [Nein (selbst drucken)], [Teilweise],
 
   [Kosten], [*49,99 €* (für alle)], [39,99–89,99 €], [39,99 €], [Kostenlos],
 
-  [Optimale Kombination], [#text(fill: success, weight: "bold")[✓]], [#text(fill: danger)[✗]], [#text(fill: danger)[✗]], [#text(fill: danger)[✗]],
+  [Optimale Kombination],
+  [#text(fill: success, weight: "bold")[✓]],
+  [#text(fill: danger)[✗]],
+  [#text(fill: danger)[✗]],
+  [#text(fill: danger)[✗]],
 
-  [Datenspeicherung], [#text(fill: success, weight: "bold")[✓]], [#text(fill: danger)[✗]], [#text(fill: danger)[✗]], [#text(fill: danger)[✗]],
+  [Datenspeicherung],
+  [#text(fill: success, weight: "bold")[✓]],
+  [#text(fill: danger)[✗]],
+  [#text(fill: danger)[✗]],
+  [#text(fill: danger)[✗]],
 )
 
 #pagebreak()
@@ -816,7 +837,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
         #text(fill: success, weight: "bold")[✓] Expert-Überprüfung \
         #text(fill: success, weight: "bold")[✓] 90 Tage Support \
         #text(fill: success, weight: "bold")[✓] Fertige Antragsdatei
-      ]
+      ],
     )
   ]
 ]
@@ -944,7 +965,10 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
   table.cell(fill: primary)[#text(fill: white, weight: "bold")[Zeitrahmen]],
   table.cell(fill: primary)[#text(fill: white, weight: "bold")[Empfehlung]],
 
-  [ARAG-Partnerschaft], [*0 €*], [Sofort (Feb 2026)], [#text(fill: success, weight: "bold")[✓ Strategisch am wertvollsten]],
+  [ARAG-Partnerschaft],
+  [*0 €*],
+  [Sofort (Feb 2026)],
+  [#text(fill: success, weight: "bold")[✓ Strategisch am wertvollsten]],
 
   [TikTok Ads], [15–25 €], [Sofort], [#text(fill: success, weight: "bold")[✓ Niedrigster Paid CAC]],
 
@@ -1029,7 +1053,9 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 
 #table(
   columns: (auto, auto, auto, auto, auto, auto),
-  fill: (x, y) => if y == 0 { primary } else if y == 5 { success.lighten(85%) } else if calc.odd(y) { light-bg } else { white },
+  fill: (x, y) => if y == 0 { primary } else if y == 5 { success.lighten(85%) } else if calc.odd(y) { light-bg } else {
+    white
+  },
   stroke: 0.5pt + surface,
   inset: 10pt,
   align: (left, center, center, right, right, right),
@@ -1187,7 +1213,8 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 
       table.hline(stroke: 1.5pt + info),
 
-      [#text(weight: "bold", size: 13pt, fill: info)[Gesamtbedarf]], [#text(weight: "bold", size: 13pt, fill: info)[~22.000 €]],
+      [#text(weight: "bold", size: 13pt, fill: info)[Gesamtbedarf]],
+      [#text(weight: "bold", size: 13pt, fill: info)[~22.000 €]],
     )
   ]
 ]
@@ -1203,7 +1230,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     fill: light-bg,
     inset: 20pt,
     radius: 10pt,
-    width: 100%
+    width: 100%,
   )[
     #text(weight: "bold", fill: dark)[Mittelverwendung]
     #v(15pt)
@@ -1214,21 +1241,13 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
       row-gutter: 8pt,
       align: (center + horizon, left + horizon, right + horizon),
 
-      box(fill: primary, width: 12pt, height: 12pt, radius: 3pt),
-      [Stammkapital],
-      text(weight: "bold")[62%],
+      box(fill: primary, width: 12pt, height: 12pt, radius: 3pt), [Stammkapital], text(weight: "bold")[62%],
 
-      box(fill: info, width: 12pt, height: 12pt, radius: 3pt),
-      [Marketing],
-      text(weight: "bold")[23%],
+      box(fill: info, width: 12pt, height: 12pt, radius: 3pt), [Marketing], text(weight: "bold")[23%],
 
-      box(fill: success, width: 12pt, height: 12pt, radius: 3pt),
-      [Gründungskosten],
-      text(weight: "bold")[9%],
+      box(fill: success, width: 12pt, height: 12pt, radius: 3pt), [Gründungskosten], text(weight: "bold")[9%],
 
-      box(fill: accent, width: 12pt, height: 12pt, radius: 3pt),
-      [Betrieb & Puffer],
-      text(weight: "bold")[6%],
+      box(fill: accent, width: 12pt, height: 12pt, radius: 3pt), [Betrieb & Puffer], text(weight: "bold")[6%],
     )
 
     #v(15pt)
@@ -1715,6 +1734,7 @@ Die vertikale Expansion vertieft den Service pro Leistungsart – vom reinen Ant
         #v(3pt)
         #text(size: 9pt, fill: muted)[User Research, Prototyping]
       ],
+
       box(fill: success.lighten(92%), inset: 12pt, radius: 6pt, width: 100%)[
         #text(fill: success, weight: "bold")[Rechtliche Expertise]
         #v(3pt)
