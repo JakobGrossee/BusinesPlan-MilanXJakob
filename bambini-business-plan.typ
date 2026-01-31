@@ -507,7 +507,8 @@ Deutschland hat eines der großzügigsten Systeme für Familienleistungen weltwe
   #v(4pt)
   #align(right)[#text(fill: muted, size: 9pt)[— *BMFSFJ*, Eigene Schätzungen 2021]]
 ]
-
+//hier evtl. visuell aufhübschen (vgl unsere Präsi)
+#pagebreak()
 == Besonders betroffene Zielgruppen
 
 === 1. Akademiker & Berufstätige (~171.000 Familien/Jahr)
@@ -535,7 +536,7 @@ Deutschland hat eines der großzügigsten Systeme für Familienleistungen weltwe
     fill: primary.lighten(93%),
     inset: (x: 30pt, y: 12pt),
     radius: 20pt,
-  )[
+  )[ //sloagen Überdenken
     #text(size: 14pt, style: "italic", fill: primary)[
       "Goodbye Elterngeld-Chaos. Welcome to more money."
     ]
@@ -543,7 +544,7 @@ Deutschland hat eines der großzügigsten Systeme für Familienleistungen weltwe
 ]
 
 #v(0.8em)
-
+//wir sollten noch einmal überdenken, inwiefern wir hier von einem durchschnittlichen Gewinnsprechen könnnen, geschweige denn in welcher Höhe 
 Bambini ist der persönliche Assistent, der den Elterngeld-Antrag ausfüllt, vor teuren Fehlern bewahrt und durchschnittlich *300–800 € mehr* herausholt – garantiert.
 
 == Der Bambini-Prozess
@@ -600,6 +601,7 @@ Bambini ist der persönliche Assistent, der den Elterngeld-Antrag ausfüllt, vor
   ]
 ]
 
+#pagebreak()
 == KI-Assistent: Ella
 
 Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, Kindergeld und Familienleistungen beantwortet – 24/7 in einfacher Sprache.
@@ -1163,8 +1165,8 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
   [Jahr 2], [1,5%], [4.620], [231.000 €], [~180.000 €],
   [Jahr 3], [3,0%], [9.240], [462.000 €], [~400.000 €],
 )
-
-#text(size: 9pt, fill: muted)[
+#v(-0.8em)
+#text(size: 8pt, fill: muted)[
   Annahmen: Konstanter Preis 49,99 €, sinkender CAC durch Brand Awareness und Referrals, Serviceable Market 308.000 Familien/Jahr
 ]
 
@@ -1874,7 +1876,7 @@ Die vertikale Expansion vertieft den Service pro Leistungsart – vom reinen Ant
   ]
 ]
 
-#v(2em)
+#v(0.8em)
 
 #align(center)[
   #box(
@@ -1888,7 +1890,7 @@ Die vertikale Expansion vertieft den Service pro Leistungsart – vom reinen Ant
   ]
 ]
 
-#v(3em)
+#v(1.5em)
 
 #align(center)[
   #line(length: 60pt, stroke: 1pt + surface)
