@@ -346,7 +346,7 @@ Das deutsche System der Familienleistungen ist ein Bürokratie-Dschungel:
 
 #v(0.5em)
 
-Die Stadt Hannover warnt explizit: _"Das Antragsformular ist extrem kompliziert, wenig bürgerfreundlich und nicht barrierefrei."_ #footnote[https://www.hannover.de]
+Die Stadt Hannover warnt explizit: _"Das Antragsformular ist extrem kompliziert, wenig bürgerfreundlich und nicht barrierefrei."_ #footnote[#link("https://www.hannover.de/Leben-in-der-Region-Hannover/Verwaltungen-Kommunen/Die-Verwaltung-der-Landeshauptstadt-Hannover/Dezernate-und-Fachbereiche-der-LHH/Jugend,-Familie-Sport/Fachbereich-Jugend-und-Familie/Elterngeldstelle/Elterngeld-beantragen")[hannover.de]]
 
 == Unsere Lösung
 
