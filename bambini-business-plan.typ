@@ -220,7 +220,7 @@
     #v(1.2cm)
 
     // Brand name
-    #text(size: 56pt, weight: "bold", fill: primary-dark, tracking: -1pt)[bambini]
+    #image("bambini-logo.png", width: 250pt)
 
     #v(0.3cm)
 
