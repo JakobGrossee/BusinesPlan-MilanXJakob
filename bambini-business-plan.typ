@@ -2,7 +2,7 @@
 // Refined visual identity with geometric accents and modern typography
 
 #set document(
-  title: "Bambini toller plan Business Plan 2026",
+  title: "Bambini Business Plan 2026",
   author: "Bambini GmbH (i.Gr.)",
 )
 
