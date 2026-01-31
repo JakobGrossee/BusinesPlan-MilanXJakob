@@ -348,6 +348,8 @@ Das deutsche System der Familienleistungen ist ein Bürokratie-Dschungel:
 
 Die Stadt Hannover warnt explizit: _"Das Antragsformular ist extrem kompliziert, wenig bürgerfreundlich und nicht barrierefrei."_ #footnote[#link("https://www.hannover.de/Leben-in-der-Region-Hannover/Verwaltungen-Kommunen/Die-Verwaltung-der-Landeshauptstadt-Hannover/Dezernate-und-Fachbereiche-der-LHH/Jugend,-Familie-Sport/Fachbereich-Jugend-und-Familie/Elterngeldstelle/Elterngeld-beantragen")[hannover.de]]
 
+#pagebreak()
+
 == Unsere Lösung
 
 Bambini macht Schluss mit dem Antrag-Chaos:
@@ -403,7 +405,7 @@ Bambini macht Schluss mit dem Antrag-Chaos:
   - Marketing-Budget (initial): 5.000 €
   - Puffer: 2.646 €
 ]
-
+#pagebreak()
 == Strategische Partnerschaft
 
 #box(
@@ -414,7 +416,7 @@ Bambini macht Schluss mit dem Antrag-Chaos:
   stroke: (left: 4pt + accent),
 )[
   Bambini hat bereits eine *Partnerschaft mit ARAG Versicherung* geschlossen. ARAG möchte unsere Lösung in ihre Kundenreise integrieren – eine Testkundin steht bereit. Diese Partnerschaft liefert Kunden mit *CAC = 0 €* und validiert unser Geschäftsmodell.
-]
+] // das hier ggf. nicht so schreiben -> partnerschaft besteht in der Art und Weise noch nicht
 
 #pagebreak()
 
@@ -767,6 +769,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     - Tausende Euro Verlust möglich
   ],
 )
+#pagebreak()
 
 == Marktpotenzial bei konservativer Penetration
 
@@ -982,6 +985,8 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 
   [Google Ads], [100–150 €], [Später], [#text(fill: danger)[✗ Zu teuer für MVP]],
 )
+
+#pagebreak()
 
 == TikTok vs. Meta: Warum TikTok der Primärkanal ist
 
@@ -1220,6 +1225,8 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     )
   ]
 ]
+
+#pagebreak()
 
 == Verwendung der Mittel
 
