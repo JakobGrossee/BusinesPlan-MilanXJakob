@@ -48,7 +48,7 @@
       #grid(
         columns: (1fr, 1fr, 1fr),
         align: (left, center, right),
-        [Vertraulich],
+        [#image("bambini-logo.png", width: 30pt)],
         [bambini-claims.de],
         [
           #box(
@@ -509,24 +509,7 @@ Deutschland hat eines der großzügigsten Systeme für Familienleistungen weltwe
   #v(4pt)
   #align(right)[#text(fill: muted, size: 9pt)[— *BMFSFJ*, Eigene Schätzungen 2021]]
 ]
-//hier evtl. visuell aufhübschen (vgl unsere Präsi)
-// => evtl. ganz löschen (Redundanz im Vergleich zu Seite 11)
-#pagebreak()
-== Besonders betroffene Zielgruppen
 
-=== 1. Akademiker & Berufstätige (~171.000 Familien/Jahr)
-- 25% der neuen Eltern (städtisch, höhere Bildung)
-- Zeit ist wertvoller als Geld (49,99 € vs. 10h Aufwand)
-- Anspruchsvolle Karrieren, wenig Zeit für Bürokratie
-- Digital-affin, suchen Leistungsoptimierung
-
-=== 2. Menschen mit Sprachbarrieren (~137.000 Familien/Jahr)
-- 20% der neuen Eltern (höhere Geburtenrate: 1,84 vs. 1,23)
-- Schwer verständliche deutsche Bürokratie
-- Keine Kenntnis von Leistungsansprüchen
-- Verpasste Fristen = Tausende Euro Verlust
-
-#pagebreak()
 
 // ============================================================================
 // DIE LÖSUNG
@@ -539,7 +522,7 @@ Deutschland hat eines der großzügigsten Systeme für Familienleistungen weltwe
     fill: primary.lighten(93%),
     inset: (x: 30pt, y: 12pt),
     radius: 20pt,
-  )[ //sloagen Überdenken
+  )[ 
     #text(size: 14pt, style: "italic", fill: primary)[
       "Schluss mit Anträgen. Mehr Zeit für dein Kind."
     ]
@@ -547,7 +530,6 @@ Deutschland hat eines der großzügigsten Systeme für Familienleistungen weltwe
 ]
 
 #v(0.8em)
-//wir sollten noch einmal überdenken, inwiefern wir hier von einem durchschnittlichen Gewinnsprechen könnnen, geschweige denn in welcher Höhe 
 Bambini ist der persönliche Assistent, der den Elterngeld-Antrag ausfüllt und dir so nicht nur eine Menge Zeit spart, sondern auch die maximale Leistung sicherstellt.
 
 == Der Bambini-Prozess
@@ -770,32 +752,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     - Tausende Euro Verlust möglich
   ],
 )
-#pagebreak()
 
-  == Marktpotenzial bei konservativer Penetration
-  // hier vielleicht auch löschen, weil unten noch aufgeführt. 
-
-  #table(
-    columns: (auto, auto, auto, auto),
-    fill: (x, y) => if y == 0 { primary } else if calc.odd(y) { light-bg } else { white },
-    stroke: 0.5pt + surface,
-    inset: 12pt,
-    align: (left, center, center, right),
-
-    table.cell(fill: primary)[#text(fill: white, weight: "bold")[Jahr]],
-    table.cell(fill: primary)[#text(fill: white, weight: "bold")[Marktanteil]],
-    table.cell(fill: primary)[#text(fill: white, weight: "bold")[Kunden]],
-    table.cell(fill: primary)[#text(fill: white, weight: "bold")[Jahresumsatz]],
-    [1. Jahr], [0,6%], [1.720], [86.000 €],
-    [2. Jahr], [1,5%], [4.620], [231.000 €],
-    [3. Jahr], [3,0%], [9.240], [462.000 €],
-  )
-
-  #text(size: 9pt, fill: muted)[
-    Annahme: Serviceable Market 308.000 Familien/Jahr, Preis 49,99 €
-  ]
-
-  #pagebreak()
 
 // ============================================================================
 // GESCHÄFTSMODELL
@@ -1406,7 +1363,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     inset: 10pt,
     [*KW*], [*Meilenstein*],
     [10–11], [Produktoptimierung basierend auf Behördenfeedback],
-    [12–13], [UX-Verbesserungen, Kundenfeedback-Integration],
+    [12–13], [UX-Verbesserungen, Kundenfeedback-Integration, vollständige Mehrsprachigkeit],
     [14], [Vollständiger Marktstart],
   )
 
@@ -1450,7 +1407,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     [*KW*], [*Meilenstein*],
     [15–18], [Erweiterung auf zusätzliche Leistungsarten (Mutterschaftsgeld, KiZ)],
     [19–22], [Weitere Partnerschaften (Krankenkassen, Hebammen-Netzwerke)],
-    [23+], [Mehrsprachigkeit, Premium-Features],
+    [23+], [Premium-Features],
   )
 
   #v(8pt)
