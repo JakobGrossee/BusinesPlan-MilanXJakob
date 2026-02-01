@@ -315,7 +315,7 @@
 
 #v(1em)
 
-*Bambini* ist eine digitale Plattform, die Eltern in Deutschland hilft, Sozialleistungen wie Elterngeld, Kindergeld und Elternzeit in einer zentralen Anwendung zu beantragen. Wir lösen ein konkretes Problem: *80 Milliarden Euro* stehen jährlich für Familienleistungen bereit – aber *bis zu 70% kommen nie bei den Familien an*, weil der Antragsprozess zu komplex ist.
+*Bambini* ist eine digitale Plattform, die Eltern in Deutschland hilft, Sozialleistungen wie Elterngeld, Kindergeld und Elternzeit in einer zentralen Anwendung zu beantragen. Wir lösen ein konkretes Problem: *80 Milliarden Euro* stehen jährlich für Familienleistungen bereit – aber *bis zu 70% kommen nie bei den Familien an*, weil der Antragsprozess zu komplex ist.#footnote[BMFSFJ 2021]
 
 == Das Problem
 
@@ -331,7 +331,7 @@ Das deutsche System der Familienleistungen ist ein Bürokratie-Dschungel:
   ],
   box(fill: danger.lighten(92%), inset: 12pt, radius: 6pt, width: 100%)[
     #text(size: 20pt, weight: "bold", fill: danger)[500+] \
-    #text(size: 9pt, fill: muted)[Seiten Anträge und Leitfäden]
+    #text(size: 9pt, fill: muted)[Seiten Anträge und Leitfäden#footnote([#link("https://www.ifo.de/pressemitteilung/2025-10-15/ueber-500-verschiedene-sozialleistungen-deutschland")[ifo Institut]])]
   ],
 
   box(fill: danger.lighten(92%), inset: 12pt, radius: 6pt, width: 100%)[
@@ -394,13 +394,13 @@ Bambini macht Schluss mit dem Antrag-Chaos:
   #metric-row([Break-Even], [*3 Kunden/Monat*])
   #metric-row([Blended Customer Acquisition Cost], [*~13 €*])
   #metric-row([Jahr 1 Umsatz (realistisch)], [*86.000 €*])
-  #metric-row([Jahr 1 Gewinn (realistisch)], [*+64.000 €*])
+  #metric-row([Jahr 1 Gewinn (realistisch)], [*#text(fill: green)[+64.000 €]*])
 ]
 
 == Finanzierungsbedarf
 
 #highlight-box(title: "Kapitalbedarf: ~22.000 €", color: info)[
-  - GmbH-Gründung inkl. Stammkapital: 13.700 €
+  - GmbH-Gründung (Notarkosten + Stammkapital): 13.700 €
   - Betriebskosten (6 Monate Runway): 654 €
   - Marketing-Budget (initial): 5.000 €
   - Puffer: 2.646 €
@@ -510,6 +510,7 @@ Deutschland hat eines der großzügigsten Systeme für Familienleistungen weltwe
   #align(right)[#text(fill: muted, size: 9pt)[— *BMFSFJ*, Eigene Schätzungen 2021]]
 ]
 //hier evtl. visuell aufhübschen (vgl unsere Präsi)
+// => evtl. ganz löschen (Redundanz im Vergleich zu Seite 11)
 #pagebreak()
 == Besonders betroffene Zielgruppen
 
@@ -540,14 +541,14 @@ Deutschland hat eines der großzügigsten Systeme für Familienleistungen weltwe
     radius: 20pt,
   )[ //sloagen Überdenken
     #text(size: 14pt, style: "italic", fill: primary)[
-      "Goodbye Elterngeld-Chaos. Welcome to more money."
+      "Schluss mit Anträgen. Mehr Zeit für dein Kind."
     ]
   ]
 ]
 
 #v(0.8em)
 //wir sollten noch einmal überdenken, inwiefern wir hier von einem durchschnittlichen Gewinnsprechen könnnen, geschweige denn in welcher Höhe 
-Bambini ist der persönliche Assistent, der den Elterngeld-Antrag ausfüllt, vor teuren Fehlern bewahrt und durchschnittlich *300–800 € mehr* herausholt – garantiert.
+Bambini ist der persönliche Assistent, der den Elterngeld-Antrag ausfüllt und dir so nicht nur eine Menge Zeit spart, sondern auch die maximale Leistung sicherstellt.
 
 == Der Bambini-Prozess
 
@@ -583,8 +584,8 @@ Bambini ist der persönliche Assistent, der den Elterngeld-Antrag ausfüllt, vor
 
     step-number(4, color: accent),
     [
-      *Unser Team macht den Rest* #badge("24–48h", color: accent) \
-      Dein persönlicher Elterngeld-Expert prüft alles, ergänzt fehlende Infos, und sendet deinen perfekten Antrag zur Behörde.
+      *Der Rest passiert automatisch* #badge("24–48h", color: accent) \
+      Der Antrag wird automatisch generiert und an die zuständige Behörde gesendet. Du musst dich um nichts mehr kümmern.
     ],
   )
 ]
@@ -598,7 +599,7 @@ Bambini ist der persönliche Assistent, der den Elterngeld-Antrag ausfüllt, vor
     radius: 10pt,
   )[
     #text(fill: white, weight: "bold", size: 11.5pt)[
-      Ergebnis: Vollständiger Antrag ohne Fehler · €300–€800 mehr Elterngeld · Alles vom Sofa aus
+      Ergebnis: Vollständiger Antrag ohne Fehler ‒ Alles vom Sofa aus, innerhalb weniger Minuten.
     ]
   ]
 ]
@@ -639,8 +640,8 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 
   table.cell(fill: primary)[#text(fill: white, weight: "bold")[Kriterium]],
   table.cell(fill: primary)[#text(fill: white, weight: "bold")[Bambini]],
-  table.cell(fill: primary.lighten(88%))[*Formie*],
-  table.cell(fill: primary.lighten(88%))[*Elterngeldbuddy*],
+  table.cell(fill: primary.lighten(88%))[*"Formie"*],
+  table.cell(fill: primary.lighten(88%))[*"Elterngeldbuddy"*],
   table.cell(fill: primary.lighten(88%))[*Staat*],
 
   [Unterstützte Leistungen],
@@ -771,29 +772,30 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 )
 #pagebreak()
 
-== Marktpotenzial bei konservativer Penetration
+  == Marktpotenzial bei konservativer Penetration
+  // hier vielleicht auch löschen, weil unten noch aufgeführt. 
 
-#table(
-  columns: (auto, auto, auto, auto),
-  fill: (x, y) => if y == 0 { primary } else if calc.odd(y) { light-bg } else { white },
-  stroke: 0.5pt + surface,
-  inset: 12pt,
-  align: (left, center, center, right),
+  #table(
+    columns: (auto, auto, auto, auto),
+    fill: (x, y) => if y == 0 { primary } else if calc.odd(y) { light-bg } else { white },
+    stroke: 0.5pt + surface,
+    inset: 12pt,
+    align: (left, center, center, right),
 
-  table.cell(fill: primary)[#text(fill: white, weight: "bold")[Jahr]],
-  table.cell(fill: primary)[#text(fill: white, weight: "bold")[Marktanteil]],
-  table.cell(fill: primary)[#text(fill: white, weight: "bold")[Kunden]],
-  table.cell(fill: primary)[#text(fill: white, weight: "bold")[Jahresumsatz]],
-  [1. Jahr], [0,6%], [1.720], [86.000 €],
-  [2. Jahr], [1,5%], [4.620], [231.000 €],
-  [3. Jahr], [3,0%], [9.240], [462.000 €],
-)
+    table.cell(fill: primary)[#text(fill: white, weight: "bold")[Jahr]],
+    table.cell(fill: primary)[#text(fill: white, weight: "bold")[Marktanteil]],
+    table.cell(fill: primary)[#text(fill: white, weight: "bold")[Kunden]],
+    table.cell(fill: primary)[#text(fill: white, weight: "bold")[Jahresumsatz]],
+    [1. Jahr], [0,6%], [1.720], [86.000 €],
+    [2. Jahr], [1,5%], [4.620], [231.000 €],
+    [3. Jahr], [3,0%], [9.240], [462.000 €],
+  )
 
-#text(size: 9pt, fill: muted)[
-  Annahme: Serviceable Market 308.000 Familien/Jahr, Preis 49,99 €
-]
+  #text(size: 9pt, fill: muted)[
+    Annahme: Serviceable Market 308.000 Familien/Jahr, Preis 49,99 €
+  ]
 
-#pagebreak()
+  #pagebreak()
 
 // ============================================================================
 // GESCHÄFTSMODELL
@@ -972,7 +974,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 
   [ARAG-Partnerschaft],
   [*0 €*],
-  [Sofort (Feb 2026)],
+  [Sofort (März 2026)],
   [#text(fill: success, weight: "bold")[✓ Strategisch am wertvollsten]],
 
   [TikTok Ads], [15–25 €], [Sofort], [#text(fill: success, weight: "bold")[✓ Niedrigster Paid CAC]],
@@ -1300,6 +1302,8 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 )
 
 == Finanzierungsquellen
+// weiß nicht, ob es so schlau ist Familien und Freunde als Finanzierungsquelle aufzuführen, da wir ja gerade durch den Plan die Leute als Investoren gewinnen wollen. 
+
 
 #highlight-box(title: "Empfehlung: Friends & Family Round", color: primary)[
   Bei einem Kapitalbedarf von ~22.000 € und der bereits bestehenden ARAG-Partnerschaft empfiehlt sich eine Finanzierung aus dem Familien- und Freundeskreis:
@@ -1436,6 +1440,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
   )
 
   #v(12pt)
+// Mehrsprachigkeit sollte eigenltich nicht erst in KW 23+ kommen 
 
   #table(
     columns: (auto, 1fr),
@@ -1529,6 +1534,7 @@ Die horizontale Expansion erweitert die Plattform schrittweise um zusätzliche F
 
 *Strategischer Vorteil:* Jede neue Leistungsart erhöht den Wert für bestehende Nutzer (Cross-Selling-Potenzial) und erschließt neue Zielgruppen – z.B. Pflegebedürftige Angehörige oder Studierende.
 
+#pagebreak()
 == Vertikale Skalierung – Wertschöpfungstiefe
 
 Die vertikale Expansion vertieft den Service pro Leistungsart – vom reinen Antrag bis zur vollständigen Verwaltungsautomatisierung.
@@ -1576,7 +1582,7 @@ Die vertikale Expansion vertieft den Service pro Leistungsart – vom reinen Ant
 #v(0.5em)
 
 *Strategischer Vorteil:* Die vertikale Tiefe erhöht die Kundenbindung und ermöglicht Premium-Pricing für Zusatzleistungen (z.B. Widerspruchsbegleitung als kostenpflichtiges Add-on).
-
+#pagebreak()
 == Skalierungsmodell im Überblick
 
 #highlight-box(color: primary)[
@@ -1764,7 +1770,7 @@ Empfohlenes *Hybrid-Modell*: 3–5 € pro Mitarbeiter/Jahr (PEPY) + 25–35 €
 === Warum jetzt?
 
 - *Mai 2025:* Digitale Elternzeit-Beantragung wird gesetzlich möglich #footnote[Sugrobov Rechtsanwälte: "Neue Ära des Arbeitsrechts – Digitale Antragstellung für Elternzeit ab Mai 2025".]
-- *45% der Arbeitnehmer* suchen aktiv neue Jobs – Benefits werden entscheidend #footnote[Gallup Workplace Study Germany 2024: 45% actively seeking or open to new opportunities.]
+- *45% der Arbeitnehmer* suchen aktiv neue Jobs – social Benefits werden entscheidend #footnote[Gallup Workplace Study Germany 2024: 45% actively seeking or open to new opportunities.]
 - *80–90% Markt unserviert* – kein dominanter Player im Parental Leave Admin-Segment #footnote[Synthese aus Wettbewerbsanalyse: MyCollective (2–3%), Voiio (5–8%), Back Technologies (unter 1%), BenefitatWork (3–5%). Market Research Future 2024.]
 
 #pagebreak()
@@ -1828,36 +1834,74 @@ Empfohlenes *Hybrid-Modell*: 3–5 € pro Mitarbeiter/Jahr (PEPY) + 25–35 €
   stroke: 1pt + surface,
   clip: true,
 )[
-  #block(width: 100%, fill: gradient.linear(primary, primary-light), inset: (x: 20pt, y: 12pt))[
-    #text(fill: white, weight: "bold", size: 12pt)[Purpose-Driven StartUp von Hamburger Studierenden]
+  #block(
+    width: 100%,
+    fill: gradient.linear(primary, primary-light),
+    inset: (x: 20pt, y: 12pt),
+  )[
+    #text(fill: white, weight: "bold", size: 12pt)[
+      Purpose-Driven Start-up von Hamburger Studierenden
+    ]
   ]
 
   #block(inset: 20pt)[
-    Das Bambini-Team vereint technische Expertise, rechtliches Verständnis und eine persönliche Motivation: Wir haben selbst erlebt, wie frustrierend der Elterngeld-Antrag sein kann, und wollen das ändern.
+    Das Bambini-Team vereint technische Entwicklung, rechtliches Verständnis und Produktdenken –
+    mit dem Ziel, den Zugang zu Familienleistungen in Deutschland deutlich zu vereinfachen.
+
+    #v(8pt)
+    #text(size: 9pt, fill: muted)[
+      Entstanden an der Bucerius Law School im Rahmen des Hamburg Legal Hackathon 2025 
+      unter dem Motto „Access to Justice“.
+    ]
 
     #v(15pt)
+
+    // --- Hier dein ursprünglicher Screenshot-Block 1:1 ---
 
     #grid(
       columns: (1fr, 1fr),
       column-gutter: 15pt,
       row-gutter: 10pt,
-      box(fill: primary.lighten(94%), inset: 12pt, radius: 6pt, width: 100%)[
+
+      box(
+        fill: primary.lighten(94%),
+        inset: 12pt,
+        radius: 6pt,
+        width: 100%,
+      )[
         #text(fill: primary, weight: "bold")[Full-Stack-Entwicklung]
         #v(3pt)
         #text(size: 9pt, fill: muted)[React, TypeScript, Supabase]
       ],
-      box(fill: accent.lighten(90%), inset: 12pt, radius: 6pt, width: 100%)[
+
+      box(
+        fill: accent.lighten(90%),
+        inset: 12pt,
+        radius: 6pt,
+        width: 100%,
+      )[
         #text(fill: accent.darken(10%), weight: "bold")[Produktdesign & UX]
         #v(3pt)
         #text(size: 9pt, fill: muted)[User Research, Prototyping]
       ],
 
-      box(fill: success.lighten(92%), inset: 12pt, radius: 6pt, width: 100%)[
+      box(
+        fill: success.lighten(92%),
+        inset: 12pt,
+        radius: 6pt,
+        width: 100%,
+      )[
         #text(fill: success, weight: "bold")[Rechtliche Expertise]
         #v(3pt)
         #text(size: 9pt, fill: muted)[Familienrecht, Sozialrecht]
       ],
-      box(fill: info.lighten(92%), inset: 12pt, radius: 6pt, width: 100%)[
+
+      box(
+        fill: info.lighten(92%),
+        inset: 12pt,
+        radius: 6pt,
+        width: 100%,
+      )[
         #text(fill: info, weight: "bold")[Business Development]
         #v(3pt)
         #text(size: 9pt, fill: muted)[Partnerschaften, Vertrieb]
@@ -1866,42 +1910,19 @@ Empfohlenes *Hybrid-Modell*: 3–5 € pro Mitarbeiter/Jahr (PEPY) + 25–35 €
   ]
 ]
 
-== Technologie-Stack
+#v(1em)
 
-#grid(
-  columns: (1fr, 1fr, 1fr),
-  column-gutter: 10pt,
+#align(center)[
+  #image("Teambild.jpg", width: 75%)
+]
 
-  box(fill: info.lighten(92%), inset: 14pt, radius: 8pt, width: 100%, stroke: (top: 3pt + info))[
-    #align(center)[
-      #text(size: 14pt)[🖥️]
-      #v(4pt)
-      #text(weight: "bold", fill: info)[Frontend]
-      #v(4pt)
-      #text(size: 9pt, fill: muted)[React, TypeScript, Tailwind CSS]
-    ]
-  ],
+#v(0.6em)
 
-  box(fill: success.lighten(92%), inset: 14pt, radius: 8pt, width: 100%, stroke: (top: 3pt + success))[
-    #align(center)[
-      #text(size: 14pt)[⚙️]
-      #v(4pt)
-      #text(weight: "bold", fill: success)[Backend]
-      #v(4pt)
-      #text(size: 9pt, fill: muted)[Supabase (PostgreSQL, Edge Functions)]
-    ]
-  ],
-
-  box(fill: primary.lighten(92%), inset: 14pt, radius: 8pt, width: 100%, stroke: (top: 3pt + primary))[
-    #align(center)[
-      #text(size: 14pt)[🤖]
-      #v(4pt)
-      #text(weight: "bold", fill: primary)[KI/ML]
-      #v(4pt)
-      #text(size: 9pt, fill: muted)[OpenAI API, Dokumentenerkennung]
-    ]
-  ],
-)
+#align(center)[
+  #text(size: 9pt, fill: muted)[
+    Das Bambini-Team – Studierende der Bucerius Law School mit Fokus auf Tech, Recht und Produkt.
+  ]
+]
 
 #pagebreak()
 
@@ -2005,8 +2026,6 @@ Empfohlenes *Hybrid-Modell*: 3–5 € pro Mitarbeiter/Jahr (PEPY) + 25–35 €
   ]
 ]
 
-#v(1.5em)
-
 #align(center)[
   #line(length: 60pt, stroke: 1pt + surface)
   #v(1em)
@@ -2015,3 +2034,5 @@ Empfohlenes *Hybrid-Modell*: 3–5 € pro Mitarbeiter/Jahr (PEPY) + 25–35 €
     *Web:* bambini-claims.de
   ]
 ]
+
+#v(1.5em)
