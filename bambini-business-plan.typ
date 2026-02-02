@@ -418,7 +418,7 @@ Bambini macht Schluss mit dem Antrag-Chaos:
   width: 100%,
   stroke: (left: 4pt + accent),
 )[
-  Bambini plant eine *Partnerschaft mit ARAG * geschlossen. ARAG möchte unsere Lösung in ihre Kundenreise integrieren – eine Testkundin steht bereit. Diese Partnerschaft liefert Kunden mit sehr niedrigen *CAC* und validiert unser Geschäftsmodell.
+  Bambini plant eine *Partnerschaft mit ARAG SE*. Die ARAG möchte unsere Lösung in ihre Kundenreise integrieren. Diese Partnerschaft liefert Kunden mit sehr niedrigen *CAC* und validiert unser Geschäftsmodell.
 ] // das hier ggf. nicht so schreiben -> partnerschaft besteht in der Art und Weise noch nicht
 
 #pagebreak()
@@ -567,9 +567,9 @@ Bambini ist der persönliche Assistent, der den Elterngeld-Antrag ausfüllt und 
       Foto von Geburtsurkunde, Gehaltsnachweis, Elternzeitplanung hochladen. KI-gestützte Dokumentenerkennung extrahiert die Daten automatisch.
     ],
 
-    step-number(4, color: accent),
+    step-number(4, color: success),
     [
-      *Der Rest passiert automatisch* #badge("24–48h", color: accent) \
+      *Der Rest passiert automatisch* #badge("✓", color: success) \
       Der Antrag wird automatisch generiert und an die zuständige Behörde gesendet. Du musst dich um nichts mehr kümmern.
     ],
   )
@@ -590,7 +590,7 @@ Bambini ist der persönliche Assistent, der den Elterngeld-Antrag ausfüllt und 
 ]
 
 #pagebreak()
-== KI-Assistent: Ella
+== KI-Assistent: BambiniAI
 
 Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, Kindergeld und Familienleistungen beantwortet – 24/7 in einfacher Sprache.
 
@@ -598,7 +598,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
   columns: (1fr, 1fr),
   column-gutter: 15pt,
   box(fill: success.lighten(93%), inset: 14pt, radius: 8pt, width: 100%)[
-    #text(weight: "bold", fill: success)[Was Ella kann]
+    #text(weight: "bold", fill: success)[Was BambiniAI kann]
     #v(6pt)
     - Versteckte Bonusse finden (€100–€500 extra)
     - Alle Fristen überwachen
@@ -760,6 +760,8 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 // ============================================================================
 // GESCHÄFTSMODELL
 // ============================================================================
+
+#pagebreak()
 
 = Geschäftsmodell & Unit Economics
 
@@ -1156,7 +1158,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
   clip: true,
 )[
   #block(width: 100%, fill: info.lighten(90%), inset: (x: 20pt, y: 12pt))[
-    #text(weight: "bold", fill: info, size: 11pt, tracking: 0.3pt)[AUFSCHLÜSSELUNG KAPITALBEDARF]
+    #text(weight: "bold", fill: info, size: 11pt, tracking: 0.3pt)[AUFSCHLÜSSELUNG DES KAPITALBEDARFS]
   ]
 
   #block(inset: 20pt)[
@@ -1169,7 +1171,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
       [#h(1em) Notar], [~750 €],
       [#h(1em) Handelsregister], [~150 €],
       [#h(1em) Markenanmeldung (DPMA)], [~300 €],
-      [#h(1em) Stammkapital (gebunden)], [12.500 €],
+      [#h(1em) Stammkapital], [12.500 €],
       [#h(1em) #text(weight: "bold")[Subtotal Gründung]], [#text(weight: "bold")[13.700 €]],
 
       [], [],
@@ -1261,30 +1263,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
   ],
 )
 
-== Finanzierungsquellen
-// weiß nicht, ob es so schlau ist Familien und Freunde als Finanzierungsquelle aufzuführen, da wir ja gerade durch den Plan die Leute als Investoren gewinnen wollen.
 
-
-#highlight-box(title: "Empfehlung: Friends & Family Round", color: primary)[
-  Bei einem Kapitalbedarf von ~22.000 € und der bereits bestehenden ARAG-Partnerschaft empfiehlt sich eine Finanzierung aus dem Familien- und Freundeskreis:
-
-  #v(10pt)
-
-  #grid(
-    columns: (1fr, 1fr),
-    column-gutter: 15pt,
-    [
-      #text(fill: success, weight: "bold")[✓] *Schnelle Umsetzung* – kein langwieriger VC-Prozess \
-      #text(fill: success, weight: "bold")[✓] *Keine Verwässerung* – oder nur minimale Beteiligung
-    ],
-    [
-      #text(fill: success, weight: "bold")[✓] *Validierter Business Case* – ARAG als Proof of Concept \
-      #text(fill: success, weight: "bold")[✓] *Niedriges Risiko* – Break-Even bei nur 3 Kunden/Monat
-    ],
-  )
-]
-
-#pagebreak()
 
 // ============================================================================
 // ROADMAP
@@ -1323,15 +1302,14 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     inset: 10pt,
     [*KW*], [*Meilenstein*],
     [6], [FAQ-Portal mit KI-Chatbot live],
-    [7], [Erste Testkundin durchläuft Flow],
-    [8–9], [Prüfung der Behördenreaktionen auf erste Anträge],
+    [7-8], [Erste Testkunden & Interaktion mit Behörden],
     [9], [ARAG-Integration möglich],
   )
 
   #v(8pt)
 
   #box(fill: primary.lighten(93%), inset: 10pt, radius: 6pt, width: 100%)[
-    *Ergebnis:* Technische Integration bereit, erste Anträge bei Behörden eingereicht und Rückmeldungen ausgewertet.
+    *Ergebnis:* Technische Integration bereit, erste Anträge bei Behörden eingereicht und Rückmeldungen hinsichtlihc der Nutzererfahrung ausgewertet.
   ]
 ]
 
@@ -1419,6 +1397,8 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     *Ergebnis:* Vollständige Familienleistungs-Plattform mit skalierbarem Wachstum.
   ]
 ]
+
+#v(-0.3em)
 
 == Meilenstein-Übersicht
 
@@ -1716,15 +1696,15 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
     column-gutter: 15pt,
     [
       *B2C-Fokus:* 1.000 Kunden × 49,99 € \
-      *B2B-Piloten (5–8 Unternehmen):* Ø 8 × 1.500 € \
+      *B2B-Piloten (5–8 Unternehmen):* Ø 8 × 1.100 € \
       #v(4pt)
       #text(weight: "bold", size: 11pt)[Gesamt Jahr 1 (Hybrid)]
     ],
     [
       50.000 € \
-      12.000 € \
+      8.800 € \
       #v(4pt)
-      #text(weight: "bold", size: 11pt, fill: success)[62.000 €]
+      #text(weight: "bold", size: 11pt, fill: success)[58.800 €]
     ],
   )
   #v(6pt)
@@ -1879,7 +1859,7 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
 #v(1em)
 
 #align(center)[
-  #image("Teambild.jpg", width: 70%)
+  #image("TeambildMika.jpg", width: 75%)
 ]
 #align(center)[
   #text(size: 9pt, fill: muted)[
@@ -1911,7 +1891,7 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
   box(fill: white, inset: 16pt, radius: 10pt, stroke: 1pt + success.lighten(50%), width: 100%)[
     #text(fill: success, weight: "bold", size: 11pt)[✓ Strategische Partnerschaft]
     #v(6pt)
-    ARAG-Deal unterschrieben, Testkundin bereit
+    ARAG-Deal unterschrieben, Testkunden bereit
   ],
 
   box(fill: white, inset: 16pt, radius: 10pt, stroke: 1pt + success.lighten(50%), width: 100%)[
