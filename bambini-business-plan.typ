@@ -331,7 +331,10 @@ Das deutsche System der Familienleistungen ist ein Bürokratie-Dschungel:
   ],
   box(fill: danger.lighten(92%), inset: 12pt, radius: 6pt, width: 100%)[
     #text(size: 20pt, weight: "bold", fill: danger)[500+] \
-    #text(size: 9pt, fill: muted)[Seiten Anträge und Leitfäden#footnote([#link("https://www.ifo.de/pressemitteilung/2025-10-15/ueber-500-verschiedene-sozialleistungen-deutschland")[ifo Institut]])]
+    #text(
+      size: 9pt,
+      fill: muted,
+    )[Seiten Anträge und Leitfäden#footnote([#link("https://www.ifo.de/pressemitteilung/2025-10-15/ueber-500-verschiedene-sozialleistungen-deutschland")[ifo Institut]])]
   ],
 
   box(fill: danger.lighten(92%), inset: 12pt, radius: 6pt, width: 100%)[
@@ -415,7 +418,7 @@ Bambini macht Schluss mit dem Antrag-Chaos:
   width: 100%,
   stroke: (left: 4pt + accent),
 )[
-  Bambini hat bereits eine *Partnerschaft mit ARAG Versicherung* geschlossen. ARAG möchte unsere Lösung in ihre Kundenreise integrieren – eine Testkundin steht bereit. Diese Partnerschaft liefert Kunden mit *CAC = 0 €* und validiert unser Geschäftsmodell.
+  Bambini plant eine *Partnerschaft mit ARAG * geschlossen. ARAG möchte unsere Lösung in ihre Kundenreise integrieren – eine Testkundin steht bereit. Diese Partnerschaft liefert Kunden mit sehr niedrigen *CAC* und validiert unser Geschäftsmodell.
 ] // das hier ggf. nicht so schreiben -> partnerschaft besteht in der Art und Weise noch nicht
 
 #pagebreak()
@@ -522,7 +525,7 @@ Deutschland hat eines der großzügigsten Systeme für Familienleistungen weltwe
     fill: primary.lighten(93%),
     inset: (x: 30pt, y: 12pt),
     radius: 20pt,
-  )[ 
+  )[
     #text(size: 14pt, style: "italic", fill: primary)[
       "Schluss mit Anträgen. Mehr Zeit für dein Kind."
     ]
@@ -1259,7 +1262,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 )
 
 == Finanzierungsquellen
-// weiß nicht, ob es so schlau ist Familien und Freunde als Finanzierungsquelle aufzuführen, da wir ja gerade durch den Plan die Leute als Investoren gewinnen wollen. 
+// weiß nicht, ob es so schlau ist Familien und Freunde als Finanzierungsquelle aufzuführen, da wir ja gerade durch den Plan die Leute als Investoren gewinnen wollen.
 
 
 #highlight-box(title: "Empfehlung: Friends & Family Round", color: primary)[
@@ -1397,7 +1400,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
   )
 
   #v(12pt)
-// Mehrsprachigkeit sollte eigenltich nicht erst in KW 23+ kommen 
+  // Mehrsprachigkeit sollte eigenltich nicht erst in KW 23+ kommen
 
   #table(
     columns: (auto, 1fr),
@@ -1630,13 +1633,13 @@ Die vertikale Expansion vertieft den Service pro Leistungsart – vom reinen Ant
 
 == B2B Expansion: Corporate Employee Benefits
 
-Neben dem B2C-Modell eröffnet sich eine zusätzliche Wachstumschance: *Unternehmen, die Bambini als Employee Benefit für werdende Eltern anbieten.* Das ARAG-Modell zeigt bereits, dass Partner bereit sind, unsere Lösung in ihre Benefits-Pakete zu integrieren.
+Neben dem B2C-Modell erschließt sich mittelfristig eine zusätzliche Wachstumsdimension: *Corporate Employee Benefits*. Die Möglichkeit der ARAG-Partnerschaft zeigt das grundsätzliche Interesse institutioneller Partner.
 
-=== Marktpotenzial
+=== Marktcharakteristik
 
-In Deutschland gibt es rund *260.000 Unternehmen mit 50+ Mitarbeitern* #footnote[deutschland.de: German SMEs – Facts and Figures, 2024. 11,3% der 2,6M Unternehmen haben 50+ FTE.] – der Kernmarkt für HR-Software. Bei konservativer Penetration von 15% ergibt sich ein adressierbarer Markt von ~38.700 Unternehmen mit einem geschätzten jährlichen Umsatzpotenzial von *155–580 Mio. €*. #footnote[Market Research Future: Germany Human Capital Management Software Market, 2024. HCM-Software-Markt: €1,375B (2024), 7,8% CAGR bis 2035.]
+Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontinuierlich. #footnote[Market Research Future: Germany Human Capital Management Software Market, 2024. HCM-Software-Markt: €1,375B (2024), 7,8% CAGR bis 2035.] Rund 260.000 Unternehmen mit 50+ Mitarbeitern #footnote[deutschland.de: German SMEs – Facts and Figures, 2024. 11,3% der 2,6M Unternehmen haben 50+ FTE.] bilden den grundsätzlich adressierbaren Markt für HR-Software-Lösungen.
 
-=== Value Proposition & ROI
+=== Wertversprechen
 
 #grid(
   columns: (1fr, 1fr),
@@ -1646,89 +1649,95 @@ In Deutschland gibt es rund *260.000 Unternehmen mit 50+ Mitarbeitern* #footnote
     #text(weight: "bold", fill: primary)[Für HR-Abteilungen]
     #v(4pt)
     #text(size: 9pt)[
-      - Admin-Aufwand: *-5–8 Std. pro Fall* #footnote[Abgeleitet aus Beratungskosten (TKare: €99–209, Einfach Elterngeld: €549) bei €60/Std. HR-Vollkosten.]
-      - Compliance-Sicherheit
-      - Moderne Employee Benefit
+      - Zeitersparnis für Mitarbeiter: ~5–8 Std. pro für Elterngeldanträge pro Familie #footnote[Abgeleitet aus Beratungskosten (TKare: €99–209, Einfach Elterngeld: €549) bei €60/Std. HR-Vollkosten.]
+      - Zeitersparnis für HR: Automatische Prüfung und Übermittlung von Elternzeitansprüchen
+      - Standardisierte Prozesse
+      - Entlastung bei komplexer Rechtslage
     ]
   ],
 
   box(fill: light-bg, inset: 14pt, radius: 6pt, width: 100%)[
-    #text(weight: "bold", fill: success)[Für CFO/Geschäftsführung]
+    #text(weight: "bold", fill: success)[Für Geschäftsführung]
     #v(4pt)
     #text(size: 9pt)[
-      - *+20% längere Mitarbeiterbindung* #footnote[Cocoon: Paid Leave Benchmarks 2025. Unternehmen mit Parental Leave Support haben 20% längere median tenure.]
-      - Payback: *12–18 Monate*
-      - Recruiting-Differentiator #footnote[Roland Berger Employee Benefits Study 2024: 89% der HR-Leiter priorisieren Retention; 32% planen 2025 Family/Care Benefits.]
+      - Attraktivität als Arbeitgeber
+      - Mitarbeiterzufriedenheit in Familienphase
+      - Signaleffekt: moderne Benefits #footnote[Roland Berger Employee Benefits Study 2024: 89% der HR-Leiter priorisieren Retention; 32% planen 2025 Family/Care Benefits.]
     ]
   ],
 )
 
 === Preismodell & Beispielrechnung
 
-Empfohlenes *Hybrid-Modell*: 3–5 € pro Mitarbeiter/Jahr (PEPY) + 25–35 € pro aktivem Nutzungsfall.
+*Hybrid-Ansatz (In Validierung):* Jahrespauschale (3–5 € PEPY) + Nutzungsgebühr (25–35 € pro Fall).
 
 #box(fill: primary.lighten(95%), inset: 12pt, radius: 6pt, width: 100%)[
-  *Beispiel: Unternehmen mit 200 Mitarbeitern*
-  - Basis: 200 × 4 € = *800 €/Jahr*
-  - Plus: 12 Fälle × 25 € = *300 €*
-  - *Gesamt: 1.100 €/Jahr* (vs. 12 × 549 € = 6.588 € bei externer Beratung #footnote[Einfach Elterngeld Premium: €549 pro Familie, 2025.])
-]
+  *Beispielrechnung: Unternehmen mit 200 Mitarbeitern*
+  - Jahrespauschale: 200 × 4 € = *800 €*
+  - Nutzung (angenommen 12 Fälle): 12 × 25 € = *300 €*
+  - *Gesamt: ~1.100 €/Jahr*
 
-=== Zielgruppen & Partner-Strategie
+  #v(4pt)
+  #text(size: 8pt, fill: muted)[
+    Vergleich: Externe Elterngeldberatung kostet 549 € pro Familie #footnote[Einfach Elterngeld Premium: €549 pro Familie, 2025.] (= 6.588 € für 12 Fälle).
+  ]
+]
+#pagebreak()
+=== Go-to-Market: Pragmatischer Stufenplan
 
 #table(
-  columns: (2fr, 1fr, 2fr),
+  columns: (auto, 2fr, 2fr),
   fill: (x, y) => if y == 0 { info } else if calc.odd(y) { light-bg } else { white },
   stroke: 0.5pt + surface,
   inset: 10pt,
 
-  table.cell(fill: info)[#text(fill: white, weight: "bold", size: 9pt)[SEGMENT]],
-  table.cell(fill: info)[#text(fill: white, weight: "bold", size: 9pt)[VOLUMEN]],
-  table.cell(fill: info)[#text(fill: white, weight: "bold", size: 9pt)[STRATEGIE]],
+  table.cell(fill: info)[#text(fill: white, weight: "bold", size: 9pt)[PHASE]],
+  table.cell(fill: info)[#text(fill: white, weight: "bold", size: 9pt)[ZIELGRUPPE]],
+  table.cell(fill: info)[#text(fill: white, weight: "bold", size: 9pt)[ANSATZ]],
 
-  [Tech-Unternehmen (50–500 FTE)],
-  [~5.000],
-  [LinkedIn Outreach, Personio Integration #footnote[Personio ist Marktführer für HR-Software im deutschen SME-Segment (50–500 FTE). People Managing People: Personio Pricing 2025.]],
+  [2026 Q2–Q4],
+  [5–10 Pilotunternehmen (50–250 MA)],
+  [Direkte Ansprache, Testpreise, Feedback-Schleifen],
 
-  [Consulting (Big 4, McKinsey, BCG)],
-  [Premium],
-  [Direct Sales, höherer PEPY],
+  [2027 Q1+],
+  [Mittelständische Tech- und Dienstleistungsunternehmen],
+  [Integration in HR-Software (z.B. Personio) #footnote[Personio ist Marktführer für HR-Software im deutschen SME-Segment (50–500 FTE). People Managing People: Personio Pricing 2025.]],
 
-  [Versicherungen (ARAG-Expansion)],
-  [Allianz, ERGO],
-  [Partnerschaft: Bundle mit Family Insurance],
+  [Ab 2027 Q3],
+  [Versicherungspartner, größere Arbeitgeber],
+  [Strategische Kooperationen auf Basis validierter Pilotdaten],
 )
 
-=== Finanzielle Projektion: Hybrid-Modell (Jahr 1)
+=== Umsatzpotenzial (konservativ, Jahr 1)
 
 #highlight-box(color: success)[
   #grid(
     columns: (2fr, 1fr),
     column-gutter: 15pt,
     [
-      *B2C:* 1.000 Kunden × 49,99 € \
-      *B2B:* 15 Unternehmen × Ø 2.500 € \
+      *B2C-Fokus:* 1.000 Kunden × 49,99 € \
+      *B2B-Piloten (5–8 Unternehmen):* Ø 8 × 1.500 € \
       #v(4pt)
-      #text(weight: "bold", size: 11pt)[Jahr 1 Total (Hybrid)]
+      #text(weight: "bold", size: 11pt)[Gesamt Jahr 1 (Hybrid)]
     ],
     [
       50.000 € \
-      37.500 € \
+      12.000 € \
       #v(4pt)
-      #text(weight: "bold", size: 11pt, fill: success)[87.500 €]
+      #text(weight: "bold", size: 11pt, fill: success)[62.000 €]
     ],
   )
   #v(6pt)
   #text(size: 8pt, fill: muted)[
-    Vorteil: Ähnlicher Umsatz wie B2C-only (86.000 €), aber mit *vorhersehbareren Recurring Revenues* und geringerer Kanalabhängigkeit.
+    *Strategie:* B2B als Upselling-Option neben primärem B2C-Fokus. Erst nach erfolgreicher Validierung (2027+) eigenständige Vertriebsressourcen.
   ]
 ]
 
-=== Warum jetzt?
+=== Warum der Zeitpunkt passt
 
-- *Mai 2025:* Digitale Elternzeit-Beantragung wird gesetzlich möglich #footnote[Sugrobov Rechtsanwälte: "Neue Ära des Arbeitsrechts – Digitale Antragstellung für Elternzeit ab Mai 2025".]
-- *45% der Arbeitnehmer* suchen aktiv neue Jobs – social Benefits werden entscheidend #footnote[Gallup Workplace Study Germany 2024: 45% actively seeking or open to new opportunities.]
-- *80–90% Markt unserviert* – kein dominanter Player im Parental Leave Admin-Segment #footnote[Synthese aus Wettbewerbsanalyse: MyCollective (2–3%), Voiio (5–8%), Back Technologies (unter 1%), BenefitatWork (3–5%). Market Research Future 2024.]
+- *Mai 2025:* Digitale Elternzeit-Beantragung wird gesetzlich möglich #footnote[Sugrobov Rechtsanwälte: "Neue Ära des Arbeitsrechts – Digitale Antragstellung für Elternzeit ab Mai 2025".] – erhöht Akzeptanz digitaler Lösungen
+- *Fachkräftemangel:* 45% der Arbeitnehmer offen für Jobwechsel #footnote[Gallup Workplace Study Germany 2024: 45% actively seeking or open to new opportunities.] – Family Benefits werden Differenzierungsfaktor
+- *Fragmentierter Wettbewerb:* Kein dominanter Anbieter im Segment Parental Leave Administration #footnote[Synthese aus Wettbewerbsanalyse: MyCollective (2–3%), Voiio (5–8%), Back Technologies (unter 1%), BenefitatWork (3–5%). Market Research Future 2024.]
 
 #pagebreak()
 
@@ -1805,9 +1814,9 @@ Empfohlenes *Hybrid-Modell*: 3–5 € pro Mitarbeiter/Jahr (PEPY) + 25–35 €
     Das Bambini-Team vereint technische Entwicklung, rechtliches Verständnis und Produktdenken –
     mit dem Ziel, den Zugang zu Familienleistungen in Deutschland deutlich zu vereinfachen.
 
-    #v(8pt)
+    #v(6pt)
     #text(size: 9pt, fill: muted)[
-      Entstanden an der Bucerius Law School im Rahmen des Hamburg Legal Hackathon 2025 
+      Entstanden an der Bucerius Law School im Rahmen des Hamburg Legal Hackathon 2025
       unter dem Motto „Access to Justice“.
     ]
 
@@ -1870,11 +1879,8 @@ Empfohlenes *Hybrid-Modell*: 3–5 € pro Mitarbeiter/Jahr (PEPY) + 25–35 €
 #v(1em)
 
 #align(center)[
-  #image("Teambild.jpg", width: 75%)
+  #image("Teambild.jpg", width: 70%)
 ]
-
-#v(0.6em)
-
 #align(center)[
   #text(size: 9pt, fill: muted)[
     Das Bambini-Team – Studierende der Bucerius Law School mit Fokus auf Tech, Recht und Produkt.
