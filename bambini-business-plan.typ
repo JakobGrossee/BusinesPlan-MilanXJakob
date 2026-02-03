@@ -509,12 +509,12 @@ Bambini macht Schluss mit dem Antrag-Chaos:
 
   // Visual breakdown
   box(
-    fill: light-bg,
+    fill: gray.lighten(96%),
     inset: 20pt,
     radius: 10pt,
     width: 100%,
   )[
-    #text(weight: "bold", fill: dark)[Mittelverwendung]
+    #text(weight: "bold", fill: black)[Mittelverwendung]
     #v(15pt)
 
     #grid(
@@ -523,13 +523,13 @@ Bambini macht Schluss mit dem Antrag-Chaos:
       row-gutter: 8pt,
       align: (center + horizon, left + horizon, right + horizon),
 
-      box(fill: primary, width: 12pt, height: 12pt, radius: 3pt), [Stammkapital], text(weight: "bold")[62%],
+      box(fill: info, width: 12pt, height: 12pt, radius: 3pt), [Marketing], text(weight: "bold")[36%],
 
-      box(fill: info, width: 12pt, height: 12pt, radius: 3pt), [Marketing], text(weight: "bold")[23%],
+      box(fill: accent, width: 12pt, height: 12pt, radius: 3pt), [Gründungskosten], text(weight: "bold")[6-8%],
 
-      box(fill: success, width: 12pt, height: 12pt, radius: 3pt), [Gründungskosten], text(weight: "bold")[9%],
+      box(fill: rgb("#ae00ff"), width: 12pt, height: 12pt, radius: 3pt), [Betriebskosten], text(weight: "bold")[5%],
 
-      box(fill: accent, width: 12pt, height: 12pt, radius: 3pt), [Betrieb & Puffer], text(weight: "bold")[6%],
+      box(fill: success, width: 12pt, height: 12pt, radius: 3pt), [Puffer/Stammkapital], text(weight: "bold")[48-51%],
     )
 
     #v(15pt)
@@ -537,40 +537,41 @@ Bambini macht Schluss mit dem Antrag-Chaos:
     // Visual bars
     #block(width: 100%, height: 10pt, radius: 5pt, clip: true)[
       #grid(
-        columns: (62%, 23%, 9%, 6%),
-        block(width: 100%, height: 10pt, fill: primary),
+        columns: (36%, 8%, 5%, 51%),
         block(width: 100%, height: 10pt, fill: info),
-        block(width: 100%, height: 10pt, fill: success),
         block(width: 100%, height: 10pt, fill: accent),
+        block(width: 100%, height: 10pt, fill: rgb("#ae00ff")),
+        block(width: 100%, height: 10pt, fill: success),
       )
     ]
   ],
 
   // Runway explanation
   box(
-    fill: primary.lighten(95%),
+    fill: info.lighten(93%),
     inset: 20pt,
     radius: 10pt,
     width: 100%,
-    stroke: 1pt + primary.lighten(75%),
+    stroke: 2pt + info,
   )[
-    #text(weight: "bold", fill: primary-dark)[Hinweis zum Stammkapital]
+    #text(weight: "bold", fill: info)[Hinweis zum Stammkapital]
 
     #v(10pt)
 
-    Die 12.500 € Stammkapital bleiben im Unternehmen und können für den Geschäftsbetrieb verwendet werden.
+    Die 12.500 € Stammkapital bleiben im Unternehmen und stehen vollständig für den Geschäftsbetrieb zur Verfügung.
 
     #v(12pt)
 
-    #text(size: 9pt, fill: muted, tracking: 0.3pt)[EFFEKTIVER KAPITALBEDARF]
+    #text(size: 9pt, fill: muted, tracking: 0.3pt, weight: "bold")[GESAMTKAPITALBEDARF]
     #v(2pt)
-    #text(size: 28pt, weight: "bold", fill: primary)[~9.500 €]
+    #text(size: 24pt, weight: "bold", fill: info)[13.380,80 € – 14.164,80 €]
     #v(4pt)
     #text(size: 9pt, fill: muted)[
-      (Gründung + Marketing + Puffer)
+      (Stammkapital 12.500 € + Gründungskosten 880,80-1.664,80 €)
     ]
   ],
 )
+
 
 == Strategische Partnerschaft
 
@@ -978,8 +979,8 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 
 #align(center)[
   #text(size: 10.5pt, style: "italic", fill: muted)[
-    "Bambini kostet weniger als du damit verdienst." \
-    Durchschnitt: €303 extra pro Familie. €49,99 Investment = #text(fill: success, weight: "bold")[605% ROI].
+    "Familien bekommen im Durchschnitt €1.500+/Monat an staatlichen Leistungen (Elterngeld + Kindergeld). Bambini kostet einmalig €49,99 #sym.arrow #text(fill: success, weight: "bold")[3,3% für jahrelange Ersparnisse]."
+
   ]
 ]
 
