@@ -308,7 +308,7 @@
   columns: (1fr, 1fr, 1fr, 1fr),
   column-gutter: 10pt,
   kpi-card("💰", "49,99 €", "Preis pro Familie", color: primary),
-  kpi-card("⚡", "109 €", "Monatl. Kosten", color: info),
+  kpi-card("⚡", "109 €", "Fixkosten / m", color: info),
   kpi-card("📊", "~13 €", "Blended CAC", color: success),
   kpi-card("🚀", "86k €", "Umsatz Jahr 1", color: accent),
 )
@@ -764,7 +764,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
   box(fill: success.lighten(93%), inset: 14pt, radius: 8pt, width: 100%)[
     #text(weight: "bold", fill: success)[Was BambiniAI kann]
     #v(6pt)
-    - Versteckte Bonusse finden (€100–€500 extra)
+    - Versteckte Boni finden (€100–€500 extra)
     - Alle Fristen überwachen
     - Fragen 24/7 kostenlos beantworten
     - Personalisierte Tipps für jede Familie
@@ -773,9 +773,8 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     #text(weight: "bold", fill: info)[Technische Umsetzung]
     #v(6pt)
     - System Prompt Stuffing (kein Fine-Tuning)
-    - FAQ-Content + BEEG-Auszüge im Kontext
-    - Supabase Edge Functions
-    - Markdown-Rendering im Client
+    - FAQ-Content + BEEG-Auszüge via RAG
+    - Ansprechendes Rendering im Client
   ],
 )
 
@@ -1032,10 +1031,6 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
       table.hline(stroke: 0.5pt + surface),
       [*Gesamt jährlich*], [*~1.355 €*],
     )
-    #v(12pt)
-    #text(size: 9pt, fill: muted)[
-      Extrem schlanke Kostenstruktur durch moderne Cloud-Architektur
-    ]
   ],
 )
 
@@ -1285,7 +1280,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
   columns: (auto, auto, auto, auto, auto),
   fill: (x, y) => if y == 0 { primary } else if calc.odd(y) { light-bg } else { white },
   stroke: 0.5pt + surface,
-  inset: 12pt,
+  inset: 9pt,
   align: (left, center, right, right, right),
 
   table.cell(fill: primary)[#text(fill: white, weight: "bold")[Jahr]],
@@ -1867,7 +1862,7 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
       )[
         #text(fill: primary, weight: "bold")[Full-Stack-Entwicklung]
         #v(3pt)
-        #text(size: 9pt, fill: muted)[React, TypeScript, Supabase]
+        #text(size: 9pt, fill: muted)[React, TypeScript, PostgreSQL]
       ],
 
       box(
@@ -1909,7 +1904,7 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
 #v(1em)
 
 #align(center)[
-  #image("TeambildMika.jpg", width: 75%)
+  #image("TeambildMika.jpg", width: 70%)
 ]
 #align(center)[
   #text(size: 9pt, fill: muted)[
@@ -2013,7 +2008,7 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
     inset: (x: 35pt, y: 16pt),
     radius: 10pt,
   )[
-    #text(fill: white, weight: "bold", size: 14pt)[
+    #text(fill: white, weight: "bold", size: 13pt)[
       Gemeinsam können wir Bürokratie für Familien revolutionieren.
     ]
   ]
