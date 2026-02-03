@@ -450,7 +450,7 @@ Bambini macht Schluss mit dem Antrag-Chaos:
         inset: 10pt,
       )[
         #metric-row([Betriebskosten (6 M.)], [654 €])
-        #metric-row([Marketing], [5.000 €])
+        #metric-row([Marketing (6 M.)], [5.000 €])
         #metric-row([Puffer], [6.845 €])
       ]
     ]
@@ -558,7 +558,7 @@ Bambini macht Schluss mit dem Antrag-Chaos:
 
     #v(10pt)
 
-    Die 12.500 € Stammkapital bleiben im Unternehmen und stehen vollständig für den Geschäftsbetrieb zur Verfügung.
+    Die 12.500 € Stammkapital bleiben im Unternehmen und und können für den Geschäfsbetrieb verwendet werden.
 
     #v(12pt)
 
