@@ -399,8 +399,23 @@ Bambini macht Schluss mit dem Antrag-Chaos:
   #metric-row([Jahr 1 Umsatz (realistisch)], [*86.000 €*])
   #metric-row([Jahr 1 Gewinn (realistisch)], [*#text(fill: green)[+64.000 €]*])
 ]
-
 == Finanzierungsbedarf
+
+#box(
+  width: 100%,
+  fill: success.lighten(93%),
+  stroke: 2pt + success,
+  radius: 8pt,
+  inset: 8pt,
+)[
+  #align(center)[
+    #text(size: 9pt, weight: "bold", fill: success)[Gesamtkapitalbedarf]
+    #text(size: 13pt, weight: "bold", fill: success)[13.380,80 € – 14.164,80 €]
+    #text(size: 7pt, fill: muted)[Stammkapital (12.500 €) + Gründungskosten (880,80 € – 1.664,80 €)]
+  ]
+]
+
+#v(12pt)
 
 #grid(
   columns: (1fr, 1fr),
@@ -436,14 +451,12 @@ Bambini macht Schluss mit dem Antrag-Chaos:
       )[
         #metric-row([Betriebskosten (6 M.)], [654 €])
         #metric-row([Marketing], [5.000 €])
-        #metric-row([Puffer], [2.646 €])
-        #v(4pt)
-        #text(size: 8pt, weight: "bold", fill: success)[Rücklagen: 3.600 €]
+        #metric-row([Puffer], [6.845 €])
       ]
     ]
   ],
   [
-    // Gründungskosten Spanne
+    // Gründungskosten Spanne mit Aufschlüsselung
     #box(
       width: 100%,
       fill: accent.lighten(93%),
@@ -453,40 +466,112 @@ Bambini macht Schluss mit dem Antrag-Chaos:
     )[
       #align(center)[
         #text(size: 14pt, weight: "bold", fill: accent)[Gründungskosten]
+        #text(size: 16pt, weight: "bold", fill: accent)[880,80 € – 1.164,80 €]
       ]
       
-      #v(8pt)
-      
-      #text(size: 8pt, fill: muted, weight: "bold")[Minimal (ohne Beratung)]
-      #text(size: 16pt, weight: "bold", fill: accent)[~681 €]
-      
+      #v(10pt)
+      #line(length: 100%, stroke: 1pt + accent.lighten(50%))
       #v(10pt)
       
-      #text(size: 8pt, fill: muted, weight: "bold")[Mit Beratung]
-      #text(size: 16pt, weight: "bold", fill: accent)[~2.150 €]
+      #text(size: 8pt, fill: muted, weight: "bold")[AUFSCHLÜSSELUNG]
+      #v(6pt)
       
-      #v(8pt)
-      #text(size: 7.5pt, fill: muted)[Notargebühren, Handelsregister, Gewerbeanmeldung, Transparenzregister]
+      #box(
+        width: 100%,
+        fill: white,
+        stroke: 1pt + accent.lighten(70%),
+        radius: 6pt,
+        inset: 10pt,
+      )[
+        #grid(
+          columns: (1fr, auto, auto),
+          column-gutter: 8pt,
+          row-gutter: 4pt,
+          
+          [], [#text(size: 7pt, fill: muted)[Min.]], [#text(size: 7pt, fill: muted)[Max.]],
+          [#text(size: 8pt)[Notarkosten]], [#text(size: 8pt)[681 €]], [#text(size: 8pt)[850 €]],
+          [#text(size: 8pt)[Handelsregister]], [#text(size: 8pt)[150 €]], [#text(size: 8pt)[250 €]],
+          [#text(size: 8pt)[Gewerbeanmeldung]], [#text(size: 8pt)[30 €]], [#text(size: 8pt)[45 €]],
+          [#text(size: 8pt)[Transparenzregister]], [#text(size: 8pt)[19,80 €]], [#text(size: 8pt)[19,80 €]],
+        )
+      ]
     ]
   ],
 )
 
-#box(
-  width: 100%,
-  fill: success.lighten(93%),
-  stroke: 2pt + success,
-  radius: 10pt,
-  inset: 14pt,
-)[
-  #align(center)[
-    #text(size: 12pt, weight: "bold", fill: success)[Gesamtkapitalbedarf]
-    #v(4pt)
-    #text(size: 18pt, weight: "bold", fill: success)[13.181 € – 14.650 €]
-    #v(4pt)
-    #text(size: 8pt, fill: muted)[Stammkapital + Gründungskosten]
-  ]
-]
 #pagebreak()
+
+== Verwendung der Mittel
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 15pt,
+
+  // Visual breakdown
+  box(
+    fill: light-bg,
+    inset: 20pt,
+    radius: 10pt,
+    width: 100%,
+  )[
+    #text(weight: "bold", fill: dark)[Mittelverwendung]
+    #v(15pt)
+
+    #grid(
+      columns: (auto, 1fr, auto),
+      column-gutter: 10pt,
+      row-gutter: 8pt,
+      align: (center + horizon, left + horizon, right + horizon),
+
+      box(fill: primary, width: 12pt, height: 12pt, radius: 3pt), [Stammkapital], text(weight: "bold")[62%],
+
+      box(fill: info, width: 12pt, height: 12pt, radius: 3pt), [Marketing], text(weight: "bold")[23%],
+
+      box(fill: success, width: 12pt, height: 12pt, radius: 3pt), [Gründungskosten], text(weight: "bold")[9%],
+
+      box(fill: accent, width: 12pt, height: 12pt, radius: 3pt), [Betrieb & Puffer], text(weight: "bold")[6%],
+    )
+
+    #v(15pt)
+
+    // Visual bars
+    #block(width: 100%, height: 10pt, radius: 5pt, clip: true)[
+      #grid(
+        columns: (62%, 23%, 9%, 6%),
+        block(width: 100%, height: 10pt, fill: primary),
+        block(width: 100%, height: 10pt, fill: info),
+        block(width: 100%, height: 10pt, fill: success),
+        block(width: 100%, height: 10pt, fill: accent),
+      )
+    ]
+  ],
+
+  // Runway explanation
+  box(
+    fill: primary.lighten(95%),
+    inset: 20pt,
+    radius: 10pt,
+    width: 100%,
+    stroke: 1pt + primary.lighten(75%),
+  )[
+    #text(weight: "bold", fill: primary-dark)[Hinweis zum Stammkapital]
+
+    #v(10pt)
+
+    Die 12.500 € Stammkapital bleiben im Unternehmen und können für den Geschäftsbetrieb verwendet werden.
+
+    #v(12pt)
+
+    #text(size: 9pt, fill: muted, tracking: 0.3pt)[EFFEKTIVER KAPITALBEDARF]
+    #v(2pt)
+    #text(size: 28pt, weight: "bold", fill: primary)[~9.500 €]
+    #v(4pt)
+    #text(size: 9pt, fill: muted)[
+      (Gründung + Marketing + Puffer)
+    ]
+  ],
+)
+
 == Strategische Partnerschaft
 
 #box(
@@ -1223,123 +1308,9 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 // FINANZIERUNGSBEDARF
 // ============================================================================
 
-= Finanzierungsbedarf
 
-== Kapitalbedarf: ~22.000 €
 
-#box(
-  fill: white,
-  inset: 0pt,
-  radius: 12pt,
-  width: 100%,
-  stroke: 1pt + info.lighten(60%),
-  clip: true,
-)[
-  #block(width: 100%, fill: info.lighten(90%), inset: (x: 20pt, y: 12pt))[
-    #text(weight: "bold", fill: info, size: 11pt, tracking: 0.3pt)[AUFSCHLÜSSELUNG DES KAPITALBEDARFS]
-  ]
 
-  #block(inset: 20pt)[
-    #table(
-      columns: (1fr, auto),
-      stroke: none,
-      inset: 8pt,
-
-      [*GmbH-Gründung*], [],
-      [#h(1em) Notar], [~750 €],
-      [#h(1em) Handelsregister], [~150 €],
-      [#h(1em) Markenanmeldung (DPMA)], [~300 €],
-      [#h(1em) Stammkapital], [12.500 €],
-      [#h(1em) #text(weight: "bold")[Subtotal Gründung]], [#text(weight: "bold")[13.700 €]],
-
-      [], [],
-
-      [*Betrieb & Marketing*], [],
-      [#h(1em) Runway 6 Monate (Betriebskosten)], [654 €],
-      [#h(1em) Marketing-Budget (initial)], [5.000 €],
-      [#h(1em) Puffer / Unvorhergesehenes], [2.646 €],
-      [#h(1em) #text(weight: "bold")[Subtotal Betrieb]], [#text(weight: "bold")[8.300 €]],
-
-      table.hline(stroke: 1.5pt + info),
-
-      [#text(weight: "bold", size: 13pt, fill: info)[Gesamtbedarf]],
-      [#text(weight: "bold", size: 13pt, fill: info)[~22.000 €]],
-    )
-  ]
-]
-
-#pagebreak()
-
-== Verwendung der Mittel
-
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 15pt,
-
-  // Visual breakdown
-  box(
-    fill: light-bg,
-    inset: 20pt,
-    radius: 10pt,
-    width: 100%,
-  )[
-    #text(weight: "bold", fill: dark)[Mittelverwendung]
-    #v(15pt)
-
-    #grid(
-      columns: (auto, 1fr, auto),
-      column-gutter: 10pt,
-      row-gutter: 8pt,
-      align: (center + horizon, left + horizon, right + horizon),
-
-      box(fill: primary, width: 12pt, height: 12pt, radius: 3pt), [Stammkapital], text(weight: "bold")[62%],
-
-      box(fill: info, width: 12pt, height: 12pt, radius: 3pt), [Marketing], text(weight: "bold")[23%],
-
-      box(fill: success, width: 12pt, height: 12pt, radius: 3pt), [Gründungskosten], text(weight: "bold")[9%],
-
-      box(fill: accent, width: 12pt, height: 12pt, radius: 3pt), [Betrieb & Puffer], text(weight: "bold")[6%],
-    )
-
-    #v(15pt)
-
-    // Visual bars
-    #block(width: 100%, height: 10pt, radius: 5pt, clip: true)[
-      #grid(
-        columns: (62%, 23%, 9%, 6%),
-        block(width: 100%, height: 10pt, fill: primary),
-        block(width: 100%, height: 10pt, fill: info),
-        block(width: 100%, height: 10pt, fill: success),
-        block(width: 100%, height: 10pt, fill: accent),
-      )
-    ]
-  ],
-
-  // Runway explanation
-  box(
-    fill: primary.lighten(95%),
-    inset: 20pt,
-    radius: 10pt,
-    width: 100%,
-    stroke: 1pt + primary.lighten(75%),
-  )[
-    #text(weight: "bold", fill: primary-dark)[Hinweis zum Stammkapital]
-
-    #v(10pt)
-
-    Die 12.500 € Stammkapital bleiben im Unternehmen und können für den Geschäftsbetrieb verwendet werden.
-
-    #v(12pt)
-
-    #text(size: 9pt, fill: muted, tracking: 0.3pt)[EFFEKTIVER KAPITALBEDARF]
-    #v(2pt)
-    #text(size: 28pt, weight: "bold", fill: primary)[~9.500 €]
-    #v(4pt)
-    #text(size: 9pt, fill: muted)[
-      (Gründung + Marketing + Puffer)
-    ]
-  ],
-)
 
 
 
