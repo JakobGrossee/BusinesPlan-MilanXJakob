@@ -402,11 +402,89 @@ Bambini macht Schluss mit dem Antrag-Chaos:
 
 == Finanzierungsbedarf
 
-#highlight-box(title: "Kapitalbedarf: ~22.000 €", color: info)[
-  - GmbH-Gründung (Notarkosten + Stammkapital): 13.700 €
-  - Betriebskosten (6 Monate Runway): 654 €
-  - Marketing-Budget (initial): 5.000 €
-  - Puffer: 2.646 €
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 15pt,
+  row-gutter: 15pt,
+  [
+    // Stammkapital mit Verwendung
+    #box(
+      width: 100%,
+      fill: info.lighten(93%),
+      stroke: 2pt + info,
+      radius: 10pt,
+      inset: 16pt,
+    )[
+      #align(center)[
+        #text(size: 14pt, weight: "bold", fill: info)[Stammkapital]
+        #text(size: 20pt, weight: "bold", fill: info)[12.500 €]
+      ]
+      
+      #v(10pt)
+      #line(length: 100%, stroke: 1pt + info.lighten(50%))
+      #v(10pt)
+      
+      #text(size: 8pt, fill: muted, weight: "bold")[VERWENDUNG]
+      #v(6pt)
+      
+      #box(
+        width: 100%,
+        fill: white,
+        stroke: 1pt + info.lighten(70%),
+        radius: 6pt,
+        inset: 10pt,
+      )[
+        #metric-row([Betriebskosten (6 M.)], [654 €])
+        #metric-row([Marketing], [5.000 €])
+        #metric-row([Puffer], [2.646 €])
+        #v(4pt)
+        #text(size: 8pt, weight: "bold", fill: success)[Rücklagen: 3.600 €]
+      ]
+    ]
+  ],
+  [
+    // Gründungskosten Spanne
+    #box(
+      width: 100%,
+      fill: accent.lighten(93%),
+      stroke: 2pt + accent,
+      radius: 10pt,
+      inset: 16pt,
+    )[
+      #align(center)[
+        #text(size: 14pt, weight: "bold", fill: accent)[Gründungskosten]
+      ]
+      
+      #v(8pt)
+      
+      #text(size: 8pt, fill: muted, weight: "bold")[Minimal (ohne Beratung)]
+      #text(size: 16pt, weight: "bold", fill: accent)[~681 €]
+      
+      #v(10pt)
+      
+      #text(size: 8pt, fill: muted, weight: "bold")[Mit Beratung]
+      #text(size: 16pt, weight: "bold", fill: accent)[~2.150 €]
+      
+      #v(8pt)
+      #text(size: 7.5pt, fill: muted)[Notargebühren, Handelsregister, Gewerbeanmeldung, Transparenzregister]
+    ]
+  ],
+)
+
+#box(
+  width: 100%,
+  fill: success.lighten(93%),
+  stroke: 2pt + success,
+  radius: 10pt,
+  inset: 14pt,
+)[
+  #align(center)[
+    #text(size: 12pt, weight: "bold", fill: success)[Gesamtkapitalbedarf]
+    #v(4pt)
+    #text(size: 18pt, weight: "bold", fill: success)[13.181 € – 14.650 €]
+    #v(4pt)
+    #text(size: 8pt, fill: muted)[Stammkapital + Gründungskosten]
+  ]
 ]
 #pagebreak()
 == Strategische Partnerschaft
