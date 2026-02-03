@@ -1968,7 +1968,7 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
 )[
   #align(center)[
     #text(size: 14pt, weight: "bold", fill: primary-dark)[
-      Wir suchen ~14.000 € für die GmbH-Gründung und initiales Wachstum.
+      Wir suchen ca. 14.000 € für die GmbH-Gründung und initiales Wachstum.
     ]
 
     #v(15pt)
