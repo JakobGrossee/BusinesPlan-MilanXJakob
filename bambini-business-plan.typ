@@ -308,7 +308,7 @@
   columns: (1fr, 1fr, 1fr, 1fr),
   column-gutter: 10pt,
   kpi-card("💰", "49,99 €", "Preis pro Familie", color: primary),
-  kpi-card("⚡", "109 €", "Fixkosten / m", color: info),
+  kpi-card("⚡", "109 €", "mtl. Fixkosten", color: info),
   kpi-card("📊", "~13 €", "Blended CAC", color: success),
   kpi-card("🚀", "86k €", "Umsatz Jahr 1", color: accent),
 )
