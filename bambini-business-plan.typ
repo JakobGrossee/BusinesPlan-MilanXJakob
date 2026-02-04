@@ -556,7 +556,7 @@ Bambini macht Schluss mit dem Antrag-Chaos:
 
     #v(10pt)
 
-    Die 12.500 € Stammkapital bleiben im Unternehmen und und können für den Geschäfsbetrieb verwendet werden.
+    Die 12.500 € Stammkapital sind nicht gebunden und und können für den Geschäfsbetrieb verwendet werden.
 
     #v(12pt)
 
@@ -995,7 +995,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     width: 100%,
     stroke: 1pt + surface,
   )[
-    #text(weight: "bold", fill: dark)[Monatliche Kosten]
+    #text(weight: "bold", fill: dark)[Monatliche Betriebskosten]
     #v(10pt)
     #table(
       columns: (1fr, auto),
