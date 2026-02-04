@@ -432,14 +432,14 @@ Bambini macht Schluss mit dem Antrag-Chaos:
         #text(size: 14pt, weight: "bold", fill: info)[Stammkapital]
         #text(size: 20pt, weight: "bold", fill: info)[12.500 €]
       ]
-      
+
       #v(10pt)
       #line(length: 100%, stroke: 1pt + info.lighten(50%))
       #v(10pt)
-      
+
       #text(size: 8pt, fill: muted, weight: "bold")[VERWENDUNG]
       #v(6pt)
-      
+
       #box(
         width: 100%,
         fill: white,
@@ -466,14 +466,14 @@ Bambini macht Schluss mit dem Antrag-Chaos:
         #text(size: 14pt, weight: "bold", fill: accent)[Gründungskosten]
         #text(size: 16pt, weight: "bold", fill: accent)[880,80 € – 1.164,80 €]
       ]
-      
+
       #v(10pt)
       #line(length: 100%, stroke: 1pt + accent.lighten(50%))
       #v(10pt)
-      
+
       #text(size: 8pt, fill: muted, weight: "bold")[AUFSCHLÜSSELUNG]
       #v(6pt)
-      
+
       #box(
         width: 100%,
         fill: white,
@@ -485,7 +485,7 @@ Bambini macht Schluss mit dem Antrag-Chaos:
           columns: (1fr, auto, auto),
           column-gutter: 8pt,
           row-gutter: 4pt,
-          
+
           [], [#text(size: 7pt, fill: muted)[Min.]], [#text(size: 7pt, fill: muted)[Max.]],
           [#text(size: 8pt)[Notarkosten]], [#text(size: 8pt)[681 €]], [#text(size: 8pt)[850 €]],
           [#text(size: 8pt)[Handelsregister]], [#text(size: 8pt)[150 €]], [#text(size: 8pt)[250 €]],
@@ -1058,8 +1058,233 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 
   #v(10pt)
 
-  Bei der aktuellen Kostenstruktur ist Bambini ab dem *3. zahlenden Kunden pro Monat* operativ profitabel. Dies ist ein außergewöhnlich niedriger Break-Even für ein B2C-SaaS-Produkt.
+  Bei der aktuellen Kostenstruktur ist Bambini ab dem *3. zahlenden Kunden auf den Monat gerechnet* operativ profitabel.
 ]
+
+// ═══════════════════════════════════════════════════════════════════════════
+// KUMULATIVER BREAK-EVEN (kompakt, mit Liniendiagramm)
+// Einfügen nach der monatlichen Break-Even-Analyse
+// ═══════════════════════════════════════════════════════════════════════════
+
+== Kumulativer Break-Even: Gesamtprofitabilität
+
+Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten. Für die *Gesamtprofitabilität* müssen initiale Investitionen und Marketingkosten (CAC) einbezogen werden:
+
+#v(0.5em)
+
+#box(
+  fill: white,
+  inset: 18pt,
+  radius: 10pt,
+  width: 100%,
+  stroke: 1pt + surface,
+)[
+  // Title and legend
+  #grid(
+    columns: (1fr, auto),
+    align: (left, right),
+    [#text(weight: "bold", size: 11pt)[Kumulatives Ergebnis über 12 Monate]],
+    [
+      #box(fill: success, width: 12pt, height: 2pt, radius: 1pt)
+      #text(size: 8pt, fill: muted)[ Umsatz]
+      #h(8pt)
+      #box(fill: danger, width: 12pt, height: 2pt, radius: 1pt)
+      #text(size: 8pt, fill: muted)[ Kosten]
+      #h(8pt)
+      #box(fill: primary, width: 12pt, height: 2pt, radius: 1pt)
+      #text(size: 8pt, fill: muted)[ Ergebnis]
+    ],
+  )
+
+  #v(12pt)
+
+  // Graph area - Skalierung: -5k bis 90k = 95k Bereich, 130pt Höhe
+  // Formel: y_pt = (90000 - wert) / 95000 * 130pt
+  // Bei 90k: (90000-90000)/95000*130 = 0pt (oben)
+  // Bei 0:   (90000-0)/95000*130 = 123pt
+  // Bei -5k: (90000-(-5000))/95000*130 = 130pt (unten)
+  #grid(
+    columns: (30pt, 1fr, 45pt),
+    column-gutter: 8pt,
+
+    // Y-axis - 5 Stufen: 90k, 60k, 30k, 0, -5k
+    align(right)[
+      #text(size: 7pt, fill: muted)[90k] #v(36pt)
+      #text(size: 7pt, fill: muted)[60k] #v(36pt)
+      #text(size: 7pt, fill: muted)[30k] #v(36pt)
+      #text(size: 7pt, fill: muted)[0] #v(10pt)
+      #text(size: 7pt, fill: muted)[-5k]
+    ],
+
+    // Chart - größere Höhe für bessere Differenzierung
+    box(width: 100%, height: 130pt, clip: true)[
+      // Background grid (4 Linien bei 90k, 60k, 30k, 0)
+      #place(dy: 0pt)[#line(length: 100%, stroke: 0.3pt + surface)]
+      #place(dy: 41pt)[#line(length: 100%, stroke: 0.3pt + surface)]
+      #place(dy: 82pt)[#line(length: 100%, stroke: 0.3pt + surface)]
+      #place(dy: 123pt)[#line(length: 100%, stroke: 0.8pt + dark.lighten(50%))]
+
+      // Revenue line (green) - Umsatz kumuliert
+      // Werte: M0=0, M1=1.5k, M2=3.5k, M3=6k, M4=10k, M5=15k, M6=21k, M7=28.5k, M8=37k, M9=46k, M10=58.5k, M11=72k, M12=86k
+      // Formel: y = (90000 - wert) / 95000 * 130
+      #place()[
+        #path(
+          fill: none,
+          stroke: 2pt + success,
+          (0%, 123pt), // M0: 0
+          (8.3%, 121pt), // M1: 1.5k
+          (16.6%, 118pt), // M2: 3.5k
+          (25%, 115pt), // M3: 6k
+          (33.3%, 109pt), // M4: 10k
+          (41.6%, 102pt), // M5: 15k
+          (50%, 94pt), // M6: 21k
+          (58.3%, 84pt), // M7: 28.5k
+          (66.6%, 72pt), // M8: 37k
+          (75%, 60pt), // M9: 46k
+          (83.3%, 43pt), // M10: 58.5k
+          (91.6%, 25pt), // M11: 72k
+          (100%, 5pt), // M12: 86k
+        )
+      ]
+
+      // Cost line (red) - Kosten kumuliert
+      // Werte: M0=3.7k, M1=4.2k, M2=4.8k, M3=5.6k, M4=6.7k, M5=8.1k, M6=9.8k, M7=11.9k, M8=14.2k, M9=16.6k, M10=20k, M11=23.6k, M12=27.3k
+      #place()[
+        #path(
+          fill: none,
+          stroke: 2pt + danger,
+          (0%, 118pt), // M0: 3.7k
+          (8.3%, 117pt), // M1: 4.2k
+          (16.6%, 116pt), // M2: 4.8k
+          (25%, 115pt), // M3: 5.6k
+          (33.3%, 114pt), // M4: 6.7k
+          (41.6%, 112pt), // M5: 8.1k
+          (50%, 110pt), // M6: 9.8k
+          (58.3%, 107pt), // M7: 11.9k
+          (66.6%, 104pt), // M8: 14.2k
+          (75%, 100pt), // M9: 16.6k
+          (83.3%, 96pt), // M10: 20k
+          (91.6%, 91pt), // M11: 23.6k
+          (100%, 86pt), // M12: 27.3k
+        )
+      ]
+
+      // Profit line (purple) - Umsatz minus Kosten (Ergebnis)
+      // Werte: M0=-3.7k, M1=-2.7k, M2=-1.3k, M3=+0.4k, M4=+3.3k, M5=+6.9k, M6=+11.2k, M7=+16.6k, M8=+22.8k, M9=+29.4k, M10=+38.5k, M11=+48.4k, M12=+58.7k
+      #place()[
+        #path(
+          fill: none,
+          stroke: 2.5pt + primary,
+          (0%, 128pt), // M0: -3.7k
+          (8.3%, 127pt), // M1: -2.7k
+          (16.6%, 125pt), // M2: -1.3k
+          (25%, 122pt), // M3: +0.4k (Break-Even!)
+          (33.3%, 119pt), // M4: +3.3k
+          (41.6%, 114pt), // M5: +6.9k
+          (50%, 108pt), // M6: +11.2k
+          (58.3%, 100pt), // M7: +16.6k
+          (66.6%, 92pt), // M8: +22.8k
+          (75%, 83pt), // M9: +29.4k
+          (83.3%, 70pt), // M10: +38.5k
+          (91.6%, 57pt), // M11: +48.4k
+          (100%, 43pt), // M12: +58.7k
+        )
+      ]
+
+      // Break-even marker (bei Monat 3, ca. 25% horizontal, an der 0-Linie)
+      #place(dx: 24%, dy: 120pt)[
+        #circle(radius: 4pt, fill: white, stroke: 2pt + success)
+      ]
+    ],
+
+    // End value labels (rechte Spalte)
+    align(left)[
+      #v(2pt)
+      #text(size: 7pt, fill: success, weight: "bold")[86k €]
+      #v(30pt)
+      #text(size: 7pt, fill: primary, weight: "bold")[+59k €]
+      #v(40pt)
+      #text(size: 7pt, fill: danger)[27k €]
+    ],
+  )
+
+  // X-axis
+  #v(5pt)
+  #grid(
+    columns: (30pt, 1fr),
+    column-gutter: 8pt,
+    [],
+    grid(
+      columns: (1fr,) * 7,
+      align: center,
+      text(size: 7pt, fill: muted)[Start],
+      text(size: 7pt, fill: muted)[M2],
+      text(size: 7pt, fill: muted)[M4],
+      text(size: 7pt, fill: muted)[M6],
+      text(size: 7pt, fill: muted)[M8],
+      text(size: 7pt, fill: muted)[M10],
+      text(size: 7pt, fill: muted)[M12],
+    ),
+  )
+]
+
+#v(0.8em)
+
+// Compact KPI row
+#grid(
+  columns: (1fr, 1fr, 1fr, 1fr),
+  column-gutter: 8pt,
+
+  box(fill: light-bg, inset: 10pt, radius: 6pt, width: 100%)[
+    #align(center)[
+      #text(size: 8pt, fill: muted)[INITIALE KOSTEN]
+      #v(2pt)
+      #text(size: 14pt, weight: "bold")[3.700 €]
+    ]
+  ],
+
+  box(fill: success.lighten(92%), inset: 10pt, radius: 6pt, width: 100%, stroke: 1pt + success.lighten(50%))[
+    #align(center)[
+      #text(size: 8pt, fill: muted)[BREAK-EVEN]
+      #v(2pt)
+      #text(size: 14pt, weight: "bold", fill: success)[Monat 3]
+    ]
+  ],
+
+  box(fill: light-bg, inset: 10pt, radius: 6pt, width: 100%)[
+    #align(center)[
+      #text(size: 8pt, fill: muted)[GEWINN JAHR 1]
+      #v(2pt)
+      #text(size: 14pt, weight: "bold", fill: success)[+59.000 €]
+    ]
+  ],
+
+  box(fill: light-bg, inset: 10pt, radius: 6pt, width: 100%)[
+    #align(center)[
+      #text(size: 8pt, fill: muted)[BLENDED CAC]
+      #v(2pt)
+      #text(size: 14pt, weight: "bold")[13 €]
+    ]
+  ],
+)
+
+#v(0.8em)
+
+// Hinweis Personalkosten - kompakt
+#box(
+  fill: accent.lighten(92%),
+  inset: 12pt,
+  radius: 6pt,
+  width: 100%,
+  stroke: (left: 3pt + accent),
+)[
+  #text(weight: "bold", fill: accent.darken(20%), size: 10pt)[Hinweis Personalkosten:]
+  #h(8pt)
+  #text(size: 9pt)[
+    Diese Projektion geht von unbezahlter Gründerarbeit in der Startphase aus. Bei 3.000 €/Monat Personalkosten verschiebt sich der Break-Even auf Monat 8, bei 5.000 €/Monat wäre Jahr 1 defizitär.
+  ]
+]
+
 
 #pagebreak()
 
