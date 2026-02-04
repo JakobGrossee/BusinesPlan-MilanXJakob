@@ -995,7 +995,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     width: 100%,
     stroke: 1pt + surface,
   )[
-    #text(weight: "bold", fill: dark)[Monatliche Kosten]
+    #text(weight: "bold", fill: dark)[Monatliche Betriebskosten]
     #v(10pt)
     #table(
       columns: (1fr, auto),
