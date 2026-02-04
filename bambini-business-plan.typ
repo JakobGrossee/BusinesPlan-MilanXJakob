@@ -1281,7 +1281,7 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
   #text(weight: "bold", fill: accent.darken(20%), size: 10pt)[Hinweis Personalkosten:]
   #h(8pt)
   #text(size:8pt)[
-    Diese Projektion geht von unbezahlter Gründerarbeit in der Startphase aus. Bei 3.000 €/Monat Personalkosten verschiebt sich der Break-Even auf Monat 8, bei 5.000 €/Monat wäre Jahr 1 defizitär.
+    Diese Projektion geht von unbezahlter Gründerarbeit in der Startphase aus. Weitere Personalkosten sind insofern nicht geplant.
   ]
 ]
 
