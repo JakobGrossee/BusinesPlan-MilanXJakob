@@ -1,10 +1,231 @@
 // Bambini Business Plan - Premium Design
 // Refined visual identity with geometric accents and modern typography
+// VERSION MIT VARIABLEN UND AUTOMATISCHEN BERECHNUNGEN
 
 #set document(
   title: "Bambini Business Plan 2026",
   author: "Bambini GmbH (i.Gr.)",
 )
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ZENTRALE VARIABLEN - HIER ANPASSEN FÜR AUTOMATISCHE NEUBERECHNUNG
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ─── Preismodell ─────────────────────────────────────────────────────────────
+#let product-price = 49.99          // Produktpreis in Euro
+#let b2b-pepy = 4                   // B2B: Price per Employee per Year
+#let b2b-case-fee = 25              // B2B: Gebühr pro Fall
+
+// ─── Monatliche Betriebskosten ───────────────────────────────────────────────
+#let cost-hosting = 4               // Vercel Hosting
+#let cost-supabase = 0              // Supabase (Free Tier)
+#let cost-dev-tools = 90            // Entwicklung (Tools, APIs)
+#let cost-qes-monthly = 15          // QES (Signatur) monatlich
+
+// ─── Jährliche Kosten ────────────────────────────────────────────────────────
+#let cost-email-annual = 20         // E-Mail-Hosting jährlich
+#let cost-qes-annual = 27           // QES-Zertifikat (80€/3J ≈ 27€/Jahr)
+
+// ─── Gründungskosten (Min/Max) ───────────────────────────────────────────────
+#let cost-notar-min = 681
+#let cost-notar-max = 850
+#let cost-handelsregister-min = 150
+#let cost-handelsregister-max = 250
+#let cost-gewerbe-min = 30
+#let cost-gewerbe-max = 45
+#let cost-transparenz = 19.80       // Transparenzregister (fix)
+#let stammkapital = 12500           // GmbH Stammkapital
+
+// ─── Marketing & CAC nach Kanal ──────────────────────────────────────────────
+#let cac-arag = 0
+#let cac-tiktok = 20
+#let cac-meta = 28
+#let cac-seo = 0
+#let cac-referral = 12
+
+#let share-arag = 0.25              // 25%
+#let share-tiktok = 0.30            // 30%
+#let share-meta = 0.20              // 20%
+#let share-seo = 0.10               // 10%
+#let share-referral = 0.15          // 15%
+
+// ─── Kundenprognose (Quartale) ───────────────────────────────────────────────
+#let customers-q1 = 120             // Monate 1-3
+#let customers-q2 = 300             // Monate 4-6
+#let customers-q3 = 500             // Monate 7-9
+#let customers-q4 = 800             // Monate 10-12
+
+#let cac-q1 = 18
+#let cac-q2 = 15
+#let cac-q3 = 13
+#let cac-q4 = 11
+
+// ─── Marktdaten ──────────────────────────────────────────────────────────────
+#let births-per-year = 685000       // Geburten pro Jahr in DE
+#let serviceable-market-ratio = 0.45 // Anteil Serviceable Market
+#let non-takeup-rate = 0.70         // Nichtinanspruchnahme
+#let family-budget-billion = 80     // Budget Familienleistungen in Mrd. €
+
+// ─── Zielgruppensegmente ─────────────────────────────────────────────────────
+#let segment-a-ratio = 0.25         // Akademiker & Berufstätige
+#let segment-b-ratio = 0.20         // Menschen mit Sprachbarrieren
+
+// ─── Szenario-Multiplikatoren ────────────────────────────────────────────────
+#let scenario-conservative = 0.74   // Konservativ: 74% des realistischen
+#let scenario-optimistic = 1.45     // Optimistisch: 145% des realistischen
+
+// ─── Mehrjahresplanung ───────────────────────────────────────────────────────
+#let year2-growth = 2.69            // Wachstumsfaktor Jahr 2
+#let year3-growth = 2.0             // Wachstumsfaktor Jahr 3
+
+// ─── B2B Beispielrechnung ────────────────────────────────────────────────────
+#let b2b-example-employees = 200
+#let b2b-example-cases = 12
+#let b2b-pilot-companies = 8
+#let b2c-year1-customers = 1000
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// AUTOMATISCHE BERECHNUNGEN
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ─── Kostenberechnungen ──────────────────────────────────────────────────────
+#let monthly-fixed-costs = cost-hosting + cost-supabase + cost-dev-tools + cost-qes-monthly
+#let annual-fixed-costs = (monthly-fixed-costs * 12) + cost-email-annual + cost-qes-annual
+
+#let founding-costs-min = cost-notar-min + cost-handelsregister-min + cost-gewerbe-min + cost-transparenz
+#let founding-costs-max = cost-notar-max + cost-handelsregister-max + cost-gewerbe-max + cost-transparenz
+
+#let total-capital-min = stammkapital + founding-costs-min
+#let total-capital-max = stammkapital + founding-costs-max
+
+// ─── Break-Even ──────────────────────────────────────────────────────────────
+#let break-even-monthly = calc.ceil(monthly-fixed-costs / product-price - ((cac-q1 + cac-q2 + cac-q3 + cac-q4) / 4 ))
+
+// ─── Blended CAC ─────────────────────────────────────────────────────────────
+#let blended-cac = (cac-arag * share-arag) + (cac-tiktok * share-tiktok) + (cac-meta * share-meta) + (cac-seo * share-seo) + (cac-referral * share-referral)
+
+// ─── Kundenprognose Jahr 1 ───────────────────────────────────────────────────
+#let customers-year1 = customers-q1 + customers-q2 + customers-q3 + customers-q4
+#let revenue-year1 = customers-year1 * product-price
+
+// ─── Marketing-Kosten Jahr 1 ─────────────────────────────────────────────────
+#let marketing-q1 = customers-q1 * cac-q1
+#let marketing-q2 = customers-q2 * cac-q2
+#let marketing-q3 = customers-q3 * cac-q3
+#let marketing-q4 = customers-q4 * cac-q4
+#let marketing-year1 = marketing-q1 + marketing-q2 + marketing-q3 + marketing-q4
+
+// ─── Umsatz pro Quartal ──────────────────────────────────────────────────────
+#let revenue-q1 = customers-q1 * product-price
+#let revenue-q2 = customers-q2 * product-price
+#let revenue-q3 = customers-q3 * product-price
+#let revenue-q4 = customers-q4 * product-price
+
+// ─── Ergebnis pro Quartal (nach Marketing und anteiligen Fixkosten) ──────────
+#let result-q1 = revenue-q1 - marketing-q1
+#let result-q2 = revenue-q2 - marketing-q2
+#let result-q3 = revenue-q3 - marketing-q3
+#let result-q4 = revenue-q4 - marketing-q4
+
+// ─── Gesamtkosten Jahr 1 ─────────────────────────────────────────────────────
+#let total-costs-year1 = annual-fixed-costs + marketing-year1
+#let profit-year1 = revenue-year1 - total-costs-year1
+
+// ─── Gewichteter CAC Jahr 1 ──────────────────────────────────────────────────
+#let weighted-cac-year1 = marketing-year1 / customers-year1
+
+// ─── Marktberechnungen ───────────────────────────────────────────────────────
+#let serviceable-market = calc.round(births-per-year * serviceable-market-ratio)
+#let segment-a-size = calc.round(births-per-year * segment-a-ratio)
+#let segment-b-size = calc.round(births-per-year * segment-b-ratio)
+#let market-share-year1 = (customers-year1 / serviceable-market) * 100
+
+// ─── Szenario-Berechnungen ───────────────────────────────────────────────────
+#let customers-conservative = calc.round(customers-year1 * scenario-conservative)
+#let revenue-conservative = customers-conservative * product-price
+#let marketing-conservative = customers-conservative * blended-cac
+#let profit-conservative = revenue-conservative - annual-fixed-costs - marketing-conservative
+
+#let customers-optimistic = calc.round(customers-year1 * scenario-optimistic)
+#let revenue-optimistic = customers-optimistic * product-price
+#let marketing-optimistic = customers-optimistic * blended-cac
+#let profit-optimistic = revenue-optimistic - annual-fixed-costs - marketing-optimistic
+
+// ─── Mehrjahresplanung ───────────────────────────────────────────────────────
+#let customers-year2 = calc.round(customers-year1 * year2-growth)
+#let revenue-year2 = customers-year2 * product-price
+#let market-share-year2 = (customers-year2 / serviceable-market) * 100
+
+#let customers-year3 = calc.round(customers-year2 * year3-growth)
+#let revenue-year3 = customers-year3 * product-price
+#let market-share-year3 = (customers-year3 / serviceable-market) * 100
+
+// ─── B2B Berechnungen ────────────────────────────────────────────────────────
+#let b2b-example-annual = b2b-example-employees * b2b-pepy
+#let b2b-example-usage = b2b-example-cases * b2b-case-fee
+#let b2b-example-total = b2b-example-annual + b2b-example-usage
+#let b2b-pilot-revenue = b2b-pilot-companies * b2b-example-total
+#let b2c-pilot-revenue = b2c-year1-customers * product-price
+#let hybrid-year1-revenue = b2c-pilot-revenue + b2b-pilot-revenue
+
+// ─── Verwendung der Mittel ───────────────────────────────────────────────────
+#let runway-months = 6
+#let ops-reserve = monthly-fixed-costs * runway-months
+#let marketing-reserve = 5000
+#let buffer = stammkapital - ops-reserve - marketing-reserve
+
+// ─── Anteilsberechnungen für Mittelverwendung ────────────────────────────────
+#let total-funds = total-capital-max
+#let marketing-share = (marketing-reserve / total-funds) * 100
+#let founding-share-min = (founding-costs-min / total-funds) * 100
+#let founding-share-max = (founding-costs-max / total-funds) * 100
+#let ops-share = (ops-reserve / total-funds) * 100
+#let buffer-share = (buffer / total-funds) * 100
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// FORMATIERUNGSFUNKTIONEN
+// ═══════════════════════════════════════════════════════════════════════════
+
+// Euro-Formatierung
+#let euro(value) = {
+  if value >= 1000000 {
+    str(calc.round(value / 1000000, digits: 1)) + " Mio. €"
+  } else if value >= 1000 {
+    str(calc.round(value / 1000, digits: 0)) + ".000 €"
+  } else if value == calc.floor(value) {
+    str(calc.round(value)) + " €"
+  } else {
+    str(calc.round(value, digits: 2)).replace(".", ",") + " €"
+  }
+}
+
+// Kompakte Euro-Formatierung für Tabellen
+#let euro-compact(value) = {
+  if value >= 1000 {
+    str(calc.round(value / 1000, digits: 0)) + "k €"
+  } else {
+    str(calc.round(value)) + " €"
+  }
+}
+
+// Prozent-Formatierung
+#let pct(value) = {
+  str(calc.round(value, digits: 1)) + "%"
+}
+
+// Tausender-Formatierung
+#let num(value) = {
+  if value >= 1000000 {
+    str(calc.round(value / 1000000, digits: 2)) + " Mio."
+  } else if value >= 1000 {
+    str(calc.round(value / 1000, digits: 0)) + ".000"
+  } else {
+    str(calc.round(value))
+  }
+}
+
 
 // ─── Color Palette ───────────────────────────────────────────────────────────
 #let primary = rgb("#6B46C1")
@@ -307,15 +528,15 @@
 #grid(
   columns: (1fr, 1fr, 1fr, 1fr),
   column-gutter: 10pt,
-  kpi-card("💰", "49,99 €", "Preis pro Familie", color: primary),
-  kpi-card("⚡", "109 €", "mtl. Fixkosten", color: info),
-  kpi-card("📊", "~13 €", "Blended CAC", color: success),
-  kpi-card("🚀", "86k €", "Umsatz Jahr 1", color: accent),
+  kpi-card("💰", euro(product-price), "Preis pro Familie", color: primary),
+  kpi-card("⚡", euro(monthly-fixed-costs), "mtl. Fixkosten", color: info),
+  kpi-card("📊", [~#euro(calc.round(blended-cac))], "Blended CAC", color: success),
+  kpi-card("🚀", euro-compact(revenue-year1), "Umsatz Jahr 1", color: accent),
 )
 
 #v(1em)
 
-*Bambini* ist eine digitale Plattform, die Eltern in Deutschland hilft, Sozialleistungen wie Elterngeld, Kindergeld und Elternzeit in einer zentralen Anwendung zu beantragen. Wir lösen ein konkretes Problem: *80 Milliarden Euro* stehen jährlich für Familienleistungen bereit – aber *bis zu 70% kommen nie bei den Familien an*, weil der Antragsprozess zu komplex ist.#footnote[BMFSFJ 2021]
+*Bambini* ist eine digitale Plattform, die Eltern in Deutschland hilft, Sozialleistungen wie Elterngeld, Kindergeld und Elternzeit in einer zentralen Anwendung zu beantragen. Wir lösen ein konkretes Problem: *#family-budget-billion Milliarden Euro* stehen jährlich für Familienleistungen bereit – aber *bis zu #calc.round(non-takeup-rate * 100)%* kommen nie bei den Familien an, weil der Antragsprozess zu komplex ist.#footnote[BMFSFJ 2021]
 
 == Das Problem
 
@@ -342,7 +563,7 @@ Das deutsche System der Familienleistungen ist ein Bürokratie-Dschungel:
     #text(size: 9pt, fill: muted)[möglicher Verlust pro Familie]
   ],
   box(fill: danger.lighten(92%), inset: 12pt, radius: 6pt, width: 100%)[
-    #text(size: 20pt, weight: "bold", fill: danger)[70%] \
+    #text(size: 20pt, weight: "bold", fill: danger)[#calc.round(non-takeup-rate * 100)%] \
     #text(size: 9pt, fill: muted)[Nichtinanspruchnahme]
   ],
 )
@@ -392,12 +613,12 @@ Bambini macht Schluss mit dem Antrag-Chaos:
 == Geschäftsmodell
 
 #box(fill: light-bg, inset: 18pt, radius: 8pt, width: 100%)[
-  #metric-row([Produktpreis (Einmalzahlung)], [*49,99 €*])
-  #metric-row([Monatliche Betriebskosten], [*109 €*])
-  #metric-row([Break-Even], [*3 Kunden/Monat*])
-  #metric-row([Blended Customer Acquisition Cost], [*~13 €*])
-  #metric-row([Jahr 1 Umsatz (realistisch)], [*86.000 €*])
-  #metric-row([Jahr 1 Gewinn (realistisch)], [*#text(fill: green)[+64.000 €]*])
+  #metric-row([Produktpreis (Einmalzahlung)], [*#euro(product-price)*])
+  #metric-row([Monatliche Betriebskosten], [*#euro(monthly-fixed-costs)*])
+  #metric-row([Break-Even], [*#break-even-monthly Kunden/Monat*])
+  #metric-row([Blended Customer Acquisition Cost], [*~#euro(calc.round(blended-cac))*])
+  #metric-row([Jahr 1 Umsatz (realistisch)], [*#euro-compact(revenue-year1)*])
+  #metric-row([Jahr 1 Gewinn (realistisch)], [*#text(fill: green)[+#euro-compact(profit-year1)]*])
 ]
 == Finanzierungsbedarf
 
@@ -410,8 +631,8 @@ Bambini macht Schluss mit dem Antrag-Chaos:
 )[
   #align(center)[
     #text(size: 9pt, weight: "bold", fill: success)[Gesamtkapitalbedarf]
-    #text(size: 13pt, weight: "bold", fill: success)[13.380,80 € – 14.164,80 €]
-    #text(size: 7pt, fill: muted)[Stammkapital (12.500 €) + Gründungskosten (880,80 € – 1.664,80 €)]
+    #text(size: 13pt, weight: "bold", fill: success)[#euro(total-capital-min) – #euro(total-capital-max)]
+    #text(size: 7pt, fill: muted)[Stammkapital (#euro(stammkapital)) + Gründungskosten (#euro(founding-costs-min) – #euro(founding-costs-max))]
   ]
 ]
 
@@ -430,7 +651,7 @@ Bambini macht Schluss mit dem Antrag-Chaos:
     )[
       #align(center)[
         #text(size: 14pt, weight: "bold", fill: info)[Stammkapital]
-        #text(size: 20pt, weight: "bold", fill: info)[12.500 €]
+        #text(size: 20pt, weight: "bold", fill: info)[#euro(stammkapital)]
       ]
 
       #v(10pt)
@@ -447,9 +668,9 @@ Bambini macht Schluss mit dem Antrag-Chaos:
         radius: 6pt,
         inset: 10pt,
       )[
-        #metric-row([Betriebskosten (6 M.)], [654 €])
-        #metric-row([Marketing (6 M.)], [5.000 €])
-        #metric-row([Puffer], [6.845 €])
+        #metric-row([Betriebskosten (#runway-months M.)], euro(ops-reserve))
+        #metric-row([Marketing (#runway-months M.)], euro(marketing-reserve))
+        #metric-row([Puffer], euro(buffer))
       ]
     ]
   ],
@@ -464,7 +685,7 @@ Bambini macht Schluss mit dem Antrag-Chaos:
     )[
       #align(center)[
         #text(size: 14pt, weight: "bold", fill: accent)[Gründungskosten]
-        #text(size: 16pt, weight: "bold", fill: accent)[880,80 € – 1.164,80 €]
+        #text(size: 16pt, weight: "bold", fill: accent)[#euro(founding-costs-min) – #euro(founding-costs-max)]
       ]
 
       #v(10pt)
@@ -487,10 +708,10 @@ Bambini macht Schluss mit dem Antrag-Chaos:
           row-gutter: 4pt,
 
           [], [#text(size: 7pt, fill: muted)[Min.]], [#text(size: 7pt, fill: muted)[Max.]],
-          [#text(size: 8pt)[Notarkosten]], [#text(size: 8pt)[681 €]], [#text(size: 8pt)[850 €]],
-          [#text(size: 8pt)[Handelsregister]], [#text(size: 8pt)[150 €]], [#text(size: 8pt)[250 €]],
-          [#text(size: 8pt)[Gewerbeanmeldung]], [#text(size: 8pt)[30 €]], [#text(size: 8pt)[45 €]],
-          [#text(size: 8pt)[Transparenzregister]], [#text(size: 8pt)[19,80 €]], [#text(size: 8pt)[19,80 €]],
+          [#text(size: 8pt)[Notarkosten]], [#text(size: 8pt)[#euro(cost-notar-min)]], [#text(size: 8pt)[#euro(cost-notar-max)]],
+          [#text(size: 8pt)[Handelsregister]], [#text(size: 8pt)[#euro(cost-handelsregister-min)]], [#text(size: 8pt)[#euro(cost-handelsregister-max)]],
+          [#text(size: 8pt)[Gewerbeanmeldung]], [#text(size: 8pt)[#euro(cost-gewerbe-min)]], [#text(size: 8pt)[#euro(cost-gewerbe-max)]],
+          [#text(size: 8pt)[Transparenzregister]], [#text(size: 8pt)[#euro(cost-transparenz)]], [#text(size: 8pt)[#euro(cost-transparenz)]],
         )
       ]
     ]
@@ -521,13 +742,13 @@ Bambini macht Schluss mit dem Antrag-Chaos:
       row-gutter: 8pt,
       align: (center + horizon, left + horizon, right + horizon),
 
-      box(fill: info, width: 12pt, height: 12pt, radius: 3pt), [Marketing], text(weight: "bold")[36%],
+      box(fill: info, width: 12pt, height: 12pt, radius: 3pt), [Marketing], text(weight: "bold")[#pct(marketing-share)],
 
-      box(fill: accent, width: 12pt, height: 12pt, radius: 3pt), [Gründungskosten], text(weight: "bold")[6-8%],
+      box(fill: accent, width: 12pt, height: 12pt, radius: 3pt), [Gründungskosten], text(weight: "bold")[#pct(founding-share-min)-#pct(founding-share-max)],
 
-      box(fill: rgb("#ae00ff"), width: 12pt, height: 12pt, radius: 3pt), [Betriebskosten], text(weight: "bold")[5%],
+      box(fill: rgb("#ae00ff"), width: 12pt, height: 12pt, radius: 3pt), [Betriebskosten], text(weight: "bold")[#pct(ops-share)],
 
-      box(fill: success, width: 12pt, height: 12pt, radius: 3pt), [Puffer/Stammkapital], text(weight: "bold")[48-51%],
+      box(fill: success, width: 12pt, height: 12pt, radius: 3pt), [Puffer/Stammkapital], text(weight: "bold")[#pct(buffer-share)],
     )
 
     #v(15pt)
@@ -556,16 +777,16 @@ Bambini macht Schluss mit dem Antrag-Chaos:
 
     #v(10pt)
 
-    Die 12.500 € Stammkapital sind nicht gebunden und und können für den Geschäfsbetrieb verwendet werden.
+    Die #euro(stammkapital) Stammkapital sind nicht gebunden und und können für den Geschäfsbetrieb verwendet werden.
 
     #v(12pt)
 
     #text(size: 9pt, fill: muted, tracking: 0.3pt, weight: "bold")[GESAMTKAPITALBEDARF]
     #v(2pt)
-    #text(size: 24pt, weight: "bold", fill: info)[13.380,80 € – 14.164,80 €]
+    #text(size: 24pt, weight: "bold", fill: info)[#euro(total-capital-min) – #euro(total-capital-max)]
     #v(4pt)
     #text(size: 9pt, fill: muted)[
-      (Stammkapital 12.500 € + Gründungskosten 880,80-1.664,80 €)
+      (Stammkapital #euro(stammkapital) + Gründungskosten #euro(founding-costs-min)-#euro(founding-costs-max))
     ]
   ],
 )
@@ -581,7 +802,7 @@ Bambini macht Schluss mit dem Antrag-Chaos:
   stroke: (left: 4pt + accent),
 )[
   Bambini plant eine *Partnerschaft mit ARAG SE*. Die ARAG möchte unsere Lösung in ihre Kundenreise integrieren. Diese Partnerschaft liefert Kunden mit sehr niedrigen *CAC* und validiert unser Geschäftsmodell.
-] // das hier ggf. nicht so schreiben -> partnerschaft besteht in der Art und Weise noch nicht
+]
 
 #pagebreak()
 
@@ -598,12 +819,12 @@ Bambini macht Schluss mit dem Antrag-Chaos:
     columns: (1fr, 1fr),
     column-gutter: 20pt,
     [
-      #text(size: 28pt, weight: "bold", fill: danger)[80 Mrd. €]
+      #text(size: 28pt, weight: "bold", fill: danger)[#family-budget-billion Mrd. €]
       #v(-2pt)
       Jährliches Budget für Familienleistungen in Deutschland
     ],
     [
-      #text(size: 28pt, weight: "bold", fill: danger)[bis zu 70%]
+      #text(size: 28pt, weight: "bold", fill: danger)[bis zu #calc.round(non-takeup-rate * 100)%]
       #v(-2pt)
       Nichtinanspruchnahme durch Komplexität \
       #text(size: 8pt, fill: muted)[(Quelle: BMFSFJ 2021)]
@@ -798,7 +1019,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 
   [Vollständig Digital], [*Ja* (direkter Versand)], [Nein (selbst drucken)], [Nein (selbst drucken)], [Teilweise],
 
-  [Kosten], [*49,99 €* (für alle)], [39,99–89,99 €], [39,99 €], [Kostenlos],
+  [Kosten], [*#euro(product-price)* (für alle)], [39,99–89,99 €], [39,99 €], [Kostenlos],
 
   [Optimale Kombination],
   [#text(fill: success, weight: "bold")[✓]],
@@ -836,7 +1057,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     #align(center)[
       #text(size: 9pt, fill: muted, tracking: 0.5pt, weight: "medium")[GEBURTEN PRO JAHR]
       #v(4pt)
-      #text(size: 40pt, weight: "bold", fill: dark)[685.000]
+      #text(size: 40pt, weight: "bold", fill: dark)[#num(births-per-year)]
       #v(4pt)
       #text(size: 9pt, fill: muted)[in Deutschland]
     ]
@@ -851,7 +1072,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     #align(center)[
       #text(size: 9pt, fill: muted, tracking: 0.5pt, weight: "medium")[SERVICEABLE MARKET]
       #v(4pt)
-      #text(size: 40pt, weight: "bold", fill: primary)[~308.000]
+      #text(size: 40pt, weight: "bold", fill: primary)[~#num(serviceable-market)]
       #v(4pt)
       #text(size: 9pt, fill: muted)[Familien pro Jahr]
     ]
@@ -878,10 +1099,10 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     #v(8pt)
     #text(weight: "bold", size: 12pt, fill: info)[Akademiker & Berufstätige]
     #v(4pt)
-    #text(size: 28pt, weight: "bold")[~171.000] #text(size: 9pt, fill: muted)[Familien/Jahr]
+    #text(size: 28pt, weight: "bold")[~#num(segment-a-size)] #text(size: 9pt, fill: muted)[Familien/Jahr]
 
     #v(5pt)
-    #text(size: 9pt, fill: muted)[25% der neuen Eltern (städtisch, höhere Bildung)]
+    #text(size: 9pt, fill: muted)[#calc.round(segment-a-ratio * 100)% der neuen Eltern (städtisch, höhere Bildung)]
     #v(8pt)
 
     - Zeit ist wertvoller als Geld
@@ -904,10 +1125,10 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     #v(8pt)
     #text(weight: "bold", size: 12pt, fill: primary)[Menschen mit Sprachbarrieren]
     #v(4pt)
-    #text(size: 28pt, weight: "bold")[~137.000] #text(size: 9pt, fill: muted)[Familien/Jahr]
+    #text(size: 28pt, weight: "bold")[~#num(segment-b-size)] #text(size: 9pt, fill: muted)[Familien/Jahr]
 
     #v(5pt)
-    #text(size: 9pt, fill: muted)[20% der neuen Eltern (Geburtenrate: 1,84 vs. 1,23)]
+    #text(size: 9pt, fill: muted)[#calc.round(segment-b-ratio * 100)% der neuen Eltern (Geburtenrate: 1,84 vs. 1,23)]
     #v(8pt)
 
     - Schwer verständliche Bürokratie
@@ -948,7 +1169,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 
   #align(center)[
     #v(18pt)
-    #text(size: 48pt, weight: "bold", fill: primary)[49,99 €]
+    #text(size: 48pt, weight: "bold", fill: primary)[#euro(product-price)]
     #v(2pt)
     #text(size: 12pt, fill: muted)[Einmalzahlung · Kein Abo · Alles inklusive]
     #v(15pt)
@@ -976,7 +1197,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 
 #align(center)[
   #text(size: 10.5pt, style: "italic", fill: muted)[
-    "Familien bekommen im Durchschnitt €1.500+/Monat an staatlichen Leistungen (Elterngeld + Kindergeld). Bambini kostet einmalig €49,99 #sym.arrow #text(fill: success, weight: "bold")[3,3% für jahrelange Ersparnisse]."
+    "Familien bekommen im Durchschnitt €1.500+/Monat an staatlichen Leistungen (Elterngeld + Kindergeld). Bambini kostet einmalig #euro(product-price) #sym.arrow #text(fill: success, weight: "bold")[#pct(product-price / 1500 * 100) für jahrelange Ersparnisse]."
 
   ]
 ]
@@ -1001,12 +1222,12 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
       columns: (1fr, auto),
       stroke: none,
       inset: 5pt,
-      [Hosting (Vercel)], [4 €],
-      [Supabase], [0 € (Free Tier)],
-      [Entwicklung (Tools, APIs)], [90 €],
-      [QES (Signatur)], [15 €],
+      [Hosting (Vercel)], [#euro(cost-hosting)],
+      [Supabase], [#euro(cost-supabase) (Free Tier)],
+      [Entwicklung (Tools, APIs)], [#euro(cost-dev-tools)],
+      [QES (Signatur)], [#euro(cost-qes-monthly)],
       table.hline(stroke: 0.5pt + surface),
-      [*Gesamt monatlich*], [*109 €*],
+      [*Gesamt monatlich*], [*#euro(monthly-fixed-costs)*],
     )
   ],
 
@@ -1024,17 +1245,17 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
       columns: (1fr, auto),
       stroke: none,
       inset: 5pt,
-      [E-Mail-Hosting], [20 €],
-      [QES-Zertifikat (80€/3J)], [~27 €],
+      [E-Mail-Hosting], [#euro(cost-email-annual)],
+      [QES-Zertifikat (80€/3J)], [~#euro(cost-qes-annual)],
       table.hline(stroke: 0.5pt + surface),
-      [*Gesamt jährlich*], [*~1.355 €*],
+      [*Gesamt jährlich*], [*~#euro(annual-fixed-costs)*],
     )
   ],
 )
 
 == Break-Even-Analyse
 
-#highlight-box(title: "Break-Even: 3 Kunden pro Monat", color: success)[
+#highlight-box(title: [Break-Even: #break-even-monthly Kunden pro Monat], color: success)[
   #grid(
     columns: (1fr, 1fr, 1fr),
     column-gutter: 15pt,
@@ -1042,33 +1263,32 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     [
       #text(size: 9pt, fill: muted, tracking: 0.3pt)[MONATL. FIXKOSTEN]
       #v(2pt)
-      #text(size: 18pt, weight: "bold")[109 €]
+      #text(size: 18pt, weight: "bold")[#euro(monthly-fixed-costs)]
     ],
     [
       #text(size: 9pt, fill: muted, tracking: 0.3pt)[PREIS PRO KUNDE]
       #v(2pt)
-      #text(size: 18pt, weight: "bold")[49,99 €]
+      #text(size: 18pt, weight: "bold")[#euro(product-price)]
     ],
     [
       #text(size: 9pt, fill: muted, tracking: 0.3pt)[BREAK-EVEN]
       #v(2pt)
-      #text(size: 18pt, weight: "bold", fill: success)[3 Kunden]
+      #text(size: 18pt, weight: "bold", fill: success)[#break-even-monthly Kunden]
     ],
   )
 
   #v(10pt)
 
-  Bei der aktuellen Kostenstruktur ist Bambini ab dem *3. zahlenden Kunden auf den Monat gerechnet* operativ profitabel.
+  Bei der aktuellen Kostenstruktur ist Bambini ab dem *#break-even-monthly. zahlenden Kunden auf den Monat gerechnet* operativ profitabel.
 ]
 
 // ═══════════════════════════════════════════════════════════════════════════
 // KUMULATIVER BREAK-EVEN (kompakt, mit Liniendiagramm)
-// Einfügen nach der monatlichen Break-Even-Analyse
 // ═══════════════════════════════════════════════════════════════════════════
 
 == Kumulativer Break-Even: Gesamtprofitabilität
 
-Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten. Für die *Gesamtprofitabilität* müssen initiale Investitionen und Marketingkosten (CAC) einbezogen werden. Der kumulative Break-Point – ab dem alle Anfangsinvestitionen amortisiert sind – wird mit ca. *47 zahlenden Kunden* erreicht:
+Die monatliche Break-Even-Rechnung (#break-even-monthly Kunden) betrachtet nur laufende Fixkosten. Für die *Gesamtprofitabilität* müssen initiale Investitionen und Marketingkosten (CAC) einbezogen werden. Der kumulative Break-Point – ab dem alle Anfangsinvestitionen amortisiert sind – wird mit ca. *47 zahlenden Kunden* erreicht:
 
 #v(0.5em)
 
@@ -1099,15 +1319,11 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
   #v(12pt)
 
   // Graph area - Skalierung: -5k bis 90k = 95k Bereich, 130pt Höhe
-  // Formel: y_pt = (90000 - wert) / 95000 * 130pt
-  // Bei 90k: (90000-90000)/95000*130 = 0pt (oben)
-  // Bei 0:   (90000-0)/95000*130 = 123pt
-  // Bei -5k: (90000-(-5000))/95000*130 = 130pt (unten)
   #grid(
     columns: (30pt, 1fr, 45pt),
     column-gutter: 8pt,
 
-    // Y-axis - 5 Stufen: 90k, 60k, 30k, 0, -5k
+    // Y-axis
     align(right)[
       #text(size: 7pt, fill: muted)[90k] #v(36pt)
       #text(size: 7pt, fill: muted)[60k] #v(36pt)
@@ -1116,95 +1332,91 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
       #text(size: 7pt, fill: muted)[-5k]
     ],
 
-    // Chart - größere Höhe für bessere Differenzierung
+    // Chart
     box(width: 100%, height: 130pt, clip: true)[
-      // Background grid (4 Linien bei 90k, 60k, 30k, 0)
+      // Background grid
       #place(dy: 0pt)[#line(length: 100%, stroke: 0.3pt + surface)]
       #place(dy: 41pt)[#line(length: 100%, stroke: 0.3pt + surface)]
       #place(dy: 82pt)[#line(length: 100%, stroke: 0.3pt + surface)]
       #place(dy: 123pt)[#line(length: 100%, stroke: 0.8pt + dark.lighten(50%))]
 
-      // Revenue line (green) - Umsatz kumuliert
-      // Werte: M0=0, M1=1.5k, M2=3.5k, M3=6k, M4=10k, M5=15k, M6=21k, M7=28.5k, M8=37k, M9=46k, M10=58.5k, M11=72k, M12=86k
-      // Formel: y = (90000 - wert) / 95000 * 130
+      // Revenue line (green)
       #place()[
         #path(
           fill: none,
           stroke: 2pt + success,
-          (0%, 123pt), // M0: 0
-          (8.3%, 121pt), // M1: 1.5k
-          (16.6%, 118pt), // M2: 3.5k
-          (25%, 115pt), // M3: 6k
-          (33.3%, 109pt), // M4: 10k
-          (41.6%, 102pt), // M5: 15k
-          (50%, 94pt), // M6: 21k
-          (58.3%, 84pt), // M7: 28.5k
-          (66.6%, 72pt), // M8: 37k
-          (75%, 60pt), // M9: 46k
-          (83.3%, 43pt), // M10: 58.5k
-          (91.6%, 25pt), // M11: 72k
-          (100%, 5pt), // M12: 86k
+          (0%, 123pt),
+          (8.3%, 121pt),
+          (16.6%, 118pt),
+          (25%, 115pt),
+          (33.3%, 109pt),
+          (41.6%, 102pt),
+          (50%, 94pt),
+          (58.3%, 84pt),
+          (66.6%, 72pt),
+          (75%, 60pt),
+          (83.3%, 43pt),
+          (91.6%, 25pt),
+          (100%, 5pt),
         )
       ]
 
-      // Cost line (red) - Kosten kumuliert
-      // Werte: M0=3.7k, M1=4.2k, M2=4.8k, M3=5.6k, M4=6.7k, M5=8.1k, M6=9.8k, M7=11.9k, M8=14.2k, M9=16.6k, M10=20k, M11=23.6k, M12=27.3k
+      // Cost line (red)
       #place()[
         #path(
           fill: none,
           stroke: 2pt + danger,
-          (0%, 118pt), // M0: 3.7k
-          (8.3%, 117pt), // M1: 4.2k
-          (16.6%, 116pt), // M2: 4.8k
-          (25%, 115pt), // M3: 5.6k
-          (33.3%, 114pt), // M4: 6.7k
-          (41.6%, 112pt), // M5: 8.1k
-          (50%, 110pt), // M6: 9.8k
-          (58.3%, 107pt), // M7: 11.9k
-          (66.6%, 104pt), // M8: 14.2k
-          (75%, 100pt), // M9: 16.6k
-          (83.3%, 96pt), // M10: 20k
-          (91.6%, 91pt), // M11: 23.6k
-          (100%, 86pt), // M12: 27.3k
+          (0%, 118pt),
+          (8.3%, 117pt),
+          (16.6%, 116pt),
+          (25%, 115pt),
+          (33.3%, 114pt),
+          (41.6%, 112pt),
+          (50%, 110pt),
+          (58.3%, 107pt),
+          (66.6%, 104pt),
+          (75%, 100pt),
+          (83.3%, 96pt),
+          (91.6%, 91pt),
+          (100%, 86pt),
         )
       ]
 
-      // Profit line (purple) - Umsatz minus Kosten (Ergebnis)
-      // Werte: M0=-3.7k, M1=-2.7k, M2=-1.3k, M3=+0.4k, M4=+3.3k, M5=+6.9k, M6=+11.2k, M7=+16.6k, M8=+22.8k, M9=+29.4k, M10=+38.5k, M11=+48.4k, M12=+58.7k
+      // Profit line (purple)
       #place()[
         #path(
           fill: none,
           stroke: 2.5pt + primary,
-          (0%, 128pt), // M0: -3.7k
-          (8.3%, 127pt), // M1: -2.7k
-          (16.6%, 125pt), // M2: -1.3k
-          (25%, 122pt), // M3: +0.4k (Break-Even!)
-          (33.3%, 119pt), // M4: +3.3k
-          (41.6%, 114pt), // M5: +6.9k
-          (50%, 108pt), // M6: +11.2k
-          (58.3%, 100pt), // M7: +16.6k
-          (66.6%, 92pt), // M8: +22.8k
-          (75%, 83pt), // M9: +29.4k
-          (83.3%, 70pt), // M10: +38.5k
-          (91.6%, 57pt), // M11: +48.4k
-          (100%, 43pt), // M12: +58.7k
+          (0%, 128pt),
+          (8.3%, 127pt),
+          (16.6%, 125pt),
+          (25%, 122pt),
+          (33.3%, 119pt),
+          (41.6%, 114pt),
+          (50%, 108pt),
+          (58.3%, 100pt),
+          (66.6%, 92pt),
+          (75%, 83pt),
+          (83.3%, 70pt),
+          (91.6%, 57pt),
+          (100%, 43pt),
         )
       ]
 
-      // Break-even marker (bei Monat 3, ca. 25% horizontal, an der 0-Linie)
+      // Break-even marker
       #place(dx: 24%, dy: 120pt)[
         #circle(radius: 4pt, fill: white, stroke: 2pt + success)
       ]
     ],
 
-    // End value labels (rechte Spalte)
+    // End value labels
     align(left)[
       #v(2pt)
-      #text(size: 7pt, fill: success, weight: "bold")[86k €]
+      #text(size: 7pt, fill: success, weight: "bold")[#euro-compact(revenue-year1)]
       #v(30pt)
-      #text(size: 7pt, fill: primary, weight: "bold")[+59k €]
+      #text(size: 7pt, fill: primary, weight: "bold")[+#euro-compact(profit-year1)]
       #v(40pt)
-      #text(size: 7pt, fill: danger)[27k €]
+      #text(size: 7pt, fill: danger)[#euro-compact(total-costs-year1)]
     ],
   )
 
@@ -1239,7 +1451,7 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
     #align(center)[
       #text(size: 8pt, fill: muted)[INITIALE KOSTEN]
       #v(2pt)
-      #text(size: 14pt, weight: "bold")[1.164 €]
+      #text(size: 14pt, weight: "bold")[#euro(founding-costs-max)]
     ]
   ],
 
@@ -1255,7 +1467,7 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
     #align(center)[
       #text(size: 8pt, fill: muted)[GEWINN JAHR 1]
       #v(2pt)
-      #text(size: 14pt, weight: "bold", fill: success)[+59.000 €]
+      #text(size: 14pt, weight: "bold", fill: success)[+#euro-compact(profit-year1)]
     ]
   ],
 
@@ -1263,14 +1475,14 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
     #align(center)[
       #text(size: 8pt, fill: muted)[CAC Mnt. 1-3]
       #v(2pt)
-      #text(size: 14pt, weight: "bold")[18 €]
+      #text(size: 14pt, weight: "bold")[#euro(cac-q1)]
     ]
   ],
 )
 
 #v(0.8em)
 
-// Hinweis Personalkosten - kompakt
+// Hinweis Personalkosten
 #box(
   fill: accent.lighten(92%),
   inset: 12pt,
@@ -1297,7 +1509,7 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
 == Ziel-CAC
 
 #box(fill: light-bg, inset: 16pt, radius: 8pt, width: 100%)[
-  #metric-row([Produktpreis], [*49,99 €*])
+  #metric-row([Produktpreis], [*#euro(product-price)*])
   #metric-row([Ziel-CAC (Maximum)], [*< 30 €*])
   #metric-row([Optimaler CAC], [*15–20 €*])
   #metric-row([CAC:LTV-Verhältnis (Ziel)], [*1:2 bis 1:3*])
@@ -1317,7 +1529,7 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
   table.cell(fill: primary)[#text(fill: white, weight: "bold")[Empfehlung]],
 
   [ARAG-Partnerschaft],
-  [*0 €*],
+  [*#euro(cac-arag)*],
   [Sofort (März 2026)],
   [#text(fill: success, weight: "bold")[✓ Strategisch am wertvollsten]],
 
@@ -1325,7 +1537,7 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
 
   [Meta/Instagram Ads], [20–35 €], [Sofort], [#text(fill: success)[✓ Ergänzungskanal]],
 
-  [SEO/Content], [~0 €], [6–12 Monate], [#text(fill: success)[✓ Langfristig aufbauen]],
+  [SEO/Content], [~#euro(cac-seo)], [6–12 Monate], [#text(fill: success)[✓ Langfristig aufbauen]],
 
   [Referral-Programm], [10–20 €], [Nach 50–100 Kunden], [#text(fill: success)[✓ Nach erster Kundenbasis]],
 
@@ -1374,7 +1586,7 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
 == Blended CAC mit Kanal-Mix
 
 #highlight-box(color: success)[
-  #text(weight: "bold", size: 12pt)[Realistischer Kanal-Mix ergibt Blended CAC von ~13 €]
+  #text(weight: "bold", size: 12pt)[Realistischer Kanal-Mix ergibt Blended CAC von ~#euro(calc.round(blended-cac))]
 
   #v(10pt)
 
@@ -1384,13 +1596,13 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
     inset: 8pt,
     fill: (x, y) => if y == 0 { success.lighten(80%) } else { none },
     [*Kanal*], [*Anteil*], [*CAC*], [*Gewichtet*],
-    [ARAG-Partnerschaft], [25%], [0 €], [0,00 €],
-    [TikTok Ads], [30%], [20 €], [6,00 €],
-    [Meta Ads], [20%], [28 €], [5,60 €],
-    [SEO/Organic], [10%], [0 €], [0,00 €],
-    [Referrals], [15%], [12 €], [1,80 €],
+    [ARAG-Partnerschaft], [#pct(share-arag * 100)], [#euro(cac-arag)], [#euro(cac-arag * share-arag)],
+    [TikTok Ads], [#pct(share-tiktok * 100)], [#euro(cac-tiktok)], [#euro(cac-tiktok * share-tiktok)],
+    [Meta Ads], [#pct(share-meta * 100)], [#euro(cac-meta)], [#euro(cac-meta * share-meta)],
+    [SEO/Organic], [#pct(share-seo * 100)], [#euro(cac-seo)], [#euro(cac-seo * share-seo)],
+    [Referrals], [#pct(share-referral * 100)], [#euro(cac-referral)], [#euro(cac-referral * share-referral)],
     table.hline(stroke: 1.5pt + success),
-    [*Blended CAC*], [*100%*], [], [*~13 €*],
+    [*Blended CAC*], [*100%*], [], [*~#euro(calc.round(blended-cac))*],
   )
 ]
 
@@ -1420,11 +1632,11 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
   table.cell(fill: primary)[#text(fill: white, weight: "bold")[Umsatz]],
   table.cell(fill: primary)[#text(fill: white, weight: "bold")[Ergebnis]],
 
-  [Monate 1–3], [120], [18 €], [2.160 €], [6.000 €], [+3.840 €],
-  [Monate 4–6], [300], [15 €], [4.500 €], [15.000 €], [+10.500 €],
-  [Monate 7–9], [500], [13 €], [6.500 €], [25.000 €], [+18.500 €],
-  [Monate 10–12], [800], [11 €], [8.800 €], [40.000 €], [+31.200 €],
-  [*Jahr 1 Gesamt*], [*1.720*], [*13 €*], [*22.000 €*], [*86.000 €*], [*+64.000 €*],
+  [Monate 1–3], [#customers-q1], [#euro(cac-q1)], [#euro(marketing-q1)], [#euro(revenue-q1)], [+#euro(result-q1)],
+  [Monate 4–6], [#customers-q2], [#euro(cac-q2)], [#euro(marketing-q2)], [#euro(revenue-q2)], [+#euro(result-q2)],
+  [Monate 7–9], [#customers-q3], [#euro(cac-q3)], [#euro(marketing-q3)], [#euro(revenue-q3)], [+#euro(result-q3)],
+  [Monate 10–12], [#customers-q4], [#euro(cac-q4)], [#euro(marketing-q4)], [#euro(revenue-q4)], [+#euro(result-q4)],
+  [*Jahr 1 Gesamt*], [*#customers-year1*], [*#euro(calc.round(weighted-cac-year1))*], [*#euro(marketing-year1)*], [*#euro(revenue-year1)*], [*+#euro(profit-year1)*],
 )
 
 == Szenario-Vergleich
@@ -1447,10 +1659,10 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
       #text(size: 8pt, fill: muted)[(Nur Paid Ads)]
       #v(12pt)
       #text(size: 9pt, fill: muted)[Kunden Y1] \
-      #text(size: 20pt, weight: "bold")[1.280]
+      #text(size: 20pt, weight: "bold")[#num(customers-conservative)]
       #v(4pt)
-      #text(size: 9pt, fill: muted)[Umsatz:] *64.000 €* \
-      #text(size: 9pt, fill: muted)[Gewinn:] *+30.800 €*
+      #text(size: 9pt, fill: muted)[Umsatz:] *#euro-compact(revenue-conservative)* \
+      #text(size: 9pt, fill: muted)[Gewinn:] *+#euro-compact(profit-conservative)*
     ]
   ],
 
@@ -1468,10 +1680,10 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
       #text(size: 8pt, fill: muted)[(Mit ARAG + Referrals)]
       #v(12pt)
       #text(size: 9pt, fill: muted)[Kunden Y1] \
-      #text(size: 20pt, weight: "bold", fill: success)[1.720]
+      #text(size: 20pt, weight: "bold", fill: success)[#num(customers-year1)]
       #v(4pt)
-      #text(size: 9pt, fill: muted)[Umsatz:] *86.000 €* \
-      #text(size: 9pt, fill: muted)[Gewinn:] *+64.000 €*
+      #text(size: 9pt, fill: muted)[Umsatz:] *#euro-compact(revenue-year1)* \
+      #text(size: 9pt, fill: muted)[Gewinn:] *+#euro-compact(profit-year1)*
     ]
   ],
 
@@ -1489,10 +1701,10 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
       #text(size: 8pt, fill: muted)[(Starke Virality)]
       #v(12pt)
       #text(size: 9pt, fill: muted)[Kunden Y1] \
-      #text(size: 20pt, weight: "bold")[2.500]
+      #text(size: 20pt, weight: "bold")[#num(customers-optimistic)]
       #v(4pt)
-      #text(size: 9pt, fill: muted)[Umsatz:] *125.000 €* \
-      #text(size: 9pt, fill: muted)[Gewinn:] *+100.000 €*
+      #text(size: 9pt, fill: muted)[Umsatz:] *#euro-compact(revenue-optimistic)* \
+      #text(size: 9pt, fill: muted)[Gewinn:] *+#euro-compact(profit-optimistic)*
     ]
   ],
 )
@@ -1512,26 +1724,16 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
   table.cell(fill: primary)[#text(fill: white, weight: "bold")[Umsatz]],
   table.cell(fill: primary)[#text(fill: white, weight: "bold")[Kum. Gewinn]],
 
-  [Jahr 1], [0,6%], [1.720], [86.000 €], [64.000 €],
-  [Jahr 2], [1,5%], [4.620], [231.000 €], [~180.000 €],
-  [Jahr 3], [3,0%], [9.240], [462.000 €], [~400.000 €],
+  [Jahr 1], [#pct(market-share-year1)], [#num(customers-year1)], [#euro-compact(revenue-year1)], [#euro-compact(profit-year1)],
+  [Jahr 2], [#pct(market-share-year2)], [#num(customers-year2)], [#euro-compact(revenue-year2)], [~180.000 €],
+  [Jahr 3], [#pct(market-share-year3)], [#num(customers-year3)], [#euro-compact(revenue-year3)], [~400.000 €],
 )
 #v(-0.8em)
 #text(size: 8pt, fill: muted)[
-  Annahmen: Konstanter Preis 49,99 €, sinkender CAC durch Brand Awareness und Referrals, Serviceable Market 308.000 Familien/Jahr
+  Annahmen: Konstanter Preis #euro(product-price), sinkender CAC durch Brand Awareness und Referrals, Serviceable Market #num(serviceable-market) Familien/Jahr
 ]
 
 #pagebreak()
-
-// ============================================================================
-// FINANZIERUNGSBEDARF
-// ============================================================================
-
-
-
-
-
-
 
 // ============================================================================
 // ROADMAP
@@ -1646,7 +1848,6 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
   )
 
   #v(12pt)
-  // Mehrsprachigkeit sollte eigenltich nicht erst in KW 23+ kommen
 
   #table(
     columns: (auto, 1fr),
@@ -1771,7 +1972,7 @@ Die vertikale Expansion vertieft den Service pro Leistungsart – vom reinen Ant
 
     [2],
     [Mehrsprachigkeit],
-    [Zugang für 137.000+ Familien mit Sprachbarrieren],
+    [Zugang für #num(segment-b-size)+ Familien mit Sprachbarrieren],
 
     [3],
     [Widerspruch & Klage],
@@ -1917,17 +2118,17 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
 
 === Preismodell & Beispielrechnung
 
-*Hybrid-Ansatz (In Validierung):* Jahrespauschale (3–5 € PEPY) + Nutzungsgebühr (25–35 € pro Fall).
+*Hybrid-Ansatz (In Validierung):* Jahrespauschale (#b2b-pepy–5 € PEPY) + Nutzungsgebühr (#b2b-case-fee–35 € pro Fall).
 
 #box(fill: primary.lighten(95%), inset: 12pt, radius: 6pt, width: 100%)[
-  *Beispielrechnung: Unternehmen mit 200 Mitarbeitern*
-  - Jahrespauschale: 200 × 4 € = *800 €*
-  - Nutzung (angenommen 12 Fälle): 12 × 25 € = *300 €*
-  - *Gesamt: ~1.100 €/Jahr*
+  *Beispielrechnung: Unternehmen mit #b2b-example-employees Mitarbeitern*
+  - Jahrespauschale: #b2b-example-employees × #euro(b2b-pepy) = *#euro(b2b-example-annual)*
+  - Nutzung (angenommen #b2b-example-cases Fälle): #b2b-example-cases × #euro(b2b-case-fee) = *#euro(b2b-example-usage)*
+  - *Gesamt: ~#euro(b2b-example-total)/Jahr*
 
   #v(4pt)
   #text(size: 8pt, fill: muted)[
-    Vergleich: Externe Elterngeldberatung kostet 549 € pro Familie #footnote[Einfach Elterngeld Premium: €549 pro Familie, 2025.] (= 6.588 € für 12 Fälle).
+    Vergleich: Externe Elterngeldberatung kostet 549 € pro Familie #footnote[Einfach Elterngeld Premium: €549 pro Familie, 2025.] (= #euro(549 * b2b-example-cases) für #b2b-example-cases Fälle).
   ]
 ]
 #pagebreak()
@@ -1963,16 +2164,16 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
     columns: (2fr, 1fr),
     column-gutter: 15pt,
     [
-      *B2C-Fokus:* 1.000 Kunden × 49,99 € \
-      *B2B-Piloten (5–8 Unternehmen):* Ø 8 × 1.100 € \
+      *B2C-Fokus:* #num(b2c-year1-customers) Kunden × #euro(product-price) \
+      *B2B-Piloten (#b2b-pilot-companies Unternehmen):* Ø #b2b-pilot-companies × #euro(b2b-example-total) \
       #v(4pt)
       #text(weight: "bold", size: 11pt)[Gesamt Jahr 1 (Hybrid)]
     ],
     [
-      50.000 € \
-      8.800 € \
+      #euro(b2c-pilot-revenue) \
+      #euro(b2b-pilot-revenue) \
       #v(4pt)
-      #text(weight: "bold", size: 11pt, fill: success)[58.800 €]
+      #text(weight: "bold", size: 11pt, fill: success)[#euro(hybrid-year1-revenue)]
     ],
   )
   #v(6pt)
@@ -2065,12 +2266,10 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
     #v(6pt)
     #text(size: 9pt, fill: muted)[
       Entstanden an der Bucerius Law School im Rahmen des Hamburg Legal Hackathon 2025
-      unter dem Motto „Access to Justice“.
+      unter dem Motto „Access to Justice".
     ]
 
     #v(15pt)
-
-    // --- Hier dein ursprünglicher Screenshot-Block 1:1 ---
 
     #grid(
       columns: (1fr, 1fr),
@@ -2153,7 +2352,7 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
   box(fill: white, inset: 16pt, radius: 10pt, stroke: 1pt + success.lighten(50%), width: 100%)[
     #text(fill: success, weight: "bold", size: 11pt)[✓ Validiertes Problem]
     #v(6pt)
-    80 Mrd. € für Familien, bis zu 70% kommen nicht an
+    #family-budget-billion Mrd. € für Familien, bis zu #calc.round(non-takeup-rate * 100)% kommen nicht an
   ],
 
   box(fill: white, inset: 16pt, radius: 10pt, stroke: 1pt + success.lighten(50%), width: 100%)[
@@ -2165,13 +2364,13 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
   box(fill: white, inset: 16pt, radius: 10pt, stroke: 1pt + success.lighten(50%), width: 100%)[
     #text(fill: success, weight: "bold", size: 11pt)[✓ Außergewöhnliche Unit Economics]
     #v(6pt)
-    Break-Even bei 3 Kunden/Monat, CAC ~13 €
+    Break-Even bei #break-even-monthly Kunden/Monat, CAC ~#euro(calc.round(blended-cac))
   ],
 
   box(fill: white, inset: 16pt, radius: 10pt, stroke: 1pt + success.lighten(50%), width: 100%)[
     #text(fill: success, weight: "bold", size: 11pt)[✓ Skalierbares Modell]
     #v(6pt)
-    308.000 Familien/Jahr Serviceable Market
+    #num(serviceable-market) Familien/Jahr Serviceable Market
   ],
 )
 
@@ -2186,7 +2385,7 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
 )[
   #align(center)[
     #text(size: 14pt, weight: "bold", fill: primary-dark)[
-      Wir suchen ca. 14.000 € für die GmbH-Gründung und initiales Wachstum.
+      Wir suchen ca. #euro-compact(total-capital-max) für die GmbH-Gründung und initiales Wachstum.
     ]
 
     #v(15pt)
@@ -2200,21 +2399,21 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
       column-gutter: 10pt,
       box(fill: white, inset: 12pt, radius: 8pt, width: 100%, stroke: 1pt + primary.lighten(70%))[
         #align(center)[
-          #text(size: 22pt, weight: "bold", fill: primary)[1.720]
+          #text(size: 22pt, weight: "bold", fill: primary)[#num(customers-year1)]
           #v(2pt)
           #text(size: 9pt, fill: muted)[Kunden im ersten Jahr]
         ]
       ],
       box(fill: white, inset: 12pt, radius: 8pt, width: 100%, stroke: 1pt + primary.lighten(70%))[
         #align(center)[
-          #text(size: 22pt, weight: "bold", fill: primary)[86.000 €]
+          #text(size: 22pt, weight: "bold", fill: primary)[#euro-compact(revenue-year1)]
           #v(2pt)
           #text(size: 9pt, fill: muted)[Umsatz Jahr 1]
         ]
       ],
       box(fill: white, inset: 12pt, radius: 8pt, width: 100%, stroke: 1pt + primary.lighten(70%))[
         #align(center)[
-          #text(size: 22pt, weight: "bold", fill: primary)[64.000 €]
+          #text(size: 22pt, weight: "bold", fill: primary)[#euro-compact(profit-year1)]
           #v(2pt)
           #text(size: 9pt, fill: muted)[Gewinn Jahr 1]
         ]
