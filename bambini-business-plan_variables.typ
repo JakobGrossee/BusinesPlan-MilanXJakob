@@ -99,13 +99,11 @@
 #let total-capital-min = stammkapital + founding-costs-min
 #let total-capital-max = stammkapital + founding-costs-max
 
-
+// ─── Break-Even ──────────────────────────────────────────────────────────────
+#let break-even-monthly = calc.ceil(monthly-fixed-costs / product-price)
 
 // ─── Blended CAC ─────────────────────────────────────────────────────────────
 #let blended-cac = (cac-arag * share-arag) + (cac-tiktok * share-tiktok) + (cac-meta * share-meta) + (cac-seo * share-seo) + (cac-referral * share-referral)
-
-// ─── Break-Even ──────────────────────────────────────────────────────────────
-#let break-even-monthly = calc.ceil(monthly-fixed-costs / product-price - blended-cac)
 
 // ─── Kundenprognose Jahr 1 ───────────────────────────────────────────────────
 #let customers-year1 = customers-q1 + customers-q2 + customers-q3 + customers-q4
@@ -1099,12 +1097,12 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
       #text(fill: white, weight: "bold", size: 9pt)[SEGMENT A]
     ]
     #v(8pt)
-    #text(weight: "bold", size: 12pt, fill: info)[Akademiker & Berufstätige]
+    #text(weight: "bold", size: 12pt, fill: info)[Akademikerfamilien]
     #v(4pt)
     #text(size: 28pt, weight: "bold")[~#num(segment-a-size)] #text(size: 9pt, fill: muted)[Familien/Jahr]
 
     #v(5pt)
-    #text(size: 9pt, fill: muted)[#calc.round(segment-a-ratio * 100)% der neuen Eltern (städtisch, höhere Bildung)]
+    #text(size: 9pt, fill: muted)[#calc.round(segment-a-ratio * 100)% der neuen Eltern]
     #v(8pt)
 
     - Zeit ist wertvoller als Geld
@@ -1257,7 +1255,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 
 == Break-Even-Analyse
 
-#highlight-box(title: [Break-Even: #break-even-monthly Kunden pro Monat], color: success)[
+#highlight-box(title: [monatlicher Break-Even: #break-even-monthly ab 3 zahlenden Kunden], color: success)[
   #grid(
     columns: (1fr, 1fr, 1fr),
     column-gutter: 15pt,
