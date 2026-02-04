@@ -100,7 +100,7 @@
 #let total-capital-max = stammkapital + founding-costs-max
 
 // ─── Break-Even ──────────────────────────────────────────────────────────────
-#let break-even-monthly = calc.ceil(monthly-fixed-costs / product-price - ((cac-q1 + cac-q2 + cac-q3 + cac-q4) / 4 ))
+#let break-even-monthly = calc.ceil(monthly-fixed-costs / product-price - blended-cac)
 
 // ─── Blended CAC ─────────────────────────────────────────────────────────────
 #let blended-cac = (cac-arag * share-arag) + (cac-tiktok * share-tiktok) + (cac-meta * share-meta) + (cac-seo * share-seo) + (cac-referral * share-referral)
