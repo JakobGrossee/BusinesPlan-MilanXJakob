@@ -99,14 +99,11 @@
 #let total-capital-min = stammkapital + founding-costs-min
 #let total-capital-max = stammkapital + founding-costs-max
 
-// ─── Break-Even ──────────────────────────────────────────────────────────────
-#let break-even-monthly = calc.ceil(monthly-fixed-costs / product-price)
-
 // ─── Blended CAC ─────────────────────────────────────────────────────────────
 #let blended-cac = (cac-arag * share-arag) + (cac-tiktok * share-tiktok) + (cac-meta * share-meta) + (cac-seo * share-seo) + (cac-referral * share-referral)
 
 // ─── Break-Even ──────────────────────────────────────────────────────────────
-#let break-even-monthly = calc.ceil(monthly-fixed-costs / product-price - blended-cac)
+#let break-even-monthly = calc.ceil(monthly-fixed-costs / (product-price - blended-cac))
 
 // ─── Kundenprognose Jahr 1 ───────────────────────────────────────────────────
 #let customers-year1 = customers-q1 + customers-q2 + customers-q3 + customers-q4
@@ -1456,7 +1453,7 @@ Die monatliche Break-Even-Rechnung (#break-even-monthly Kunden) betrachtet nur l
 
 // Compact KPI row
 #grid(
-  columns: (1fr, 1fr, 1fr, 1fr, 1fr),
+  columns: (1fr, 1fr, 1fr, 1fr),
   column-gutter: 8pt,
 
   box(fill: light-bg, inset: 10pt, radius: 6pt, width: 100%)[
