@@ -29,12 +29,12 @@
 #let cost-qes-annual = 27           // QES-Zertifikat (80€/3J ≈ 27€/Jahr)
 
 // ─── Gründungskosten (Min/Max) ───────────────────────────────────────────────
-#let cost-notar-min = 681
+#let cost-notar-min = 698
 #let cost-notar-max = 850
-#let cost-handelsregister-min = 150
-#let cost-handelsregister-max = 250
-#let cost-gewerbe-min = 30
-#let cost-gewerbe-max = 45
+#let cost-handelsregister-min = 100
+#let cost-handelsregister-max = 100
+#let cost-gewerbe-min = 100
+#let cost-gewerbe-max = 125
 #let cost-transparenz = 19.80       // Transparenzregister (fix)
 #let stammkapital = 12500           // GmbH Stammkapital
 
@@ -1341,7 +1341,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 
 #import "@preview/lilaq:0.4.0" as lq
 
-Der kumulative Break-Even-Point – ab dem alle Anfangsinvestitionen amortisiert sind – wird mit ca. *47 zahlenden Kunden* erreicht. Dies berücksichtigt initiale Investitionen und Marketingkosten (CAC). Die monatliche Break-Even-Rechnung liegt dagegen bereits bei *3 Kunden pro Monat*, da hier nur die laufenden Fixkosten (109 € monatlich) gedeckt werden müssen.
+Der kumulative Break-Even-Point – ab dem alle Anfangsinvestitionen amortisiert sind – wird mit ca. *47 zahlenden Kunden* erreicht. Dies berücksichtigt initiale Investitionen (#euro(founding-costs-max)) und Marketingkosten (Monat 1-3 CAC von #euro(cac-q1)). Die monatliche Break-Even-Rechnung liegt dagegen bereits bei *3 Kunden pro Monat*, da hier nur die laufenden Fixkosten (109 € monatlich) gedeckt werden müssen. 
 
 #v(0.5em)
 
@@ -1357,21 +1357,23 @@ Der kumulative Break-Even-Point – ab dem alle Anfangsinvestitionen amortisiert
 
   #v(12pt)
 
-  // Prepare data arrays for lilaq (months 0-12)
+  // Prepare data arrays for lilaq (months 0-12) - scaled to thousands
   #let months = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
-  #let revenue-values = cumulative-revenue
-  #let costs-values = cumulative-costs
-  #let profit-values = cumulative-profit
+  #let revenue-values = cumulative-revenue.map(v => v / 1000)
+  #let costs-values = cumulative-costs.map(v => v / 1000)
+  #let profit-values = cumulative-profit.map(v => v / 1000)
 
   // Create the chart using lilaq
+  #show lq.selector(lq.grid): hide
   #lq.diagram(
     width: 14cm,
     height: 6cm,
     xlabel: [Monat],
-    ylabel: [Euro (€)],
-    ylim: (0, 30000),
-    ygrid: false,
-    xgrid: false,
+    ylabel: [Euro (€) in Tausend],
+    xlim: (0, 12),
+    ylim: (0, 30),
+    xaxis: (mirror: false),
+    yaxis: (mirror: false),
     
     // Revenue line (green)
     lq.plot(
@@ -1397,7 +1399,7 @@ Der kumulative Break-Even-Point – ab dem alle Anfangsinvestitionen amortisiert
       profit-values, 
       stroke: 2.5pt + primary,
       mark: none,
-      label: [Ergebnis],
+      label: [Gewinn],
     ),
     
 
@@ -1434,46 +1436,6 @@ Der kumulative Break-Even-Point – ab dem alle Anfangsinvestitionen amortisiert
     ],
   )
 ]
-
-#v(0.8em)
-
-// Compact KPI row
-#grid(
-  columns: (1fr, 1fr, 1fr, 1fr),
-  column-gutter: 8pt,
-
-  box(fill: light-bg, inset: 10pt, radius: 6pt, width: 100%)[
-    #align(center)[
-      #text(size: 8pt, fill: muted)[INITIALE KOSTEN]
-      #v(2pt)
-      #text(size: 14pt, weight: "bold")[#euro(founding-costs-max)]
-    ]
-  ],
-
-  box(fill: success.lighten(92%), inset: 10pt, radius: 6pt, width: 100%, stroke: 1pt + success.lighten(50%))[
-    #align(center)[
-      #text(size: 8pt, fill: muted)[BREAK-EVEN]
-      #v(2pt)
-      #text(size: 14pt, weight: "bold", fill: success)[Monat 3]
-    ]
-  ],
-
-  box(fill: light-bg, inset: 10pt, radius: 6pt, width: 100%)[
-    #align(center)[
-      #text(size: 8pt, fill: muted)[GEWINN JAHR 1]
-      #v(2pt)
-      #text(size: 14pt, weight: "bold", fill: success)[+#euro-compact(profit-year1)]
-    ]
-  ],
-
-  box(fill: light-bg, inset: 10pt, radius: 6pt, width: 100%)[
-    #align(center)[
-      #text(size: 8pt, fill: muted)[CAC Mnt. 1-3]
-      #v(2pt)
-      #text(size: 14pt, weight: "bold")[#euro(cac-q1)]
-    ]
-  ],
-)
 
 #v(0.8em)
 
@@ -1522,7 +1484,7 @@ Der kumulative Break-Even-Point – ab dem alle Anfangsinvestitionen amortisiert
 )[
   #text(weight: "bold", fill: accent.darken(20%), size: 9pt)[Hinweis Personalkosten:]
   #h(8pt)
-  #text(size: 8pt)[
+  #text(size: 10pt)[
     Diese Projektion geht von unbezahlter Gründerarbeit in der Startphase aus. Weitere Personalkosten sind insofern nicht geplant.
   ]
 ]
