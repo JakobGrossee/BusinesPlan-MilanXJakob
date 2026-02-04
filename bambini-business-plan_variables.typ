@@ -50,10 +50,10 @@
 #let share-referral = 0.15          // 15%
 
 // ─── Kundenprognose (Quartale) ───────────────────────────────────────────────
-#let customers-q1 = 120             // Monate 1-3
-#let customers-q2 = 300             // Monate 4-6
-#let customers-q3 = 500             // Monate 7-9
-#let customers-q4 = 800             // Monate 10-12
+#let customers-q1 = 50             // Monate 1-3
+#let customers-q2 = customers-q1 * 2.0    // Monate 4-6 (+100%)
+#let customers-q3 = customers-q2 * 1.7    // Monate 7-9 (+70%)
+#let customers-q4 = customers-q3 * 1.6    // Monate 10-12 (+60%)
 
 #let cac-q1 = 18
 #let cac-q2 = 15
@@ -104,6 +104,9 @@
 
 // ─── Blended CAC ─────────────────────────────────────────────────────────────
 #let blended-cac = (cac-arag * share-arag) + (cac-tiktok * share-tiktok) + (cac-meta * share-meta) + (cac-seo * share-seo) + (cac-referral * share-referral)
+
+// ─── Break-Even ──────────────────────────────────────────────────────────────
+#let break-even-monthly = calc.ceil(monthly-fixed-costs / product-price - blended-cac)
 
 // ─── Kundenprognose Jahr 1 ───────────────────────────────────────────────────
 #let customers-year1 = customers-q1 + customers-q2 + customers-q3 + customers-q4
@@ -193,7 +196,15 @@
   if value >= 1000000 {
     str(calc.round(value / 1000000, digits: 1)) + " Mio. €"
   } else if value >= 1000 {
-    str(calc.round(value / 1000, digits: 0)) + ".000 €"
+    let rounded = calc.round(value)
+    let thousands = calc.floor(rounded / 1000)
+    let remainder = calc.rem(rounded, 1000)
+    let remainder-str = str(remainder)
+    // Pad with zeros
+    while remainder-str.len() < 3 {
+      remainder-str = "0" + remainder-str
+    }
+    str(thousands) + "." + remainder-str + " €"
   } else if value == calc.floor(value) {
     str(calc.round(value)) + " €"
   } else {
@@ -783,7 +794,7 @@ Bambini macht Schluss mit dem Antrag-Chaos:
 
     #text(size: 9pt, fill: muted, tracking: 0.3pt, weight: "bold")[GESAMTKAPITALBEDARF]
     #v(2pt)
-    #text(size: 24pt, weight: "bold", fill: info)[#euro(total-capital-min) – #euro(total-capital-max)]
+    #text(size: 22pt, weight: "bold", fill: info)[#euro(total-capital-min) – #euro(total-capital-max)]
     #v(4pt)
     #text(size: 9pt, fill: muted)[
       (Stammkapital #euro(stammkapital) + Gründungskosten #euro(founding-costs-min)-#euro(founding-costs-max))
@@ -1247,8 +1258,9 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
       inset: 5pt,
       [E-Mail-Hosting], [#euro(cost-email-annual)],
       [QES-Zertifikat (80€/3J)], [~#euro(cost-qes-annual)],
+      [Monatliche Betriebskosten x12], [#euro(monthly-fixed-costs * 12)],
       table.hline(stroke: 0.5pt + surface),
-      [*Gesamt jährlich*], [*~#euro(annual-fixed-costs)*],
+      [*Gesamt jährlich*], [*#euro(annual-fixed-costs)*],
     )
   ],
 )
