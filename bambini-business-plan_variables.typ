@@ -1110,7 +1110,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     #text(size: 28pt, weight: "bold")[~#num(segment-a-size)] #text(size: 9pt, fill: muted)[Familien/Jahr]
 
     #v(5pt)
-    #text(size: 9pt, fill: muted)[#calc.round(segment-a-ratio * 100)% der neuen Eltern]
+    #text(size: 9pt, fill: muted)[#calc.round(segment-a-ratio * 100)% der Familien]
     #v(8pt)
 
     - Zeit ist wertvoller als Geld
@@ -1136,7 +1136,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     #text(size: 28pt, weight: "bold")[~#num(segment-b-size)] #text(size: 9pt, fill: muted)[Familien/Jahr]
 
     #v(5pt)
-    #text(size: 9pt, fill: muted)[#calc.round(segment-b-ratio * 100)% der neuen Eltern (Geburtenrate: 1,84 vs. 1,23)]
+    #text(size: 9pt, fill: muted)[#calc.round(segment-b-ratio * 100)% der Familien (Geburtenrate: 1,84 vs. 1,23)]
     #v(8pt)
 
     - Schwer verständliche Bürokratie
