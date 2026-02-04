@@ -99,11 +99,13 @@
 #let total-capital-min = stammkapital + founding-costs-min
 #let total-capital-max = stammkapital + founding-costs-max
 
-// ─── Break-Even ──────────────────────────────────────────────────────────────
-#let break-even-monthly = calc.ceil(monthly-fixed-costs / product-price - blended-cac)
+
 
 // ─── Blended CAC ─────────────────────────────────────────────────────────────
 #let blended-cac = (cac-arag * share-arag) + (cac-tiktok * share-tiktok) + (cac-meta * share-meta) + (cac-seo * share-seo) + (cac-referral * share-referral)
+
+// ─── Break-Even ──────────────────────────────────────────────────────────────
+#let break-even-monthly = calc.ceil(monthly-fixed-costs / product-price - blended-cac)
 
 // ─── Kundenprognose Jahr 1 ───────────────────────────────────────────────────
 #let customers-year1 = customers-q1 + customers-q2 + customers-q3 + customers-q4
