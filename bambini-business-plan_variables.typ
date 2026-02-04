@@ -2,6 +2,8 @@
 // Refined visual identity with geometric accents and modern typography
 // VERSION MIT VARIABLEN UND AUTOMATISCHEN BERECHNUNGEN
 
+#import "@preview/cetz:0.3.1": canvas, draw
+
 #set document(
   title: "Bambini Business Plan 2026",
   author: "Bambini GmbH (i.Gr.)",
@@ -134,6 +136,74 @@
 
 // ─── Gewichteter CAC Jahr 1 ──────────────────────────────────────────────────
 #let weighted-cac-year1 = marketing-year1 / customers-year1
+
+// ─── Monthly Break-Even Data (für Chart) ────────────────────────────────────
+// Monatliche Kundenverteilung (gleichmäßig über Quartal)
+#let customers-per-month-q1 = customers-q1 / 3
+#let customers-per-month-q2 = customers-q2 / 3
+#let customers-per-month-q3 = customers-q3 / 3
+#let customers-per-month-q4 = customers-q4 / 3
+
+// Monatliche Marketing- und Fixkosten
+#let monthly-marketing-q1 = marketing-q1 / 3
+#let monthly-marketing-q2 = marketing-q2 / 3
+#let monthly-marketing-q3 = marketing-q3 / 3
+#let monthly-marketing-q4 = marketing-q4 / 3
+
+#let monthly-revenue-q1 = revenue-q1 / 3
+#let monthly-revenue-q2 = revenue-q2 / 3
+#let monthly-revenue-q3 = revenue-q3 / 3
+#let monthly-revenue-q4 = revenue-q4 / 3
+
+// Kumulative Werte für jeden Monat (0-12)
+#let cumulative-revenue = (
+  0, // Monat 0 (Start)
+  monthly-revenue-q1,
+  monthly-revenue-q1 * 2,
+  monthly-revenue-q1 * 3, // Ende Q1
+  monthly-revenue-q1 * 3 + monthly-revenue-q2,
+  monthly-revenue-q1 * 3 + monthly-revenue-q2 * 2,
+  revenue-q1 + revenue-q2, // Ende Q2
+  revenue-q1 + revenue-q2 + monthly-revenue-q3,
+  revenue-q1 + revenue-q2 + monthly-revenue-q3 * 2,
+  revenue-q1 + revenue-q2 + revenue-q3, // Ende Q3
+  revenue-q1 + revenue-q2 + revenue-q3 + monthly-revenue-q4,
+  revenue-q1 + revenue-q2 + revenue-q3 + monthly-revenue-q4 * 2,
+  revenue-year1 // Ende Jahr 1
+)
+
+#let cumulative-costs = (
+  founding-costs-max, // Initiale Kosten
+  founding-costs-max + monthly-fixed-costs + monthly-marketing-q1,
+  founding-costs-max + monthly-fixed-costs * 2 + monthly-marketing-q1 * 2,
+  founding-costs-max + monthly-fixed-costs * 3 + marketing-q1, // Ende Q1
+  founding-costs-max + monthly-fixed-costs * 4 + marketing-q1 + monthly-marketing-q2,
+  founding-costs-max + monthly-fixed-costs * 5 + marketing-q1 + monthly-marketing-q2 * 2,
+  founding-costs-max + monthly-fixed-costs * 6 + marketing-q1 + marketing-q2, // Ende Q2
+  founding-costs-max + monthly-fixed-costs * 7 + marketing-q1 + marketing-q2 + monthly-marketing-q3,
+  founding-costs-max + monthly-fixed-costs * 8 + marketing-q1 + marketing-q2 + monthly-marketing-q3 * 2,
+  founding-costs-max + monthly-fixed-costs * 9 + marketing-q1 + marketing-q2 + marketing-q3, // Ende Q3
+  founding-costs-max + monthly-fixed-costs * 10 + marketing-q1 + marketing-q2 + marketing-q3 + monthly-marketing-q4,
+  founding-costs-max + monthly-fixed-costs * 11 + marketing-q1 + marketing-q2 + marketing-q3 + monthly-marketing-q4 * 2,
+  founding-costs-max + annual-fixed-costs + marketing-year1 // Ende Jahr 1
+)
+
+// Kumulativer Gewinn/Verlust
+#let cumulative-profit = (
+  cumulative-revenue.at(0) - cumulative-costs.at(0),
+  cumulative-revenue.at(1) - cumulative-costs.at(1),
+  cumulative-revenue.at(2) - cumulative-costs.at(2),
+  cumulative-revenue.at(3) - cumulative-costs.at(3),
+  cumulative-revenue.at(4) - cumulative-costs.at(4),
+  cumulative-revenue.at(5) - cumulative-costs.at(5),
+  cumulative-revenue.at(6) - cumulative-costs.at(6),
+  cumulative-revenue.at(7) - cumulative-costs.at(7),
+  cumulative-revenue.at(8) - cumulative-costs.at(8),
+  cumulative-revenue.at(9) - cumulative-costs.at(9),
+  cumulative-revenue.at(10) - cumulative-costs.at(10),
+  cumulative-revenue.at(11) - cumulative-costs.at(11),
+  cumulative-revenue.at(12) - cumulative-costs.at(12),
+)
 
 // ─── Marktberechnungen ───────────────────────────────────────────────────────
 #let serviceable-market = calc.round(births-per-year * serviceable-market-ratio)
@@ -1266,13 +1336,12 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 
 
 // ═══════════════════════════════════════════════════════════════════════════
-// KUMULATIVER BREAK-EVEN (kompakt, mit Liniendiagramm)
+// KUMULATIVER BREAK-EVEN (mit lilaq)
 // ═══════════════════════════════════════════════════════════════════════════
 
-
+#import "@preview/lilaq:0.4.0" as lq
 
 Der kumulative Break-Even-Point – ab dem alle Anfangsinvestitionen amortisiert sind – wird mit ca. *47 zahlenden Kunden* erreicht. Dies berücksichtigt initiale Investitionen und Marketingkosten (CAC). Die monatliche Break-Even-Rechnung liegt dagegen bereits bei *3 Kunden pro Monat*, da hier nur die laufenden Fixkosten (109 € monatlich) gedeckt werden müssen.
-
 
 #v(0.5em)
 
@@ -1283,144 +1352,86 @@ Der kumulative Break-Even-Point – ab dem alle Anfangsinvestitionen amortisiert
   width: 100%,
   stroke: 1pt + surface,
 )[
-  // Title and legend
-  #grid(
-    columns: (1fr, auto),
-    align: (left, right),
-    [#text(weight: "bold", size: 11pt)[Kumulatives Ergebnis über 12 Monate]],
-    [
-      #box(fill: success, width: 12pt, height: 2pt, radius: 1pt)
-      #text(size: 8pt, fill: muted)[ Umsatz]
-      #h(8pt)
-      #box(fill: danger, width: 12pt, height: 2pt, radius: 1pt)
-      #text(size: 8pt, fill: muted)[ Kosten]
-      #h(8pt)
-      #box(fill: primary, width: 12pt, height: 2pt, radius: 1pt)
-      #text(size: 8pt, fill: muted)[ Ergebnis]
-    ],
-  )
+  // Title
+  #text(weight: "bold", size: 11pt)[Kumulatives Ergebnis über 12 Monate]
 
   #v(12pt)
 
-  // Graph area - Skalierung: -5k bis 90k = 95k Bereich, 130pt Höhe
-  #grid(
-    columns: (30pt, 1fr, 45pt),
-    column-gutter: 8pt,
+  // Prepare data arrays for lilaq (months 0-12)
+  #let months = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+  #let revenue-values = cumulative-revenue
+  #let costs-values = cumulative-costs
+  #let profit-values = cumulative-profit
 
-    // Y-axis
-    align(right)[
-      #text(size: 7pt, fill: muted)[90k] #v(36pt)
-      #text(size: 7pt, fill: muted)[60k] #v(36pt)
-      #text(size: 7pt, fill: muted)[30k] #v(36pt)
-      #text(size: 7pt, fill: muted)[0] #v(10pt)
-      #text(size: 7pt, fill: muted)[-5k]
-    ],
+  // Create the chart using lilaq
+  #lq.diagram(
+    width: 14cm,
+    height: 6cm,
+    xlabel: [Monat],
+    ylabel: [Euro (€)],
+    ylim: (0, 30000),
+    ygrid: false,
+    xgrid: false,
+    
+    // Revenue line (green)
+    lq.plot(
+      months, 
+      revenue-values, 
+      stroke: 2pt + success,
+      mark: none,
+      label: [Umsatz],
+    ),
+    
+    // Costs line (red)
+    lq.plot(
+      months, 
+      costs-values, 
+      stroke: 2pt + danger,
+      mark: none,
+      label: [Kosten],
+    ),
+    
+    // Profit line (purple)
+    lq.plot(
+      months, 
+      profit-values, 
+      stroke: 2.5pt + primary,
+      mark: none,
+      label: [Ergebnis],
+    ),
+    
 
-    // Chart
-    box(width: 100%, height: 130pt, clip: true)[
-      // Background grid
-      #place(dy: 0pt)[#line(length: 100%, stroke: 0.3pt + surface)]
-      #place(dy: 41pt)[#line(length: 100%, stroke: 0.3pt + surface)]
-      #place(dy: 82pt)[#line(length: 100%, stroke: 0.3pt + surface)]
-      #place(dy: 123pt)[#line(length: 100%, stroke: 0.8pt + dark.lighten(50%))]
-
-      // Revenue line (green)
-      #place()[
-        #path(
-          fill: none,
-          stroke: 2pt + success,
-          (0%, 123pt),
-          (8.3%, 121pt),
-          (16.6%, 118pt),
-          (25%, 115pt),
-          (33.3%, 109pt),
-          (41.6%, 102pt),
-          (50%, 94pt),
-          (58.3%, 84pt),
-          (66.6%, 72pt),
-          (75%, 60pt),
-          (83.3%, 43pt),
-          (91.6%, 25pt),
-          (100%, 5pt),
-        )
-      ]
-
-      // Cost line (red)
-      #place()[
-        #path(
-          fill: none,
-          stroke: 2pt + danger,
-          (0%, 118pt),
-          (8.3%, 117pt),
-          (16.6%, 116pt),
-          (25%, 115pt),
-          (33.3%, 114pt),
-          (41.6%, 112pt),
-          (50%, 110pt),
-          (58.3%, 107pt),
-          (66.6%, 104pt),
-          (75%, 100pt),
-          (83.3%, 96pt),
-          (91.6%, 91pt),
-          (100%, 86pt),
-        )
-      ]
-
-      // Profit line (purple)
-      #place()[
-        #path(
-          fill: none,
-          stroke: 2.5pt + primary,
-          (0%, 128pt),
-          (8.3%, 127pt),
-          (16.6%, 125pt),
-          (25%, 122pt),
-          (33.3%, 119pt),
-          (41.6%, 114pt),
-          (50%, 108pt),
-          (58.3%, 100pt),
-          (66.6%, 92pt),
-          (75%, 83pt),
-          (83.3%, 70pt),
-          (91.6%, 57pt),
-          (100%, 43pt),
-        )
-      ]
-
-      // Break-even marker
-      #place(dx: 24%, dy: 120pt)[
-        #circle(radius: 4pt, fill: white, stroke: 2pt + success)
-      ]
-    ],
-
-    // End value labels
-    align(left)[
-      #v(2pt)
-      #text(size: 7pt, fill: success, weight: "bold")[#euro-compact(revenue-year1)]
-      #v(30pt)
-      #text(size: 7pt, fill: primary, weight: "bold")[+#euro-compact(profit-year1)]
-      #v(40pt)
-      #text(size: 7pt, fill: danger)[#euro-compact(total-costs-year1)]
-    ],
   )
 
-  // X-axis
-  #v(5pt)
+  #v(4pt)
+  #align(center)[
+    #text(size: 8pt, fill: success, weight: "bold")[
+      ● Break-Even erreicht in Monat 3 (Ergebnislinie kreuzt Null)
+    ]
+  ]
+
+  #v(8pt)
+
+  // End value labels
   #grid(
-    columns: (30pt, 1fr),
-    column-gutter: 8pt,
-    [],
-    grid(
-      columns: (1fr,) * 7,
-      align: center,
-      text(size: 7pt, fill: muted)[Start],
-      text(size: 7pt, fill: muted)[M2],
-      text(size: 7pt, fill: muted)[M4],
-      text(size: 7pt, fill: muted)[M6],
-      text(size: 7pt, fill: muted)[M8],
-      text(size: 7pt, fill: muted)[M10],
-      text(size: 7pt, fill: muted)[M12],
-    ),
+    columns: (1fr, 1fr, 1fr),
+    column-gutter: 12pt,
+    align: center,
+    [
+      #text(size: 8pt, fill: success)[Umsatz Ende Jahr 1]
+      #v(2pt)
+      #text(size: 11pt, fill: success, weight: "bold")[#euro-compact(revenue-year1)]
+    ],
+    [
+      #text(size: 8pt, fill: primary)[Gewinn Ende Jahr 1]
+      #v(2pt)
+      #text(size: 11pt, fill: primary, weight: "bold")[+#euro-compact(profit-year1)]
+    ],
+    [
+      #text(size: 8pt, fill: danger)[Kosten Ende Jahr 1]
+      #v(2pt)
+      #text(size: 11pt, fill: danger, weight: "bold")[#euro-compact(total-costs-year1)]
+    ],
   )
 ]
 
