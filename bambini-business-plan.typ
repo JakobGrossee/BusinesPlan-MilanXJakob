@@ -2,7 +2,7 @@
 // Refined visual identity with geometric accents and modern typography
 
 #set document(
-  title: "Bambini toller plan Business Plan 2026",
+  title: "Bambini Business Plan 2026",
   author: "Bambini GmbH (i.Gr.)",
 )
 
@@ -64,7 +64,7 @@
 
 // ─── Typography ──────────────────────────────────────────────────────────────
 #set text(
-  font: "Inter",
+  font: ("Roboto", "Helvetica Neue", "Arial"),
   size: 10.5pt,
   fill: dark,
   lang: "de",
@@ -414,8 +414,6 @@ Bambini macht Schluss mit dem Antrag-Chaos:
     #text(size: 7pt, fill: muted)[Stammkapital (12.500 €) + Gründungskosten (880,80 € – 1.664,80 €)]
   ]
 ]
-
-#v(12pt)
 
 #grid(
   columns: (1fr, 1fr),
@@ -1354,7 +1352,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
   #v(8pt)
 
   #box(fill: primary.lighten(93%), inset: 10pt, radius: 6pt, width: 100%)[
-    *Ergebnis:* Technische Integration bereit, erste Anträge bei Behörden eingereicht und Rückmeldungen hinsichtlihc der Nutzererfahrung ausgewertet.
+    *Ergebnis:* Technische Integration bereit, erste Anträge bei Behörden eingereicht und Rückmeldungen hinsichtlich der Nutzererfahrung ausgewertet.
   ]
 ]
 
