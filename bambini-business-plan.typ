@@ -1068,7 +1068,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 
 == Kumulativer Break-Even: Gesamtprofitabilität
 
-Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten. Für die *Gesamtprofitabilität* müssen initiale Investitionen und Marketingkosten (CAC) einbezogen werden. Der kumulative Break-Point – ab dem alle Anfangsinvestitionen amortisiert sind – wird mit ca. *81 zahlenden Kunden* erreicht:
+Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten. Für die *Gesamtprofitabilität* müssen initiale Investitionen und Marketingkosten (CAC) einbezogen werden. Der kumulative Break-Point – ab dem alle Anfangsinvestitionen amortisiert sind – wird mit ca. *47 zahlenden Kunden* erreicht:
 
 #v(0.5em)
 
@@ -1239,7 +1239,7 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
     #align(center)[
       #text(size: 8pt, fill: muted)[INITIALE KOSTEN]
       #v(2pt)
-      #text(size: 14pt, weight: "bold")[3.700 €]
+      #text(size: 14pt, weight: "bold")[1.164 €]
     ]
   ],
 
@@ -1248,14 +1248,6 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
       #text(size: 8pt, fill: muted)[BREAK-EVEN]
       #v(2pt)
       #text(size: 14pt, weight: "bold", fill: success)[Monat 3]
-    ]
-  ],
-
-  box(fill: primary.lighten(92%), inset: 10pt, radius: 6pt, width: 100%, stroke: 1pt + primary.lighten(50%))[
-    #align(center)[
-      #text(size: 8pt, fill: muted)[KUNDEN BIS BREAK-EVEN]
-      #v(2pt)
-      #text(size: 14pt, weight: "bold", fill: primary)[~81]
     ]
   ],
 
@@ -1269,9 +1261,9 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
 
   box(fill: light-bg, inset: 10pt, radius: 6pt, width: 100%)[
     #align(center)[
-      #text(size: 8pt, fill: muted)[BLENDED CAC]
+      #text(size: 8pt, fill: muted)[CAC Mnt. 1-3]
       #v(2pt)
-      #text(size: 14pt, weight: "bold")[13 €]
+      #text(size: 14pt, weight: "bold")[18 €]
     ]
   ],
 )
