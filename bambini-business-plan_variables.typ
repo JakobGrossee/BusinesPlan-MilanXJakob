@@ -1370,8 +1370,7 @@ Der kumulative Break-Even-Point – ab dem alle Anfangsinvestitionen amortisiert
     xlabel: [Monat],
     ylabel: [Euro (€)],
     ylim: (0, 30000),
-    ygrid: false,
-    xgrid: false,
+
     
     // Revenue line (green)
     lq.plot(
