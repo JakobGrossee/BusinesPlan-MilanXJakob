@@ -1264,38 +1264,12 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 
 == Break-Even-Analyse
 
-#highlight-box(title: [monatlicher Break-Even: #break-even-monthly ab 3 zahlenden Kunden], color: success)[
-  #grid(
-    columns: (1fr, 1fr, 1fr),
-    column-gutter: 15pt,
-    align: center,
-    [
-      #text(size: 9pt, fill: muted, tracking: 0.3pt)[MONATL. FIXKOSTEN]
-      #v(2pt)
-      #text(size: 18pt, weight: "bold")[#euro(monthly-fixed-costs)]
-    ],
-    [
-      #text(size: 9pt, fill: muted, tracking: 0.3pt)[PREIS PRO KUNDE]
-      #v(2pt)
-      #text(size: 18pt, weight: "bold")[#euro(product-price)]
-    ],
-    [
-      #text(size: 9pt, fill: muted, tracking: 0.3pt)[BREAK-EVEN]
-      #v(2pt)
-      #text(size: 18pt, weight: "bold", fill: success)[#break-even-monthly Kunden]
-    ],
-  )
-
-  #v(10pt)
-
-  Bei der aktuellen Kostenstruktur ist Bambini ab dem *#break-even-monthly. zahlenden Kunden auf den Monat gerechnet* operativ profitabel.
-]
 
 // ═══════════════════════════════════════════════════════════════════════════
 // KUMULATIVER BREAK-EVEN (kompakt, mit Liniendiagramm)
 // ═══════════════════════════════════════════════════════════════════════════
 
-== Kumulativer Break-Even: Gesamtprofitabilität
+
 
 Die monatliche Break-Even-Rechnung (#break-even-monthly Kunden) betrachtet nur laufende Fixkosten. Für die *Gesamtprofitabilität* müssen initiale Investitionen und Marketingkosten (CAC) einbezogen werden. Der kumulative Break-Point – ab dem alle Anfangsinvestitionen amortisiert sind – wird mit ca. *47 zahlenden Kunden* erreicht:
 
@@ -1490,6 +1464,33 @@ Die monatliche Break-Even-Rechnung (#break-even-monthly Kunden) betrachtet nur l
 )
 
 #v(0.8em)
+
+#highlight-box(title: [monatlicher Break-Even: #break-even-monthly ab 3 zahlenden Kunden], color: success)[
+  #grid(
+    columns: (1fr, 1fr, 1fr),
+    column-gutter: 15pt,
+    align: center,
+    [
+      #text(size: 9pt, fill: muted, tracking: 0.3pt)[MONATL. FIXKOSTEN]
+      #v(2pt)
+      #text(size: 18pt, weight: "bold")[#euro(monthly-fixed-costs)]
+    ],
+    [
+      #text(size: 9pt, fill: muted, tracking: 0.3pt)[PREIS PRO KUNDE]
+      #v(2pt)
+      #text(size: 18pt, weight: "bold")[#euro(product-price)]
+    ],
+    [
+      #text(size: 9pt, fill: muted, tracking: 0.3pt)[BREAK-EVEN]
+      #v(2pt)
+      #text(size: 18pt, weight: "bold", fill: success)[#break-even-monthly Kunden]
+    ],
+  )
+
+  #v(10pt)
+
+  Bei der aktuellen Kostenstruktur ist Bambini ab dem *#break-even-monthly. zahlenden Kunden auf den Monat gerechnet* operativ profitabel.
+]
 
 // Hinweis Personalkosten
 #box(
