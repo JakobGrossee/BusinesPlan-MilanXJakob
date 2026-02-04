@@ -1271,7 +1271,8 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 
 
 
-Die monatliche Break-Even-Rechnung (#break-even-monthly Kunden) betrachtet nur laufende Fixkosten. Für die *Gesamtprofitabilität* müssen initiale Investitionen und Marketingkosten (CAC) einbezogen werden. Der kumulative Break-Point – ab dem alle Anfangsinvestitionen amortisiert sind – wird mit ca. *47 zahlenden Kunden* erreicht:
+Der kumulative Break-Even-Point – ab dem alle Anfangsinvestitionen amortisiert sind – wird mit ca. *47 zahlenden Kunden* erreicht. Dies berücksichtigt initiale Investitionen und Marketingkosten (CAC). Die monatliche Break-Even-Rechnung liegt dagegen bereits bei *3 Kunden pro Monat*, da hier nur die laufenden Fixkosten (109 € monatlich) gedeckt werden müssen.
+
 
 #v(0.5em)
 
@@ -1465,7 +1466,7 @@ Die monatliche Break-Even-Rechnung (#break-even-monthly Kunden) betrachtet nur l
 
 #v(0.8em)
 
-#highlight-box(title: [monatlicher Break-Even: #break-even-monthly ab 3 zahlenden Kunden], color: success)[
+#highlight-box(title: [monatlicher Break-Even: ab 3 zahlenden Kunden], color: success)[
   #grid(
     columns: (1fr, 1fr, 1fr),
     column-gutter: 15pt,
@@ -1476,9 +1477,11 @@ Die monatliche Break-Even-Rechnung (#break-even-monthly Kunden) betrachtet nur l
       #text(size: 18pt, weight: "bold")[#euro(monthly-fixed-costs)]
     ],
     [
-      #text(size: 9pt, fill: muted, tracking: 0.3pt)[PREIS PRO KUNDE]
+      #text(size: 9pt, fill: muted, tracking: 0.3pt)[NETTO PRO KUNDE]
       #v(2pt)
-      #text(size: 18pt, weight: "bold")[#euro(product-price)]
+      #text(size: 18pt, weight: "bold")[#euro(product-price - blended-cac)]
+      #v(2pt)
+      #text(size: 7pt, fill: muted)[#euro(product-price) − #euro(blended-cac) CAC]
     ],
     [
       #text(size: 9pt, fill: muted, tracking: 0.3pt)[BREAK-EVEN]
@@ -1487,10 +1490,16 @@ Die monatliche Break-Even-Rechnung (#break-even-monthly Kunden) betrachtet nur l
     ],
   )
 
+  #v(8pt)
+  #text(size: 8pt, fill: muted)[
+    Netto pro Kunde: #euro(product-price) − #euro(blended-cac) = #euro(product-price - blended-cac) | 
+    Break-Even: #euro(monthly-fixed-costs) ÷ #euro(product-price - blended-cac) ≈ #break-even-monthly Kunden
+  ]
+
   #v(10pt)
 
-  Bei der aktuellen Kostenstruktur ist Bambini ab dem *#break-even-monthly. zahlenden Kunden auf den Monat gerechnet* operativ profitabel.
 ]
+
 
 // Hinweis Personalkosten
 #box(

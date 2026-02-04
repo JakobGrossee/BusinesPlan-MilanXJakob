@@ -1033,7 +1033,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
 )
 
 == Break-Even-Analyse
-
+// monatlicher Break-Even ab 3 zahlendne Kunden
 #highlight-box(title: "Break-Even: 3 Kunden pro Monat", color: success)[
   #grid(
     columns: (1fr, 1fr, 1fr),
@@ -1278,7 +1278,7 @@ Die monatliche Break-Even-Rechnung (3 Kunden) betrachtet nur laufende Fixkosten.
   width: 100%,
   stroke: (left: 3pt + accent),
 )[
-  #text(weight: "bold", fill: accent.darken(20%), size: 9pt)[Hinweis Personalkosten:]
+  #text(weight: "bold", fill: accent.darken(20%), size: 10pt)[Hinweis Personalkosten:]
   #h(8pt)
   #text(size: 8pt)[
     Diese Projektion geht von unbezahlter Gründerarbeit in der Startphase aus. Weitere Personalkosten sind insofern nicht geplant.
