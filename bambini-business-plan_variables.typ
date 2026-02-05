@@ -1062,9 +1062,9 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
     #text(weight: "bold", fill: success)[Was BambiniAI kann]
     #v(6pt)
     - Versteckte Boni finden (€100–€500 extra)
-    - Alle Fristen überwachen
+    - Auf Fristen hinweisen
     - Fragen 24/7 kostenlos beantworten
-    - Personalisierte Tipps für jede Familie
+    - Bei der Antragsausfüllung helfen
   ],
   box(fill: info.lighten(93%), inset: 14pt, radius: 8pt, width: 100%)[
     #text(weight: "bold", fill: info)[Technische Umsetzung]
@@ -1263,9 +1263,9 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
         #text(fill: success, weight: "bold")[✓] Elternzeit-Planung
       ],
       [
-        #text(fill: success, weight: "bold")[✓] Expert-Überprüfung \
-        #text(fill: success, weight: "bold")[✓] 90 Tage Support \
-        #text(fill: success, weight: "bold")[✓] Fertige Antragsdatei
+        #text(fill: success, weight: "bold")[✓] Voller Zugriff auf BambiniAI \
+        #text(fill: success, weight: "bold")[✓] Fertige Antragsdatei \
+        #text(fill: success, weight: "bold")[✓] Automatischer Versand 
       ],
     )
   ]
