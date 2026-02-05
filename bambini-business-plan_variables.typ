@@ -84,7 +84,7 @@
 #let b2b-example-employees = 200
 #let b2b-example-cases = 12
 #let b2b-pilot-companies = 8
-#let b2c-year1-customers = 1000
+#let b2c-year1-customers = 592
 
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -1408,7 +1408,7 @@ Der kumulative Break-Even-Point – ab dem alle Anfangsinvestitionen amortisiert
   #v(4pt)
   #align(center)[
     #text(size: 8pt, fill: success, weight: "bold")[
-      ● Break-Even erreicht in Monat 3 (Ergebnislinie kreuzt Null)
+      ● Break-Even erreicht in Monat 3 (Umsatz = Kosten)
     ]
   ]
 
@@ -2149,7 +2149,7 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
   [Strategische Kooperationen auf Basis validierter Pilotdaten],
 )
 
-=== Umsatzpotenzial (konservativ, Jahr 1)
+=== Umsatzpotenzial (Jahr 1)
 
 #highlight-box(color: success)[
   #grid(
