@@ -1325,7 +1325,7 @@ Bambini integriert einen KI-gestützten Assistenten, der Fragen zu Elterngeld, K
       inset: 5pt,
       [E-Mail-Hosting], [#euro(cost-email-annual)],
       [QES-Zertifikat (80€/3J)], [~#euro(cost-qes-annual)],
-      [Monatliche Betriebskosten x12], [#euro(monthly-fixed-costs * 12)],
+      [monatl. Betriebskosten x12], [#euro(monthly-fixed-costs * 12)],
       table.hline(stroke: 0.5pt + surface),
       [*Gesamt jährlich*], [*#euro(annual-fixed-costs)*],
     )
