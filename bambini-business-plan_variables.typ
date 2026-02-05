@@ -1717,8 +1717,8 @@ Der kumulative Break-Even-Point – ab dem alle Anfangsinvestitionen amortisiert
   table.cell(fill: primary)[#text(fill: white, weight: "bold")[Kum. Gewinn]],
 
   [Jahr 1], [#pct(market-share-year1)], [#num(customers-year1)], [#euro-compact(revenue-year1)], [#euro-compact(profit-year1)],
-  [Jahr 2], [#pct(market-share-year2)], [#num(customers-year2)], [#euro-compact(revenue-year2)], [~180.000 €],
-  [Jahr 3], [#pct(market-share-year3)], [#num(customers-year3)], [#euro-compact(revenue-year3)], [~400.000 €],
+  [Jahr 2], [#pct(market-share-year2)], [#customers-year2], [#(customers-year2 * 50/1000)k €], [~57k €],
+  [Jahr 3], [#pct(market-share-year3)], [#customers-year3], [#(customers-year3 * 50/1000)k €], [~116k €],
 )
 #v(-0.8em)
 #text(size: 8pt, fill: muted)[
