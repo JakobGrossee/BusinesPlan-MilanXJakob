@@ -1400,7 +1400,6 @@ Der kumulative Break-Even-Point – ab dem alle Anfangsinvestitionen amortisiert
       stroke: 2.5pt + primary,
       mark: none,
       label: [Gewinn],
-      label: [Gewinn],
     ),
     
 
