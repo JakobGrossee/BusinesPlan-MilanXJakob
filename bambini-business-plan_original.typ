@@ -2298,7 +2298,7 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
       )[
         #text(fill: success, weight: "bold")[Rechtliche Expertise]
         #v(3pt)
-        #text(size: 9pt, fill: muted)[Familienrecht, Sozialrecht]
+        #text(size: 9pt, fill: muted)[Verwaltungsrecht, Sozialrecht]
       ],
 
       box(
@@ -2350,7 +2350,7 @@ Der deutsche Markt für HR-Benefits-Software ist fragmentiert und wächst kontin
   box(fill: white, inset: 16pt, radius: 10pt, stroke: 1pt + success.lighten(50%), width: 100%)[
     #text(fill: success, weight: "bold", size: 11pt)[✓ Strategische Partnerschaft]
     #v(6pt)
-    ARAG-Deal unterschrieben, Testkunden bereit
+    ARAG-Deal vorbereitet, Testkunden bereit
   ],
 
   box(fill: white, inset: 16pt, radius: 10pt, stroke: 1pt + success.lighten(50%), width: 100%)[
