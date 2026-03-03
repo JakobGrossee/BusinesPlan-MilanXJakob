@@ -1,0 +1,36 @@
+Gut: 
+- Problem klar definiert und Markt skizziert 
+- Prozess unserer Application gut dargestellt
+Schlecht: 
+- In der executive summary einiges vermischt
+- Mitunter sehr werbelastig -> Begriffe etc
+	- So wie die Profisportler bei der Jusperta?
+- Eher harte Belege und unemotionale Sprache  -> operative Punkte vertiefen 
+- Thema Recht und Haftung -> Wer haftet bei einer fehlerhaften Berechnung -> Wie wird sichergestellt, dass die AI nicht falsch berät
+	 - Aufstellung im Bereich Datenschutz -> Wo stehen unsere Server etc. 
+ - SWOT analyse -> Schlagwörter integrieren
+	 - unter Risiken hier -> Auch Mitigationen aufzeigen -> Ursache-Wirkung-Geflecht
+ - Aktuelle Fixkosten ggf. korrigieren -> Versicherung, Datenschutzbeauftragter -> brauchen wir nicht!; 
+ - Vor die Break even analyse -> Gewinn und Verlustrechnung? -> die Gewinn und Verlustrechnung auf drei Jahre ziehen 
+	- Aufwendungen lieber ein bisschen großzügiger Darstellen und konservativ 
+- Monatlichen Break even raus
+- Liquiditätsplanung -> Wo geht das Cash hin -> Cashflowmodell auch mit darstellen
+	- Mindestkapital X wird benötigt 
+- Frage gleich an ihn -> größere Textblöcke? -> Nein keinere längeren Textblöcke -> weiterhin alles visualisieren was geht
+- Roter Faden in der Customer acquisition strategie 
+	- Welchen Herausforderungen begegne ich hier mit welcher Maßnahme -> erst Ergebnis, dann wie setzt sich das ganze Zusammen -> **vom Ergebnis her gedacht **
+- Roadmap und Meilensteine eher etwas kompakter -> hier muss auch keine genaue Angabe auf die Wochen sein -> intern kann man das so genau behalten, aber insgesamt kann das eher eine lockere Timeline sein auf drei Jahre -> hier kann auch auf die Zahlen am Anfang rekurriert werden
+- Gesetzgeberische Entscheidungen die uns Beeinflussen als Risiko aufführen und widerlegen
+- Skalierbarkeit als Ausblick -> als Annex zur timeline -> dies kann auch zeitlich unkonkreter sein 
+	- Das nicht doppelt bringen -> hier einmal Tabelle und einmal Text
+- B2B Strategie besser mit einbinden -> oder eher rauslassen 
+	- weniger Fußnoten
+- Die Seite die sich jetzt mit chancen und risiken befasst eher als SWOT gestalten, wie oben beschrieben 
+- Fallbacklösung, wenn der Start schlechter ist schildern 
+- Kostenstruktur, welche sich aktuell nur auf Fixkosten bezieht ist aktuell nicht eindeutig als solche, sich nur auf Fixkosten beziehende, Struktur gekennzeichnet 
+	- DAHER: Eindeutige Gewinn oder Verlust Rechnung, welche Fixkosten und CAC aufsummiert darstellt
+- Insgesamt den Plan ganzheitlicher gestalten -> die vielen Einzelüberlegungen zusammenführen 
+- Roadmap und Meilensteine 
+- ggf. Vision und Ausblick mit aktuellen Plan verbinden
+- Bubbles mit groben Stoßrichtungen hinsichtlich der Meilensteine 
+- 6-8 Kapitel nicht länger -> 5-10 Seiten kürzen von dem Ist-Zustand
