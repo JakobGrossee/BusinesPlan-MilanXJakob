@@ -114,7 +114,13 @@
 #let total-capital-max = stammkapital + founding-costs-max
 
 // ─── Blended CAC ─────────────────────────────────────────────────────────────
-#let blended-cac = (cac-arag * share-arag) + (cac-tiktok * share-tiktok) + (cac-meta * share-meta) + (cac-seo * share-seo) + (cac-referral * share-referral)
+#let blended-cac = (
+  (cac-arag * share-arag)
+    + (cac-tiktok * share-tiktok)
+    + (cac-meta * share-meta)
+    + (cac-seo * share-seo)
+    + (cac-referral * share-referral)
+)
 
 // ─── Break-Even ──────────────────────────────────────────────────────────────
 #let break-even-monthly = calc.ceil(monthly-fixed-costs / (product-price - blended-cac))
@@ -181,7 +187,7 @@
   revenue-q1 + revenue-q2 + revenue-q3, // Ende Q3
   revenue-q1 + revenue-q2 + revenue-q3 + monthly-revenue-q4,
   revenue-q1 + revenue-q2 + revenue-q3 + monthly-revenue-q4 * 2,
-  revenue-year1 // Ende Jahr 1
+  revenue-year1, // Ende Jahr 1
 )
 
 #let cumulative-costs = (
@@ -197,7 +203,7 @@
   founding-costs-max + monthly-fixed-costs * 9 + marketing-q1 + marketing-q2 + marketing-q3, // Ende Q3
   founding-costs-max + monthly-fixed-costs * 10 + marketing-q1 + marketing-q2 + marketing-q3 + monthly-marketing-q4,
   founding-costs-max + monthly-fixed-costs * 11 + marketing-q1 + marketing-q2 + marketing-q3 + monthly-marketing-q4 * 2,
-  founding-costs-max + annual-fixed-costs + marketing-year1 // Ende Jahr 1
+  founding-costs-max + annual-fixed-costs + marketing-year1, // Ende Jahr 1
 )
 
 // Kumulativer Gewinn/Verlust
@@ -272,7 +278,7 @@
 
 // ─── Kumul. Break-Even (inkl. Gründungskosten + Fixkosten + Marketing) ─────
 #let cum-break-even = calc.ceil(
-  (founding-costs-max + (monthly-fixed-costs + contingency-monthly-y1) * 3) / (product-price - cac-q1)
+  (founding-costs-max + (monthly-fixed-costs + contingency-monthly-y1) * 3) / (product-price - cac-q1),
 )
 
 // ─── Gesamtkosten Jahr 1 (inkl. Gründungskosten + Puffer) ───────────────────
@@ -635,8 +641,7 @@
   )[
     #grid(
       columns: (1fr, auto),
-      [*#title*],
-      badge(level, color: level-color),
+      [*#title*], badge(level, color: level-color),
     )
     #v(6pt)
     #text(size: 9pt, fill: muted)[#description]
@@ -973,6 +978,8 @@ Bambini digitalisiert den gesamten Antragsprozess für Familienleistungen. Die P
 
 #v(0.5em)
 
+#pagebreak()
+
 #highlight-box(color: info, title: [BambiniAI – KI-Assistent])[
   Ergänzend zum Antragsprozess steht Nutzern ein KI-gestützter Assistent zur Verfügung, der rund um die Uhr Fragen zu Familienleistungen beantwortet – mehrsprachig und auf Basis einer RAG-Wissensdatenbank mit aktuellen BEEG-Inhalten. BambiniAI gibt allgemeine Orientierung zu Ansprüchen, Fristen und Berechnungen, ersetzt jedoch keine individuelle Rechtsberatung.
 ]
@@ -1044,7 +1051,9 @@ Bambini digitalisiert den gesamten Antragsprozess für Familienleistungen. Die P
 
 #table(
   columns: (2fr, auto, auto, auto),
-  fill: (x, y) => if y == 0 { primary } else if y == 6 { success.lighten(85%) } else if calc.odd(y) { light-bg } else { white },
+  fill: (x, y) => if y == 0 { primary } else if y == 6 { success.lighten(85%) } else if calc.odd(y) { light-bg } else {
+    white
+  },
   stroke: 0.5pt + surface,
   inset: 9pt,
 
@@ -1082,7 +1091,9 @@ Die folgende GuV zeigt die Projektion über drei Geschäftsjahre. Aufwendungen s
 
 #table(
   columns: (2.5fr, auto, auto, auto),
-  fill: (x, y) => if y == 0 { primary } else if y == 6 { success.lighten(85%) } else if y == 7 { info.lighten(90%) } else if calc.odd(y) { light-bg } else { white },
+  fill: (x, y) => if y == 0 { primary } else if y == 6 { success.lighten(85%) } else if y == 7 {
+    info.lighten(90%)
+  } else if calc.odd(y) { light-bg } else { white },
   stroke: 0.5pt + surface,
   inset: 10pt,
   align: (left, right, right, right),
@@ -1298,7 +1309,10 @@ Der kumulative Break-Even – ab dem alle Anfangsinvestitionen (Gründungskosten
 )
 
 #v(0.5em)
-#text(size: 9pt, fill: muted)[Alle drei Szenarien sind profitabel ab Jahr 1. Auch im konservativen Fall (nur 74% des Ziels) deckt der Umsatz alle Kosten, da die Fixkosten mit #euro(monthly-fixed-costs)/Monat niedrig sind.]
+#text(
+  size: 9pt,
+  fill: muted,
+)[Alle drei Szenarien sind profitabel ab Jahr 1. Auch im konservativen Fall (nur 74% des Ziels) deckt der Umsatz alle Kosten, da die Fixkosten mit #euro(monthly-fixed-costs)/Monat niedrig sind.]
 
 == Liquiditätsplanung (Jahr 1)
 
@@ -1308,7 +1322,9 @@ Der Cashflow zeigt quartalsweise, wie sich die Liquidität aus dem eingezahlten 
 
 #table(
   columns: (2fr, auto, auto, auto, auto),
-  fill: (x, y) => if y == 0 { info } else if y == 5 { info.lighten(90%) } else if calc.odd(y) { light-bg } else { white },
+  fill: (x, y) => if y == 0 { info } else if y == 5 { info.lighten(90%) } else if calc.odd(y) { light-bg } else {
+    white
+  },
   stroke: 0.5pt + surface,
   inset: 9pt,
   align: (left, right, right, right, right),
@@ -1319,11 +1335,27 @@ Der Cashflow zeigt quartalsweise, wie sich die Liquidität aus dem eingezahlten 
   table.cell(fill: info)[#text(fill: white, weight: "bold")[Q3]],
   table.cell(fill: info)[#text(fill: white, weight: "bold")[Q4]],
 
-  [Anfangsbestand], [#euro-compact(cf-start)], [#euro-compact(cf-end-q1)], [#euro-compact(cf-end-q2)], [#euro-compact(cf-end-q3)],
-  [\+ Einnahmen], [#euro-compact(cf-inflow-q1)], [#euro-compact(cf-inflow-q2)], [#euro-compact(cf-inflow-q3)], [#euro-compact(cf-inflow-q4)],
-  [− Ausgaben], [#euro-compact(cf-outflow-q1)], [#euro-compact(cf-outflow-q2)], [#euro-compact(cf-outflow-q3)], [#euro-compact(cf-outflow-q4)],
-  [],[], [], [], [],
-  [*Endbestand*], [*#euro-compact(cf-end-q1)*], [*#euro-compact(cf-end-q2)*], [*#euro-compact(cf-end-q3)*], [*#euro-compact(cf-end-q4)*],
+  [Anfangsbestand],
+  [#euro-compact(cf-start)],
+  [#euro-compact(cf-end-q1)],
+  [#euro-compact(cf-end-q2)],
+  [#euro-compact(cf-end-q3)],
+  [\+ Einnahmen],
+  [#euro-compact(cf-inflow-q1)],
+  [#euro-compact(cf-inflow-q2)],
+  [#euro-compact(cf-inflow-q3)],
+  [#euro-compact(cf-inflow-q4)],
+  [− Ausgaben],
+  [#euro-compact(cf-outflow-q1)],
+  [#euro-compact(cf-outflow-q2)],
+  [#euro-compact(cf-outflow-q3)],
+  [#euro-compact(cf-outflow-q4)],
+  [], [], [], [], [],
+  [*Endbestand*],
+  [*#euro-compact(cf-end-q1)*],
+  [*#euro-compact(cf-end-q2)*],
+  [*#euro-compact(cf-end-q3)*],
+  [*#euro-compact(cf-end-q4)*],
 )
 
 #v(0.3em)
@@ -1350,7 +1382,10 @@ Der Cashflow zeigt quartalsweise, wie sich die Liquidität aus dem eingezahlten 
       #v(4pt)
       #text(size: 20pt, weight: "bold", fill: success)[#euro(total-capital-min) – #euro(total-capital-max)]
       #v(4pt)
-      #text(size: 8pt, fill: muted)[Stammkapital #euro(stammkapital) + Gründungskosten #euro(founding-costs-min)–#euro(founding-costs-max)]
+      #text(
+        size: 8pt,
+        fill: muted,
+      )[Stammkapital #euro(stammkapital) + Gründungskosten #euro(founding-costs-min)–#euro(founding-costs-max)]
     ]
   ],
 
@@ -1444,7 +1479,10 @@ Der Cashflow zeigt quartalsweise, wie sich die Liquidität aus dem eingezahlten 
 )
 
 #v(0.3em)
-#text(size: 8pt, fill: muted)[Die nachfolgenden Mitigation-Strategien adressieren systematisch die fünf identifizierten Risiken (R1–R5).]
+#text(
+  size: 8pt,
+  fill: muted,
+)[Die nachfolgenden Mitigation-Strategien adressieren systematisch die fünf identifizierten Risiken (R1–R5).]
 
 == Mitigation: Haftung & Datenschutz #text(size: 9pt, fill: muted)[(→ R1, R2)]
 
@@ -1470,11 +1508,16 @@ Der Cashflow zeigt quartalsweise, wie sich die Liquidität aus dem eingezahlten 
         columns: (auto, 1fr),
         column-gutter: 8pt,
         row-gutter: 6pt,
-        text(fill: success, weight: "bold")[✓], [Bambini ist *technisches Hilfsmittel* – ausdrücklich *keine Rechtsberatung* (§ 2 Abs. 1 RDG)],
+        text(fill: success, weight: "bold")[✓],
+        [Bambini ist *technisches Hilfsmittel* – ausdrücklich *keine Rechtsberatung* (§ 2 Abs. 1 RDG)],
+
         text(fill: success, weight: "bold")[✓], [Berechnungen rein rechnerisch, ohne individuelle rechtliche Würdigung],
-        text(fill: success, weight: "bold")[✓], [Haftung in AGB auf Vorsatz und grobe Fahrlässigkeit beschränkt (§ 309 Nr. 7 BGB-konform)],
+        text(fill: success, weight: "bold")[✓],
+        [Haftung in AGB auf Vorsatz und grobe Fahrlässigkeit beschränkt (§ 309 Nr. 7 BGB-konform)],
+
         text(fill: success, weight: "bold")[✓], [Nutzer bestätigen Angaben vor Versand – Eigenverantwortung],
-        text(fill: success, weight: "bold")[✓], [KI-Assistent gibt allgemeine Orientierung – keine verbindlichen Auskünfte],
+        text(fill: success, weight: "bold")[✓],
+        [KI-Assistent gibt allgemeine Orientierung – keine verbindlichen Auskünfte],
       )
     ]
   ],
@@ -1668,7 +1711,10 @@ Der Cashflow zeigt quartalsweise, wie sich die Liquidität aus dem eingezahlten 
       Abdeckung: Elterngeld, Kindergeld, Elternzeit · GmbH-Gründung · ARAG-Integration · Erste Kunden · Behörden-Feedback
     ]
     #v(4pt)
-    #text(size: 8pt, fill: muted)[Ziel: ~#num(customers-q1 + customers-q2) Kunden · Umsatz: #euro-compact(revenue-q1 + revenue-q2)]
+    #text(
+      size: 8pt,
+      fill: muted,
+    )[Ziel: ~#num(customers-q1 + customers-q2) Kunden · Umsatz: #euro-compact(revenue-q1 + revenue-q2)]
   ],
 
   box(fill: info, inset: (x: 10pt, y: 6pt), radius: 20pt)[
@@ -1681,7 +1727,10 @@ Der Cashflow zeigt quartalsweise, wie sich die Liquidität aus dem eingezahlten 
       Zusätzlich: Kinderzuschlag, Mutterschaftsgeld · Referral-Programm · TikTok-Kampagnen · Erste B2B-Gespräche
     ]
     #v(4pt)
-    #text(size: 8pt, fill: muted)[Ziel: ~#num(customers-q3 + customers-q4) weitere Kunden · Jahresumsatz: #euro-compact(revenue-year1)]
+    #text(
+      size: 8pt,
+      fill: muted,
+    )[Ziel: ~#num(customers-q3 + customers-q4) weitere Kunden · Jahresumsatz: #euro-compact(revenue-year1)]
   ],
 
   box(fill: success, inset: (x: 10pt, y: 6pt), radius: 20pt)[
