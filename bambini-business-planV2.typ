@@ -769,6 +769,7 @@ Das Geschäftsmodell basiert auf einer Einmalzahlung (#euro(product-price)) pro 
 // ============================================================================
 // 2. AUSGANGSSITUATION & PROBLEMSTELLUNG
 // ============================================================================
+#pagebreak()
 
 = Ausgangssituation & Problemstellung
 
@@ -1414,7 +1415,10 @@ Der Cashflow zeigt quartalsweise, wie sich die Liquidität aus dem eingezahlten 
 // 6. RISIKEN & SWOT-ANALYSE
 // ============================================================================
 
+#pagebreak()
 = Risiken & SWOT-Analyse
+
+
 
 == SWOT-Analyse
 
@@ -1483,6 +1487,8 @@ Der Cashflow zeigt quartalsweise, wie sich die Liquidität aus dem eingezahlten 
   size: 8pt,
   fill: muted,
 )[Die nachfolgenden Mitigation-Strategien adressieren systematisch die fünf identifizierten Risiken (R1–R5).]
+
+#pagebreak()
 
 == Mitigation: Haftung & Datenschutz #text(size: 9pt, fill: muted)[(→ R1, R2)]
 
@@ -1687,10 +1693,18 @@ Der Cashflow zeigt quartalsweise, wie sich die Liquidität aus dem eingezahlten 
 
 #v(0.5em)
 
-#align(center)[
-  #image("Teambild.jpg", width: 60%)
-]
 
+#figure(
+  image("Teambild.jpg", width: 60%),
+  caption: [
+    #text(size: 6.5pt, fill: muted)[
+      Mika Tomii, Micheala Idawain, Milan Kohlhaase, Jakob Große-Eggebrecht & Merit Lachmann
+    ]
+  ],
+  numbering: none,
+)
+
+#pagebreak()
 == Roadmap (3-Jahres-Überblick)
 
 #v(0.3em)
