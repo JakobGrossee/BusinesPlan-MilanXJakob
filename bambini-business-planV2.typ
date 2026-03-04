@@ -1422,65 +1422,62 @@ Der Cashflow zeigt quartalsweise, wie sich die Liquidität aus dem eingezahlten 
 
 == SWOT-Analyse
 
-#let swot-cell(bg-color, border-color, label, items) = {
-  box(
-    fill: bg-color,
-    inset: 14pt,
-    width: 100%,
-  )[
-    #text(weight: "bold", fill: border-color, size: 10pt)[#label]
-    #v(6pt)
-    #text(size: 8.5pt)[#items]
-  ]
-}
-
-#grid(
+#table(
   columns: (1fr, 1fr),
-  column-gutter: 0pt,
-  row-gutter: 0pt,
-
-  // ── Stärken (intern, positiv) ──
-  box(stroke: (right: 1pt + surface, bottom: 1pt + surface))[
-    #swot-cell(success.lighten(93%), success, [S – Stärken (intern)], [
+  stroke: 1pt + surface,
+  inset: 14pt,
+  fill: (x, y) => {
+    if x == 0 and y == 0 { success.lighten(93%) } else if x == 1 and y == 0 { danger.lighten(93%) } else if (
+      x == 0 and y == 1
+    ) { info.lighten(93%) } else if x == 1 and y == 1 { accent.lighten(90%) }
+  },
+  [
+    #text(weight: "bold", fill: success, size: 10pt)[S – Stärken (intern)]
+    #v(6pt)
+    #text(size: 8.5pt)[
       - Niedrige Fixkosten (#euro(monthly-fixed-costs)/Mon.) – geringes Verlustrisiko
       - Volldigitaler Prozess inkl. QES-Versand an Behörden
-      - 5\+ Leistungsarten in einer Plattform (Wettbewerb: je 1)
+      - 5+ Leistungsarten in einer Plattform (Wettbewerb: je 1)
       - Mehrsprachigkeit – erschließt unterversorgte Zielgruppen
       - Strategische ARAG-Partnerschaft (CAC effektiv 0 €)
-    ])
+    ]
   ],
-
-  // ── Schwächen (intern, negativ) ──
-  box(stroke: (bottom: 1pt + surface))[
-    #swot-cell(danger.lighten(93%), danger, [W – Schwächen (intern)], [
+  [
+    #text(weight: "bold", fill: danger, size: 10pt)[W – Schwächen (intern)]
+    #v(6pt)
+    #text(size: 8.5pt)[
       - Kein Track Record – Neugründung ohne Markthistorie
       - Studentisches Gründerteam – begrenzte operative Erfahrung
       - Begrenztes Marketingbudget in der Startphase
       - Abhängigkeit von unbezahlter Gründerarbeit
       - Behörden-Integration noch nicht zertifiziert
-    ])
+    ]
   ],
 
-  // ── Chancen (extern, positiv) ──
-  box(stroke: (right: 1pt + surface))[
-    #swot-cell(info.lighten(93%), info, [O – Chancen (extern)], [
+  [
+    #text(weight: "bold", fill: info, size: 10pt)[O – Chancen (extern)]
+    #v(6pt)
+    #text(size: 8.5pt)[
       - #calc.round(non-takeup-rate * 100)% Nichtinanspruchnahme = ungenutzter Markt
       - Verwaltungsdigitalisierung durch Gesetzgeber (OZG 2.0)
       - Kein dominanter Wettbewerber im Vollservice-Segment
       - B2B-Expansion als Corporate Employee Benefit
       - Wachsende Akzeptanz KI-gestützter Verwaltungslösungen
-    ])
+    ]
   ],
-
-  // ── Risiken (extern, negativ) ──
-  swot-cell(accent.lighten(90%), accent.darken(10%), [T – Risiken (extern)], [
-    - *R1* – Haftung bei fehlerhafter Berechnung
-    - *R2* – DSGVO-Verstoß oder Datenschutzvorfall
-    - *R3* – Regulatorische Änderungen (BEEG-Reform)
-    - *R4* – Wettbewerber erreichen Feature-Parität
-    - *R5* – CAC höher als prognostiziert / Partnerkanäle stagnieren
-  ]),
+  [
+    #text(weight: "bold", fill: accent.darken(10%), size: 10pt)[T – Risiken (extern)]
+    #v(6pt)
+    #text(size: 8.5pt)[
+      - *R1* – Haftung bei fehlerhafter Berechnung
+      - *R2* – DSGVO-Verstoß oder Datenschutzvorfall
+      - *R3* – Regulatorische Änderungen (BEEG-Reform)
+      - *R4* – Wettbewerber erreichen Feature-Parität
+      - *R5* – CAC höher als prognostiziert / Partnerkanäle stagnieren
+    ]
+  ],
 )
+
 
 #v(0.3em)
 #text(
@@ -1778,18 +1775,26 @@ Der Cashflow zeigt quartalsweise, wie sich die Liquidität aus dem eingezahlten 
 // ============================================================================
 // 8. VISION & AUSBLICK
 // ============================================================================
-
+#pagebreak()
 = Vision & Ausblick
 
 Bambini zielt darauf ab, die zentrale digitale Anlaufstelle für Familienleistungen in Deutschland zu werden. Die Plattform skaliert entlang zweier Achsen: Neue Leistungsarten (horizontal) und tiefere Serviceleistungen (vertikal).
 
 #v(0.5em)
 
-#grid(
+#table(
   columns: (auto, 1fr, 1fr),
-  column-gutter: 8pt,
-  row-gutter: 6pt,
-  align: (center + horizon, left, left),
+  stroke: none,
+  inset: 6pt,
+  align: (center + horizon, left + horizon, left + horizon),
+  fill: (x, y) => {
+    if y == 0 { surface } else if x == 1 { primary.lighten(96%) } else if x == 2 { accent.lighten(94%) }
+  },
+  table.header(
+    [],
+    [*Horizontale Skalierung*\ #text(size: 8pt, fill: muted, weight: "regular")[]],
+    [*Vertikale Skalierung*\ #text(size: 8pt, fill: muted, weight: "regular")[]],
+  ),
 
   box(fill: primary, inset: 6pt, radius: 4pt)[#text(fill: white, weight: "bold", size: 8pt)[Aktuell]],
   [Elterngeld, Kindergeld, Elternzeit],
@@ -1807,6 +1812,7 @@ Bambini zielt darauf ab, die zentrale digitale Anlaufstelle für Familienleistun
   [\+ Pflege, Unterhaltsvorschuss],
   [\+ KI-Optimierung, API-Behördenanbindung],
 )
+
 
 #v(0.5em)
 
