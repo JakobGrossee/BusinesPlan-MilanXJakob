@@ -1782,6 +1782,7 @@ Bambini zielt darauf ab, die zentrale digitale Anlaufstelle für Familienleistun
 
 #v(0.5em)
 
+#set text(font: ("Roboto", "Helvetica Neue", "Arial"))
 #table(
   columns: (auto, 1fr, 1fr),
   stroke: none,
@@ -1790,11 +1791,7 @@ Bambini zielt darauf ab, die zentrale digitale Anlaufstelle für Familienleistun
   fill: (x, y) => {
     if y == 0 { surface } else if x == 1 { primary.lighten(96%) } else if x == 2 { accent.lighten(94%) }
   },
-  table.header(
-    [],
-    [*Horizontale Skalierung*\ #text(size: 8pt, fill: muted, weight: "regular")[]],
-    [*Vertikale Skalierung*\ #text(size: 8pt, fill: muted, weight: "regular")[]],
-  ),
+  table.header([], [*Horizontale Skalierung*], [*Vertikale Skalierung*]),
 
   box(fill: primary, inset: 6pt, radius: 4pt)[#text(fill: white, weight: "bold", size: 8pt)[Aktuell]],
   [Elterngeld, Kindergeld, Elternzeit],
