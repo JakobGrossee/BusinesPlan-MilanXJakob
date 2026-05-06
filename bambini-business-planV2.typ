@@ -456,7 +456,7 @@
       #grid(
         columns: (1fr, 1fr),
         align: (left, right),
-        [BAMBINI BUSINESS PLAN], [MÄRZ 2026],
+        [BAMBINI BUSINESS PLAN], [MAI 2026],
       )
       #v(-3pt)
       #line(length: 100%, stroke: (
