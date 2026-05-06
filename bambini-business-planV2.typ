@@ -696,7 +696,7 @@
     #grid(
       columns: (auto, auto),
       column-gutter: 15pt,
-      badge("März 2026", color: primary), badge("GmbH i.Gr.", color: info),
+      badge("Mai 2026", color: primary), badge("Vorgründungsgesellschaft", color: info),
     )
   ]
 
