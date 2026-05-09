@@ -17,7 +17,7 @@
 
 #set document(
   title: "Bambini Business Plan 2026-2028",
-  author: "Bambini-Claims",
+  author: "bambini-claims.de",
 )
 
 
