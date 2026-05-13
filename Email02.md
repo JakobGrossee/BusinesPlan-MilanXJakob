@@ -1,5 +1,4 @@
-Hallo Nicole,                                                                                                       
-                                                                                                                     
+Hallo Nicole,                                                                                                                                                                            
  nach längerer Funkstille von unserer Seite wollten wir uns endlich wieder bei dir melden. Wir möchten uns ehrlich   
  entschuldigen, dass du so lange nichts von uns gehört hast, gerade vor dem Hintergrund, wie verlässlich, schnell   
  und unkompliziert ihr uns bis dahin unterstützt habt. Falls dadurch auf eurer Seite Aufwand oder Unklarheit         
