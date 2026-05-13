@@ -31,11 +31,10 @@ Hallo Nicole,
  in Krankenhäusern, bei Hebammen, Kinderfotograf:innen und ähnlichen Anlaufstellen für werdende Eltern.              
  - Rechtsform: Zur Mitigation des Haftungsrisikos gründen wir noch vor Umstellung auf die kostenpflichtigen Tarife   
  eine Kapitalgesellschaft. Da das Stammkapital für eine GmbH aktuell noch nicht vollständig steht, wird es           
- voraussichtlich zunächst eine UG (haftungsbeschränkt) mit späterer Umwandlung.                                      
- - Aktualisierter Businessplan im Anhang. Dort findest du Roadmap, Unit Economics und die wirtschaftliche            
- Drei-Jahres-Prognose im Detail.                                                                                     
+ voraussichtlich zunächst eine UG
+ -                                                                                  
                                                                                                                      
- Zur Zusammenarbeit mit der ARAG                                                                                     
+ # Zur Zusammenarbeit mit der ARAG                                                                                     
                                                                                                                      
  Wir wollten auf diesem Weg vorsichtig nachfragen, ob auf eurer Seite — auch angesichts der Verzögerung — weiterhin  
  Interesse an einer Partnerschaft mit Bambini besteht. Sollte sich die Lage bei euch verändert haben, hätten wir     
