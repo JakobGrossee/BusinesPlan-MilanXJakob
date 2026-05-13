@@ -1,0 +1,2 @@
+Test-Edit aus der Coding-Session.
+Wenn du diese Datei in VS Code siehst, funktioniert die Synchronisation.
