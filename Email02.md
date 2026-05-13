@@ -54,6 +54,6 @@ Hallo Nicole,
  Terminen.                                                                                                           
                                                                                                                      
  Vielen Dank — auch noch einmal rückblickend — und herzliche Grüße,                                                  
-                                                                                                                     
+                                                                                                   
  Milan & Jakob                                                                                                       
  (für das gesamte Bambini-Team)  
