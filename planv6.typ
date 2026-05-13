@@ -17,7 +17,7 @@
 
 #set document(
   title: "Bambini Business Plan 2026-2028",
-  author: "bambini-claims.de",
+  author: "Bambini GmbH (i.Gr.)",
 )
 
 
@@ -517,7 +517,9 @@
   ]
 }
 
-// KPI im Editorial-Stil: Label oben klein, Zahl groß in Ink
+// KPI im Editorial-Stil: Label oben klein, Zahl groß in Ink.
+// hyphenate: false im Label, damit kurze Caps-Texte an Wortgrenzen umbrechen
+// und nicht mitten im Wort getrennt werden (z. B. "MONATLICHES EL-/TERNGELD").
 #let kpi(value, label) = {
   block(
     width: 100%,
@@ -525,7 +527,7 @@
     stroke: (top: 0.6pt + ink, bottom: 0.4pt + rule, rest: 0pt),
   )[
     #text(font: sans, size: 7.5pt, weight: "regular",
-          fill: muted, tracking: 1.3pt)[#upper(label)]
+          fill: muted, tracking: 1.3pt, hyphenate: false)[#upper(label)]
     #v(3pt)
     #text(font: sans, size: 17pt, weight: "semibold", fill: ink)[#value]
   ]
@@ -617,6 +619,24 @@
   line(length: 100%, stroke: 0.3pt + rule-soft)
   v(8pt)
 }
+
+// Wertschöpfungs-Säule im Editorial-Stil.
+// Linker Akzentstrich, Caps-Label in Sans, Titel in Sans semibold,
+// Body in Serif. Drei dieser Blöcke nebeneinander tragen Kapitel 6
+// (Gesellschaftlicher Mehrwert und Wirkung).
+#let pillar(label, title, body) = block(
+  width: 100%,
+  breakable: false,
+  inset: (left: 14pt, right: 4pt, top: 8pt, bottom: 10pt),
+  stroke: (left: 1.5pt + accent, rest: 0pt),
+)[
+  #text(font: sans, size: 8.5pt, weight: "semibold",
+        fill: accent, tracking: 1.3pt)[#upper(label)]
+  #v(6pt)
+  #text(font: sans, size: 11pt, weight: "semibold", fill: ink)[#title]
+  #v(6pt)
+  #text(size: 9pt, fill: ink-soft)[#body]
+]
 
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -2234,7 +2254,128 @@ Marketing und einen Puffer für unvorhergesehene Kosten.
 
 
 // ═══════════════════════════════════════════════════════════════════════════
-// 6. RISIKEN & SWOT-ANALYSE
+// 6. GESELLSCHAFTLICHER MEHRWERT & WIRKUNG
+// ═══════════════════════════════════════════════════════════════════════════
+#pagebreak()
+
+= Gesellschaftlicher Mehrwert und Wirkung
+
+Bambini erzeugt Wirkung über die reine Umsatzrechnung hinaus. Elterngeld
+ist eine Sozialleistung mit familienpolitischer Funktion -- jede
+Vereinfachung des Antragsprozesses entlastet Familien, Verwaltung und
+Partnerorganisationen zugleich. Die folgende Darstellung ergänzt
+#link(<Wirtschaftlichkeit>)[Kapitel 5] um Dimensionen, die in der GuV
+bewusst nicht erscheinen -- und die zugleich ein Argument für Partner
+sind, die sich mit einer glaubwürdigen Sache assoziieren wollen.
+
+#v(0.6em)
+
+#grid(
+  columns: (1fr, 1fr, 1fr, 1fr),
+  column-gutter: 14pt,
+  kpi([3--6 h], "Gesparte Zeit pro Antrag"),
+  kpi([bis zu 2,9 Mio], "Zugang trotz Sprachbarriere"),
+  kpi([bis zu 1.800 €], "Monatliches Elterngeld"),
+  kpi(intfmt(active-users-year1) + "+", "Erreichte Familien Y1"),
+)
+
+#v(0.8em)
+
+== Drei Dimensionen der Wertschöpfung
+
+#grid(
+  columns: (1fr, 1fr, 1fr),
+  column-gutter: 16pt,
+
+  pillar(
+    "01 · Familien",
+    "Zugang & Entlastung",
+    [
+      Strukturierte, mehrsprachig erklärte Führung statt
+      Formulardschungel. Bambini schafft _Access to Justice_
+      besonders für Familien mit Sprachbarrieren -- die im
+      Behördenkontakt erfahrungsgemäß strukturell benachteiligt sind.
+    ],
+  ),
+  pillar(
+    "02 · System",
+    "Funktionierender Sozialstaat",
+    [
+      Vollständigere, plausibilitätsgeprüfte Anträge entlasten
+      Elterngeldstellen und verringern die Nichtinanspruchnahme
+      berechtigter Familienleistungen.
+    ],
+  ),
+  pillar(
+    "03 · Partner",
+    "Sichtbar verantwortlich handeln",
+    [
+      Partner verknüpfen ihre Marke mit einem konkreten Beitrag für junge
+      Familien -- ein glaubwürdiger sozialer Mehrwert mit Substanz
+      statt reiner Werbeaussage.
+    ],
+  ),
+)
+
+#v(0.8em)
+
+== Partner-Mehrwert: Assoziation mit einer positiven Sache
+
+#callout-soft(title: "Was Partner aus der Kooperation mitnehmen")[
+  Eine Zusammenarbeit mit Bambini ist für Partner wie ARAG, Krankenkassen
+  oder Arbeitgeber mehr als ein Vertriebskanal. Sie verknüpft die
+  Partnermarke sichtbar mit einem konkreten Beitrag in einer prägenden
+  Familienphase, in der Vertrauen und Entlastung tatsächlich erlebbar
+  werden -- eine glaubwürdige soziale Erzählung ohne zusätzlichen
+  Werbeaufwand.
+
+  #v(8pt)
+
+  #block(breakable: false)[
+    #grid(
+      columns: (1fr, 1fr),
+      column-gutter: 22pt,
+      [
+        #text(font: sans, size: 8.5pt, weight: "semibold",
+              fill: accent, tracking: 1.3pt)[#upper("Was Bambini liefert")]
+        #v(4pt)
+        #text(size: 9pt, fill: ink-soft)[
+          - Familienfreundlicher, datenschutzkonformer Service
+          - Belegbare Wirkung statt Marketingversprechen
+          - Niedriger Implementierungsaufwand, kein Reputationsrisiko
+        ]
+      ],
+      [
+        #text(font: sans, size: 8.5pt, weight: "semibold",
+              fill: accent, tracking: 1.3pt)[#upper("Was Partner gewinnen")]
+        #v(4pt)
+        #text(size: 9pt, fill: ink-soft)[
+          - Glaubwürdige CSR-/ESG-Story mit Alltagsbezug
+          - Höhere Kundenzufriedenheit und Retention
+          - Differenzierung über echten sozialen Nutzen
+        ]
+      ],
+    )
+  ]
+]
+
+#v(0.6em)
+
+#align(center)[
+  #block(width: 92%)[
+    #text(size: 8.5pt, fill: muted, style: "italic")[
+      Die gesellschaftliche Wirkung ist Folge eines funktionierenden
+      Produkts, nicht dessen Ersatz -- ein Kernprozess, dessen Nutzen sich
+      wirtschaftlich, individuell, systemisch und partnerseitig zugleich
+      entfaltet.
+    ]
+  ]
+]
+
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 7. RISIKEN & SWOT-ANALYSE
 // ═══════════════════════════════════════════════════════════════════════════
 #pagebreak()
 
@@ -2430,7 +2571,7 @@ Marketing und einen Puffer für unvorhergesehene Kosten.
 
 
 // ═══════════════════════════════════════════════════════════════════════════
-// 7. TEAM & ROADMAP
+// 8. TEAM & ROADMAP
 // ═══════════════════════════════════════════════════════════════════════════
 #pagebreak()
 
@@ -2528,7 +2669,7 @@ Phasen sind nicht nach Kalenderhalbjahren, sondern nach den jeweiligen
 
 
 // ═══════════════════════════════════════════════════════════════════════════
-// 8. SCHLUSS / CALL TO ACTION
+// 9. SCHLUSS / CALL TO ACTION
 // ═══════════════════════════════════════════════════════════════════════════
 #pagebreak()
 
