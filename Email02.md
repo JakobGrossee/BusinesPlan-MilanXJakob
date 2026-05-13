@@ -7,7 +7,7 @@ Hallo Nicole,
  Wir möchten an dieser Stelle auch noch einmal ausdrücklich Danke sagen. Die Möglichkeiten, die du und alle anderen Unterstützen eröffnet haben, von der bloßen Ermutigung unser Projekt forzusetzen, bis zur inhaltlichen Begleitung 
  für den Fortschritt, waren gerade ausschlaggebend für den Fortschritt von Bambini.                                                                                                  
                                                                                                                     
- Wo wir gerade stehen                                                                                                
+ # Wo wir gerade stehen                                                                                                
                                                                                                                      
  Bambini war und ist für uns ein Herzensprojekt, und uns liegt sehr daran, dass die im Hackathon entstandene Idee nicht in der Schublade landet. Die vergangenen Monate waren    
  einerseits von Klausurenphase, Praktikum und Hausarbeit geprägt und andererseits von sehr vielen verschiedenen Baustellen in der Entwicklung von Bambini.
@@ -24,10 +24,10 @@ Hallo Nicole,
  Familien schafft.                                                                                                   
                                                                                                                                                                                                                               
                                                                                                                      
- Was wir aktuell tun                                                                                     
+ # Was wir aktuell tun                                                                                     
                                                                                                                      
  - Kostenlos Version live in Kürze (Zieldatum: [Datum einfügen]): der Elterngeld-Self-Service geht an den Start                                     
- - Kunden-Akquise vor Ort: Wir haben Flyer drucken lassen (siehe Anhang) und verteilen sie in den nächsten Wochen 
+ - Kunden-Akquise vor Ort: In den nächsten Wochen werben wir mit Auslagen  
  in Krankenhäusern, bei Hebammen, Kinderfotograf:innen und ähnlichen Anlaufstellen für werdende Eltern.              
  - Rechtsform: Zur Mitigation des Haftungsrisikos gründen wir noch vor Umstellung auf die kostenpflichtigen Tarife   
  eine Kapitalgesellschaft. Da das Stammkapital für eine GmbH aktuell noch nicht vollständig steht, wird es           
